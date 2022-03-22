@@ -2,7 +2,7 @@ import sqlite3
 import database as db
 
 def initialize():
-    conn = sqlite3.connect('Database.db')
+    conn = sqlite3.connect('Dunder.db')
     print('Bağlantı Gerçekleşti')
 
     cursor=conn.cursor()
@@ -49,4 +49,3 @@ def initialize():
     conn.commit()
     conn.close()
     return 1
-
