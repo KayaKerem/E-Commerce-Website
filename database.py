@@ -1,7 +1,7 @@
 import sqlite3
 
 def addProduct(name,quantity,price,weightofpackages):
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('Database.db')
     cursor = conn.cursor()
 
     add_command = '''INSERT INTO PRODUCTS(NAME,QUANTITY,PRICE,WEIGHTOFPACKAGES)VALUES{}'''
@@ -12,7 +12,7 @@ def addProduct(name,quantity,price,weightofpackages):
     conn.close()
 
 def addUser(name,surname,mail,password):#Kullanıcı Ekleme Fonksiyonu
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('Database.db')
     cursor=conn.cursor()
     add_command = ''' INSERT INTO USERS(NAME,SURNAME,MAIL,PASSWORD) VALUES {}'''
     data = (name,surname,mail,password)
@@ -22,7 +22,7 @@ def addUser(name,surname,mail,password):#Kullanıcı Ekleme Fonksiyonu
 
 def getProducts():
     new_list = []
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('Database.db')
     cursor = conn.cursor()
     cursor.execute(''' SELECT * FROM PRODUCTS''')
     productList = cursor.fetchall()
