@@ -1,3 +1,4 @@
+from mimetypes import init
 import sqlite3
 import database as db
 
@@ -30,7 +31,7 @@ def initialize():
         PRODUCT_ID INTEGER NOT NULL,
         QUANTITYOFPACKAGE INTEGER NOT NULL,
         PRICEPERPRODUCT INTEGER NOT NULL,
-        DATE DATE NOT NULL
+        DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
     )''')
     conn.commit()
     db.addProduct('Mukavva',7000,250,175)
@@ -48,4 +49,4 @@ def initialize():
 
     conn.commit()
     conn.close()
-    return 1
+

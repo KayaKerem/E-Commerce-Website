@@ -1,6 +1,6 @@
 import sqlite3
 
-def addProduct(name,quantity,price,weightofpackages):
+def addProduct(name,quantity,price,weightofpackages):#Product Ekler
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
 
@@ -11,16 +11,27 @@ def addProduct(name,quantity,price,weightofpackages):
     conn.commit()
     conn.close()
 
-def addUser(name,surname,mail,password):#Kullanıcı Ekleme Fonksiyonu
+def addUser(name,surname,mail,password):#Kullanıcı Ekler eğer mail adresi zaten kullanılıyor ise '0' döner
     conn = sqlite3.connect('Dunder.db')
     cursor=conn.cursor()
-    add_command = ''' INSERT INTO USERS(NAME,SURNAME,MAIL,PASSWORD) VALUES {}'''
-    data = (name,surname,mail,password)
-    cursor.execute(add_command.format(data))
+    flag = 0
+    cursor.execute('''SELECT * FROM USERS''')
+    mailsTuple = cursor.fetchall()
+    for i in mailsTuple:
+        if mail == i[3]:
+            flag = 1
+    if flag == 0:
+        add_command = ''' INSERT INTO USERS(NAME,SURNAME,MAIL,PASSWORD) VALUES {}'''
+        data = (name,surname,mail,password)
+        cursor.execute(add_command.format(data))
+    else:
+        # print('Girmiş Olduğunuz Mail Adresi Zaten Kullanılmaktadır')
+        return 0
+
     conn.commit()
     conn.close()
 
-def getProducts():
+def getProducts():#Product Table ındakileri Döndürür(Liste içinde Liste olarak)
     new_list = []
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
@@ -30,3 +41,79 @@ def getProducts():
         new_list.append(list(i))
         
     return new_list
+
+def addOrder(userId,ProductId,quantityOfPackage,pricePerProduct):#Sipariş Ekler
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
+
+    add_command = ''' INSERT INTO ORDERS(USER_ID,PRODUCT_ID,QUANTITYOFPACKAGE,PRICEPERPRODUCT)VALUES{}'''
+    data = (userId,ProductId,quantityOfPackage,pricePerProduct)
+    cursor.execute(add_command.format(data))
+
+    conn.commit()
+    conn.close()
+
+def getOrders():#Order Table ındakileri Döndürür(Liste içinde Liste olarak)
+    orderList = []
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
+    cursor.execute(''' SELECT * FROM ORDERS''')
+    orderTuple = cursor.fetchall()
+
+    for i in orderTuple:
+        orderList.append(list(i)) 
+
+    return(orderList)
+
+def checkUser(mail,password):#Kullanıcı giriş kontrolü yapılır.Doğru bilgiler girildiyse '1' aksi takdirde '0' döndürür.
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
+
+    cursor.execute('''SELECT * FROM USERS WHERE MAIL = ?''',(mail,))
+    listofuser = cursor.fetchone()
+    if listofuser is not None:
+        if  listofuser[3] == mail :
+            if listofuser[4] == password:
+                return 1
+                # print('Giriş Başarılı')
+            else:
+                return 0
+                # print('Giriş Başarısız şifre yanlış')  
+    else:
+        return 0
+        # print('Giriş Başarısız K.adı yanlış')     
+        
+
+    conn.commit()
+    conn.close()
+
+def updatePrice(newPrice,productId):#Ürünün Fiyatını yeniler
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor() 
+
+    cursor.execute(''' UPDATE PRODUCTS SET PRICE = ? WHERE ID = ?''',(newPrice,productId,))
+
+    conn.commit()
+    conn.close()
+
+def updateQuantity(newQuantity,productId):#Ürünün miktarını yeniler
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
+
+    cursor.execute(''' UPDATE PRODUCTS SET QUANTITY = ? WHERE ID = ?''',(newQuantity,productId))
+    conn.commit()
+    conn.close()
+
+
+
+def buyProduct(userId,productId,amount):#ürün satın alır order tablosuna ekler
+    conn =sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT * FROM PRODUCTS WHERE ID = ?',(productId,))
+    listProduct = list(cursor.fetchone())
+    print(listProduct)
+    updateQuantity(listProduct[2]-amount,productId)
+    addOrder(userId,productId,amount,listProduct[3])
+    conn.commit()
+    conn.close()
