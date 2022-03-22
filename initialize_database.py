@@ -7,7 +7,7 @@ def initialize():
 
     cursor=conn.cursor()
     print("Cursor Oluşturuldu")
-
+    
     cursor.execute(''' CREATE TABLE PRODUCTS(
         ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         NAME TEXT NOT NULL,
@@ -15,7 +15,7 @@ def initialize():
         PRICE INTEGER NOT NULL,
         WEIGHTOFPACKAGES INTEGER NOT NULL
     )''')
-
+    conn.commit()
     cursor.execute(''' CREATE TABLE USERS(
         ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         NAME TEXT NOT NULL,
@@ -23,7 +23,7 @@ def initialize():
         MAIL TEXT NOT NULL,
         PASSWORD TEXT NOT NULL
     )''')
-
+    conn.commit()
     cursor.execute('''CREATE TABLE ORDERS(
         ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
         USER_ID INTEGER NOT NULL,
@@ -32,7 +32,7 @@ def initialize():
         PRICEPERPRODUCT INTEGER NOT NULL,
         DATE DATE NOT NULL
     )''')
-
+    conn.commit()
     db.addProduct('Mukavva',7000,250,175)
     db.addProduct('Hamur',6500,150,200)
     db.addProduct('Kuşe',7000,200,150)
@@ -48,6 +48,5 @@ def initialize():
 
     conn.commit()
     conn.close()
+    return 1
 
-
-print(db.getProducts())
