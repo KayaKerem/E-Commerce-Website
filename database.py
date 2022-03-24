@@ -147,7 +147,7 @@ def buyProduct(userId,productId,amount):#ürün satın alır order tablosuna ekl
     conn.commit()
     conn.close()
 
-def getTradeOfUser(user_id):#Kullanıcının aldığı aldığı ürünlerin toplam sayısını dict olarak {ürün:toplam alınan miktar} şeklinde döndürür
+def getTradeOfUser(user_id):#Kullanıcının aldığı  ürünlerin toplam sayısını dict olarak {ürün:toplam alınan miktar} şeklinde döndürür
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
 
@@ -161,7 +161,42 @@ def getTradeOfUser(user_id):#Kullanıcının aldığı aldığı ürünlerin top
     for i in newList:
         dictOfData.update({i[0]:i[1]})
 
-    print(dictOfData)
+    # print(dictOfData)
     conn.commit()
     conn.close()
     return dictOfData
+
+
+#Kullanıcının belirli tarihlerde hangi üründen toplam harcadığı parayı liste içinde liste olarak döndürür[[tarih,ürün,para],[tarih,ürün,para]]
+def totalSpentOfMoney(user_id):
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()    
+    cursor.execute(''' SELECT DATE,PRODUCT_ID,SUM(PRICEPERPRODUCT*QUANTITYOFPACKAGE) FROM ORDERS WHERE USER_ID = ? GROUP BY DATE,PRODUCT_ID ORDER BY DATE''',(user_id,))
+    x = cursor.fetchall()
+    newList = []
+    dictofData = {}
+    dates =[]
+    for i in x:
+        newList.append(list(i))
+    # print(newList)
+
+    conn.commit()
+    conn.close()
+    return newList
+
+#Kullanıcın belirli tarihlerde hangi üründen toplam kaç paket ürün aldığını liste içinde liste olarak döndürür[[tarih,ürün,paket sayısı],[tarih,ürün,paket sayısı]]
+def totalPackageOfBought(user_id):
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()    
+    cursor.execute(''' SELECT DATE,PRODUCT_ID,SUM(QUANTITYOFPACKAGE) FROM ORDERS WHERE USER_ID = ? GROUP BY DATE,PRODUCT_ID ORDER BY DATE''',(user_id,))
+    x = cursor.fetchall()
+    newList = []
+    dictofData = {}
+    dates =[]
+    for i in x:
+        newList.append(list(i))
+    # print(newList)
+
+    conn.commit()
+    conn.close()
+    return newList
