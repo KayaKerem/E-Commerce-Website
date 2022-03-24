@@ -167,6 +167,7 @@ def getTradeOfUser(user_id):#Kullanıcının aldığı  ürünlerin toplam sayı
     return dictOfData
 
 
+
 #Kullanıcının belirli tarihlerde hangi üründen toplam harcadığı parayı liste içinde liste olarak döndürür[[tarih,ürün,para],[tarih,ürün,para]]
 def totalSpentOfMoney(user_id):
     conn = sqlite3.connect('Dunder.db')
