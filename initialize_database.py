@@ -34,13 +34,13 @@ def initialize():
         DATE TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
     )''')
     conn.commit()
-    db.addProduct('Mukavva',7000,250,175)
+    db.addProductFirst(1000,'Mukavva',7000,250,175)
     db.addProduct('Hamur',6500,150,200)
     db.addProduct('Kuşe',7000,200,150)
     db.addProduct('Pelur',8000,125,100)
     db.addProduct('Kroma Karton',7700,175,220)
 
-    db.addUser('Kutay','Sarı','kutaysari@gmail.com','kutaysari')
+    db.addUserFirst(2000,'Kutay','Sarı','kutaysari@gmail.com','kutaysari')
     db.addUser('Kerem','Kaya','keremkaya@gmail.com','keremkaya')
     db.addUser('Sena','Eser','senaeser@gmail.com','senaeser')
     db.addUser('Berkay','Gündüz','berkaygunduz@gmail.com','berkaygunduz')
@@ -50,3 +50,4 @@ def initialize():
     conn.commit()
     conn.close()
 
+initialize()

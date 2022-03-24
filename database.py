@@ -10,6 +10,16 @@ def addProduct(name,quantity,price,weightofpackages):#Product Ekler
 
     conn.commit()
     conn.close()
+def addProductFirst(id,name,quantity,price,weightofpackages):#addProduct ile aynı olup ID yi spesifik bir sayıdan başlatmak için ilk eleman bununla eklenir
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
+
+    add_command = '''INSERT INTO PRODUCTS(ID,NAME,QUANTITY,PRICE,WEIGHTOFPACKAGES)VALUES{}'''
+    data = (id,name,quantity,price,weightofpackages)
+    cursor.execute(add_command.format(data))
+
+    conn.commit()
+    conn.close()    
 
 def addUser(name,surname,mail,password):#Kullanıcı Ekler eğer mail adresi zaten kullanılıyor ise '0' döner
     conn = sqlite3.connect('Dunder.db')
@@ -30,6 +40,25 @@ def addUser(name,surname,mail,password):#Kullanıcı Ekler eğer mail adresi zat
 
     conn.commit()
     conn.close()
+def addUserFirst(id,name,surname,mail,password):#AddUser ile aynı olup ID yi spesifik sayıdan başlatmak için ilk eleman bununla eklenir
+    conn = sqlite3.connect('Dunder.db')
+    cursor=conn.cursor()
+    flag = 0
+    cursor.execute('''SELECT * FROM USERS''')
+    mailsTuple = cursor.fetchall()
+    for i in mailsTuple:
+        if mail == i[3]:
+            flag = 1
+    if flag == 0:
+        add_command = ''' INSERT INTO USERS(ID,NAME,SURNAME,MAIL,PASSWORD) VALUES {}'''
+        data = (id,name,surname,mail,password)
+        cursor.execute(add_command.format(data))
+    else:
+        # print('Girmiş Olduğunuz Mail Adresi Zaten Kullanılmaktadır')
+        return 0
+
+    conn.commit()
+    conn.close()    
 
 def getProducts():#Product Table ındakileri Döndürür(Liste içinde Liste olarak)
     new_list = []
