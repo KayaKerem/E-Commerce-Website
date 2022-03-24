@@ -213,6 +213,7 @@ def spentOfMoneyForMonths(user_id):
     x = cursor.fetchall()
     for i in x:
         newList.append(list(i))
-    print(newList)
+    # print(newList)
+    return newList
     conn.commit()
     conn.close()
