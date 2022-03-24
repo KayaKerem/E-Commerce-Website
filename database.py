@@ -141,8 +141,27 @@ def buyProduct(userId,productId,amount):#ürün satın alır order tablosuna ekl
 
     cursor.execute('SELECT * FROM PRODUCTS WHERE ID = ?',(productId,))
     listProduct = list(cursor.fetchone())
-    print(listProduct)
+    # print(listProduct)
     updateQuantity(listProduct[2]-amount,productId)
     addOrder(userId,productId,amount,listProduct[3])
     conn.commit()
     conn.close()
+
+def getTradeOfUser(user_id):#Kullanıcının aldığı aldığı ürünlerin toplam sayısını dict olarak {ürün:toplam alınan miktar} şeklinde döndürür
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
+
+    cursor.execute('''SELECT PRODUCT_ID,SUM(QUANTITYOFPACKAGE) FROM ORDERS WHERE USER_ID = ? GROUP BY PRODUCT_ID ''',(user_id,))
+    x = cursor.fetchall()
+    newList=[]
+    dictOfData = {}
+    for i in x:
+        newList.append(list(i))
+
+    for i in newList:
+        dictOfData.update({i[0]:i[1]})
+
+    print(dictOfData)
+    conn.commit()
+    conn.close()
+    return dictOfData
