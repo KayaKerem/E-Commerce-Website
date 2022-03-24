@@ -201,3 +201,18 @@ def totalPackageOfBought(user_id):
     conn.commit()
     conn.close()
     return newList
+
+#Aylara göre kullanıcının harcadığı toplam miktar liste içinde liste döndürür[[Ay,Harcanan Para],[Ay,Harcanan Para]]
+def spentOfMoneyForMonths(user_id):
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
+    newList =[]
+    cursor.execute('''SELECT STRFTIME('%m', DATE) as Month ,SUM(PRICEPERPRODUCT*QUANTITYOFPACKAGE) FROM ORDERS
+    WHERE USER_ID = ? AND STRFTIME('%Y', DATE) = STRFTIME('%Y',CURRENT_TIMESTAMP) 
+    GROUP BY DATE ORDER BY STRFTIME('%m', DATE)''',(user_id,))
+    x = cursor.fetchall()
+    for i in x:
+        newList.append(list(i))
+    print(newList)
+    conn.commit()
+    conn.close()
