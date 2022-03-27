@@ -21,12 +21,36 @@
     <section id="what-we-do" class="what-we-do">
       <div class="container">
         <div class="section-title">
-          <h2>What We Do</h2>
+          <h2>NEDEN BİZ?</h2>
           <p>Magnam dolores commodi suscipit consequatur ex aliquid</p>
         </div>
 
         <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="icon-box">
+              <div class="icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-recycle"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242-2.532-4.431zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24l2.552-4.467zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.498.498 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244l-1.716-3.004z"
+                  />
+                </svg>
+              </div>
+              <h4><a href="">Çevre Dostu</a></h4>
+              <p>
+                Voluptatum deleniti atque corrupti quos dolores et quas
+                molestias excepturi
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="icon-box">
               <div class="icon">
                 <svg
@@ -42,7 +66,7 @@
                   />
                 </svg>
               </div>
-              <h4><a href="">Lorem Ipsum</a></h4>
+              <h4><a href="">Ekonomik</a></h4>
               <p>
                 Voluptatum deleniti atque corrupti quos dolores et quas
                 molestias excepturi
@@ -50,9 +74,7 @@
             </div>
           </div>
 
-          <div
-            class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0"
-          >
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="icon-box">
               <div class="icon">
                 <svg
@@ -68,7 +90,7 @@
                   />
                 </svg>
               </div>
-              <h4><a href="">Sed ut perspiciatis</a></h4>
+              <h4><a href="">Hizmet</a></h4>
               <p>
                 Duis aute irure dolor in reprehenderit in voluptate velit esse
                 cillum dolore
@@ -76,9 +98,7 @@
             </div>
           </div>
 
-          <div
-            class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0"
-          >
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
             <div class="icon-box">
               <div class="icon">
                 <svg
@@ -95,7 +115,7 @@
                   />
                 </svg>
               </div>
-              <h4><a href="">Magni Dolores</a></h4>
+              <h4><a href="">Memnuniyet</a></h4>
               <p>
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa
                 qui officia
@@ -178,12 +198,12 @@ body {
 }
 
 a {
-  color: #3498db;
+  color: #6e6332db;
   text-decoration: none;
 }
 
 a:hover {
-  color: #5faee3;
+  color: #efb631;
   text-decoration: none;
 }
 
@@ -218,7 +238,7 @@ h6 {
   line-height: 0;
 }
 .back-to-top:hover {
-  background: #57aae1;
+  background: #efb631;
   color: #fff;
 }
 .back-to-top.active {
@@ -271,7 +291,7 @@ h6 {
   line-height: 0;
 }
 .header-social-links a:hover {
-  color: #3498db;
+  color: #efb631;
 }
 @media (max-width: 768px) {
   .header-social-links {
@@ -339,7 +359,7 @@ h6 {
   text-transform: uppercase;
 }
 #hero .btn-get-started:hover {
-  background: #4ea5e0;
+  background: #25386d;
 }
 @media (max-width: 992px) {
   #hero {
@@ -396,7 +416,7 @@ section {
   display: block;
   width: 40px;
   height: 3px;
-  background: #3498db;
+  background: #efb631;
   bottom: 0;
   left: calc(50% - 20px);
 }
@@ -449,7 +469,7 @@ section {
 }
 .what-we-do .icon-box:hover h4 a,
 .what-we-do .icon-box:hover .icon i {
-  color: #3498db;
+  color: #efb631;
 }
 
 /*--------------------------------------------------------------
@@ -607,7 +627,7 @@ section {
   box-shadow: 0px 2px 22px rgba(0, 0, 0, 0.08);
 }
 .services .icon-box:hover h4 a {
-  color: #3498db;
+  color: #efb631;
 }
 
 /*--------------------------------------------------------------
@@ -638,7 +658,7 @@ section {
 }
 .portfolio #portfolio-flters li:hover,
 .portfolio #portfolio-flters li.filter-active {
-  background: #3498db;
+  background: #efb631;
   color: #fff;
 }
 .portfolio #portfolio-flters li:last-child {
@@ -692,7 +712,7 @@ section {
 }
 .portfolio .portfolio-item figure .link-preview:hover,
 .portfolio .portfolio-item figure .link-details:hover {
-  background: #3498db;
+  background: #efb631;
 }
 .portfolio .portfolio-item figure .link-preview:hover i,
 .portfolio .portfolio-item figure .link-details:hover i {
@@ -732,7 +752,7 @@ section {
   color: #333;
 }
 .portfolio .portfolio-item .portfolio-info h4 a:hover {
-  color: #3498db;
+  color: #efb631;
 }
 .portfolio .portfolio-item .portfolio-info p {
   padding: 0;
@@ -910,7 +930,7 @@ section {
   transition: 0.3s;
 }
 .team .member .social a:hover {
-  color: #3498db;
+  color: #efb631;
 }
 .team .member .social i {
   font-size: 18px;
@@ -952,7 +972,7 @@ section {
   color: #65747f;
 }
 .contact .info:hover i {
-  background: #3498db;
+  background: #efb631;
   color: #fff;
 }
 .contact .php-email-form {
@@ -1154,7 +1174,7 @@ section {
 }
 #footer .footer-top .footer-links ul a:hover {
   text-decoration: none;
-  color: #3498db;
+  color: #efb631;
 }
 #footer .footer-newsletter {
   font-size: 15px;
