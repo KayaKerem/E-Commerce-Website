@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="body">
     <section
       id="hero"
       class="d-flex flex-column justify-content-center align-items-center"
@@ -26,7 +26,7 @@
         </div>
 
         <div class="row">
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <div class="col-lg-3 col-md-6">
             <div class="icon-box">
               <div class="icon">
                 <svg
@@ -34,11 +34,11 @@
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-recycle"
+                  class="bi bi-tree-fill"
                   viewBox="0 0 16 16"
                 >
                   <path
-                    d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242-2.532-4.431zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24l2.552-4.467zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.498.498 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244l-1.716-3.004z"
+                    d="M8.416.223a.5.5 0 0 0-.832 0l-3 4.5A.5.5 0 0 0 5 5.5h.098L3.076 8.735A.5.5 0 0 0 3.5 9.5h.191l-1.638 3.276a.5.5 0 0 0 .447.724H7V16h2v-2.5h4.5a.5.5 0 0 0 .447-.724L12.31 9.5h.191a.5.5 0 0 0 .424-.765L10.902 5.5H11a.5.5 0 0 0 .416-.777l-3-4.5z"
                   />
                 </svg>
               </div>
@@ -50,7 +50,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <div class="col-lg-3 col-md-6">
             <div class="icon-box">
               <div class="icon">
                 <svg
@@ -74,7 +74,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <div class="col-lg-3 col-md-6">
             <div class="icon-box">
               <div class="icon">
                 <svg
@@ -98,7 +98,7 @@
             </div>
           </div>
 
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+          <div class="col-lg-3 col-md-6">
             <div class="icon-box">
               <div class="icon">
                 <svg
@@ -276,12 +276,152 @@
       </div>
     </section>
     <!-- End Services Section -->
+    <section id="testimonials" class="testimonials section-bg">
+      <div class="container">
+        <div class="section-title">
+          <h2>Referanslar</h2>
+          <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8 col-lg-4">
+            <div class="testimonial-item">
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                Proin iaculis purus consequat sem cure digni ssim donec
+                porttitora entum suscipit rhoncus. Accusantium quam, ultricies
+                eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/MichaelScott.png/220px-MichaelScott.png"
+                class="testimonial-img"
+                alt=""
+              />
+              <h3>Michael Scott</h3>
+              <h4>Manager</h4>
+            </div>
+          </div>
+
+          <!-- End testimonial item -->
+
+          <div class="col-md-8 col-lg-4">
+            <div class="testimonial-item">
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                Export tempor illum tamen malis malis eram quae irure esse
+                labore quem cillum quid cillum eram malis quorum velit fore eram
+                velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+              <img
+                src="https://i.pinimg.com/originals/01/b0/71/01b071bef3bb8e3d61ebed3af1903a11.jpg"
+                class="testimonial-img"
+                alt=""
+              />
+              <h3>Dwight Schrute</h3>
+              <h4>Salesman &amp; Assistant Manager</h4>
+            </div>
+          </div>
+
+          <!-- End testimonial item -->
+
+          <div class="col-md-8 col-lg-4">
+            <div class="testimonial-item">
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                Enim nisi quem export duis labore cillum quae magna enim sint
+                quorum nulla quem veniam duis minim tempor labore quem eram duis
+                noster aute amet eram fore quis sint minim.
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+              <img
+                src="https://i.pinimg.com/originals/9a/a3/48/9aa348cc3fd22c9eb1f5413058164738.jpg"
+                class="testimonial-img"
+                alt=""
+              />
+              <h3>Pam Beesly</h3>
+              <h4>Receptionist</h4>
+            </div>
+          </div>
+          <!-- End testimonial item -->
+
+          <div class="col-md-8 col-lg-4">
+            <div class="testimonial-item">
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                Fugiat enim eram quae cillum dolore dolor amet nulla culpa
+                multos export minim fugiat minim velit minim dolor enim duis
+                veniam ipsum anim magna sunt elit fore quem dolore labore illum
+                veniam.
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+              <img
+                src="https://media1.popsugar-assets.com/files/thumbor/pGaXO5z7n_4s__CUMajM1btm2qE/1165x157:2676x1668/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2020/08/03/142/n/1922283/2e3ca0ba5f28c706c113e3.69387310_/i/office-jim-best-pranks-ranked.png"
+                class="testimonial-img"
+                alt=""
+              />
+              <h3>Jim Halpert</h3>
+              <h4>Salesman</h4>
+            </div>
+          </div>
+          <!-- End testimonial item -->
+
+          <div class="col-md-8 col-lg-4">
+            <div class="testimonial-item">
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua
+                veniam tempor noster veniam enim culpa labore duis sunt culpa
+                nulla illum cillum fugiat legam esse veniam culpa fore nisi
+                cillum quid.
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+              <img
+                src="https://i.pinimg.com/originals/bd/dd/3e/bddd3e97980826284f64095c082767a3.jpg"
+                class="testimonial-img"
+                alt=""
+              />
+              <h3>Kevin Malone</h3>
+              <h4>Accountant</h4>
+            </div>
+          </div>
+
+          <!-- End testimonial item -->
+          <div class="col-md-8 col-lg-4">
+            <div class="testimonial-item">
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua
+                veniam tempor noster veniam enim culpa labore duis sunt culpa
+                nulla illum cillum fugiat legam esse veniam culpa fore nisi
+                cillum quid.
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+              <img
+                src="https://img-s1.onedio.com/id-617a68d8a086b34948d38d80/rev-0/w-620/f-jpg/s-5fbf955eaadeffd04328f8129ed045268dde3cb4.jpg"
+                class="testimonial-img"
+                alt=""
+              />
+              <h3>Ryan Howard</h3>
+              <h4>Temp</h4>
+            </div>
+          </div>
+
+          <!-- End testimonial item -->
+
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </section>
+    <!-- End Testimonials Section -->
   </div>
 </template>
 
 <script>
 export default {
-  setup() {},
+  methods: {},
+  mounted() {},
 };
 </script>
 
@@ -289,7 +429,7 @@ export default {
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-body {
+.body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
 }
@@ -424,6 +564,7 @@ h6 {
   left: 0;
   right: 0;
 }
+
 #hero .container {
   z-index: 2;
 }
@@ -524,6 +665,7 @@ section {
 /*--------------------------------------------------------------
 # What We Do
 --------------------------------------------------------------*/
+
 .what-we-do .icon-box {
   text-align: center;
   padding: 30px 20px;
@@ -542,8 +684,8 @@ section {
   margin-bottom: 20px;
   transition: ease-in-out 0.3s;
 }
-.what-we-do .icon-box .icon i {
-  color: #3498db;
+.what-we-do .icon-box .icon .bi {
+  color: #efb631;
   font-size: 28px;
 }
 .what-we-do .icon-box h4 {
@@ -869,29 +1011,7 @@ section {
 .portfolio-details {
   padding-top: 0;
 }
-.portfolio-details .portfolio-details-slider img {
-  width: 100%;
-}
-.portfolio-details .portfolio-details-slider .swiper-pagination {
-  margin-top: 20px;
-  position: relative;
-}
-.portfolio-details
-  .portfolio-details-slider
-  .swiper-pagination
-  .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: #fff;
-  opacity: 1;
-  border: 1px solid #3498db;
-}
-.portfolio-details
-  .portfolio-details-slider
-  .swiper-pagination
-  .swiper-pagination-bullet-active {
-  background-color: #3498db;
-}
+
 .portfolio-details .portfolio-info {
   padding: 30px;
   box-shadow: 0px 0 30px rgba(56, 64, 70, 0.08);
@@ -926,9 +1046,8 @@ section {
 /*--------------------------------------------------------------
 # Testimonials
 --------------------------------------------------------------*/
-.testimonials .testimonials-carousel,
-.testimonials .testimonials-slider {
-  overflow: hidden;
+.testimonials {
+  background-color: #fff8cc;
 }
 .testimonials .testimonial-item {
   box-sizing: content-box;
@@ -940,7 +1059,9 @@ section {
   background: #fff;
 }
 .testimonials .testimonial-item .testimonial-img {
-  width: 90px;
+  max-width: 30%;
+  max-height: 30%;
+  /* width: 90px; */
   border-radius: 50%;
   border: 4px solid #fff;
   margin: 0 auto;
