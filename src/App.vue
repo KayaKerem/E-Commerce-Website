@@ -17,6 +17,7 @@
 import { mapActions } from "vuex";
 import Header from "./components/Header.vue";
 import MessageComponent from "./components/common/MessageComponent.vue";
+
 export default {
   components: {
     appHeader: Header,
@@ -27,7 +28,10 @@ export default {
   },
   created() {
     let uid = this.$store.getters.currentUser.uid;
+
     this.listenToProductList();
+
+    console.log(this.listenToProductList());
     this.getShoppingCart({
       uid,
       currentCart: this.$store.getters.cartItemList,

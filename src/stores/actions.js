@@ -34,6 +34,7 @@ export function loginWithEmail (_, {email, password}) {
 }
 
 export function listenToProductList({ commit }) {
+  
 	let products = [ {
   "description" : "En temelde kağıt grubunda yer alan bir endüstriyel üründür. Özellikle kutu üretiminde ve taşıma sektöründe oldukça pay sahibi olması nedeni ile ön plana çıkar.",
   "id" : 1,
