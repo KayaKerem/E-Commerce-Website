@@ -1,67 +1,67 @@
 <template>
-<div class="d-flex flex-column sticky-footer-wrapper">
+  <div class="d-flex flex-column sticky-footer-wrapper">
     <main class="flex-fill">
       <app-header></app-header>
       <message-component></message-component>
-      <div class="container mt-3">
-          <div class="row">
-            <div class="col-md-12">
-              <router-view></router-view>
-            </div>
-          </div>
-      </div>
+
+      <router-view></router-view>
+      <!-- <div class="container mt-3">
+        <div class="row">
+          <div class="col-md-12"></div>
+        </div>
+      </div> -->
     </main>
-
-</div>
-
+  </div>
 </template>
 
 <script>
-  import { mapActions } from 'vuex';
-  import Header from './components/Header.vue';
-  import MessageComponent from './components/common/MessageComponent.vue';
-  export default {
-    components: {
-      appHeader: Header,
-      MessageComponent
-    },
-    methods: {
-      ...mapActions(['getShoppingCart', 'listenToProductList'])
-    },
-    created() {
-      let uid = this.$store.getters.currentUser.uid;
-      this.listenToProductList();
-      this.getShoppingCart({uid, currentCart: this.$store.getters.cartItemList});
-    }
-  }
+import { mapActions } from "vuex";
+import Header from "./components/Header.vue";
+import MessageComponent from "./components/common/MessageComponent.vue";
+export default {
+  components: {
+    appHeader: Header,
+    MessageComponent,
+  },
+  methods: {
+    ...mapActions(["getShoppingCart", "listenToProductList"]),
+  },
+  created() {
+    let uid = this.$store.getters.currentUser.uid;
+    this.listenToProductList();
+    this.getShoppingCart({
+      uid,
+      currentCart: this.$store.getters.cartItemList,
+    });
+  },
+};
 </script>
 
 <style>
+body,
+.sticky-footer-wrapper {
+  min-height: 100vh;
+}
 
-
-  body, .sticky-footer-wrapper {
-     min-height:100vh;
-  }
-
-  .flex-fill {
-     flex:1 1 auto;
-     background-color: rgb(255, 248, 204) !important;;
-  }
+.flex-fill {
+  flex: 1 1 auto;
+  background-color: rgb(255, 248, 204) !important;
+}
+footer {
+  height: 40px;
+  color: #666;
+  padding: 10px 0 10px 0;
+  font-size: 85%;
+}
+footer a {
+  color: #999;
+}
+footer a:hover {
+  color: #efefef;
+}
+@media (max-width: 576px) {
   footer {
-    height: 40px;
-    color: #666;
-    padding: 10px 0 10px 0;
-    font-size: 85%;
+    height: 50px;
   }
-  footer a {
-    color: #999;
-  }
-  footer a:hover {
-    color: #efefef;
-  }
-  @media (max-width: 576px) {
-    footer {
-      height: 50px;
-    }
-  }
+}
 </style>

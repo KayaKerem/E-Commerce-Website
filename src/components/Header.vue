@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark" role="navigation">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <router-link to="/" class="navbar-brand mr-auto"
+      <router-link to="/home" class="navbar-brand mr-auto"
         >Dunder Mifflin</router-link
       >
       <button
@@ -26,6 +26,16 @@
         <ul class="navbar-nav mr-auto"></ul>
         <ul class="nav navbar-nav">
           <router-link
+            to="/"
+            tag="li"
+            v-if="!isLoggedIn"
+            class="nav-item"
+            active-class="active"
+          >
+            <a class="nav-link">Ürünlerimiz</a>
+          </router-link>
+          <!--  -->
+          <router-link
             to="/login"
             tag="li"
             v-if="!isLoggedIn"
@@ -46,6 +56,12 @@
           >
             <a class="nav-link">Üye Ol</a>
           </router-link>
+          <!-- ---------- -->
+
+          <!-- <li v-if="isLoggedIn" class="li-pointer nav-item">
+            <a @click="logout" class="nav-link">Main {{ userEmail }}</a>
+          </li> -->
+
           <li>
             <router-link
               to="/cart"
