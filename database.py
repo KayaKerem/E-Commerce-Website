@@ -1,21 +1,21 @@
 import sqlite3
 
-def addProduct(name,quantity,price,weightofpackages):#Product Ekler
+def addProduct(name,quantity,price,weightofpackages,details):#Product Ekler
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
 
-    add_command = '''INSERT INTO PRODUCTS(NAME,QUANTITY,PRICE,WEIGHTOFPACKAGES)VALUES{}'''
-    data = (name,quantity,price,weightofpackages)
+    add_command = '''INSERT INTO PRODUCTS(NAME,QUANTITY,PRICE,WEIGHTOFPACKAGES,DETAILS)VALUES{}'''
+    data = (name,quantity,price,weightofpackages,details)
     cursor.execute(add_command.format(data))
 
     conn.commit()
     conn.close()
-def addProductFirst(id,name,quantity,price,weightofpackages):#addProduct ile aynı olup ID yi spesifik bir sayıdan başlatmak için ilk eleman bununla eklenir
+def addProductFirst(id,name,quantity,price,weightofpackages,details):#addProduct ile aynı olup ID yi spesifik bir sayıdan başlatmak için ilk eleman bununla eklenir
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
 
-    add_command = '''INSERT INTO PRODUCTS(ID,NAME,QUANTITY,PRICE,WEIGHTOFPACKAGES)VALUES{}'''
-    data = (id,name,quantity,price,weightofpackages)
+    add_command = '''INSERT INTO PRODUCTS(ID,NAME,QUANTITY,PRICE,WEIGHTOFPACKAGES,DETAILS)VALUES{}'''
+    data = (id,name,quantity,price,weightofpackages,details)
     cursor.execute(add_command.format(data))
 
     conn.commit()
@@ -175,8 +175,6 @@ def totalSpentOfMoney(user_id):
     cursor.execute(''' SELECT DATE,PRODUCT_ID,SUM(PRICEPERPRODUCT*QUANTITYOFPACKAGE) FROM ORDERS WHERE USER_ID = ? GROUP BY DATE,PRODUCT_ID ORDER BY DATE''',(user_id,))
     x = cursor.fetchall()
     newList = []
-    dictofData = {}
-    dates =[]
     for i in x:
         newList.append(list(i))
     # print(newList)
@@ -192,8 +190,6 @@ def totalPackageOfBought(user_id):
     cursor.execute(''' SELECT DATE,PRODUCT_ID,SUM(QUANTITYOFPACKAGE) FROM ORDERS WHERE USER_ID = ? GROUP BY DATE,PRODUCT_ID ORDER BY DATE''',(user_id,))
     x = cursor.fetchall()
     newList = []
-    dictofData = {}
-    dates =[]
     for i in x:
         newList.append(list(i))
     # print(newList)
@@ -214,6 +210,19 @@ def spentOfMoneyForMonths(user_id):
     for i in x:
         newList.append(list(i))
     # print(newList)
-    return newList
     conn.commit()
     conn.close()
+    return newList
+
+def getDetails(product_id):#Ürün detayını string olarak döndürür(text şeklinde)
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
+    detailList = []
+    detail = ""
+    cursor.execute(''' SELECT DETAILS FROM PRODUCTS WHERE ID = ?''',(product_id,))
+    detailList = cursor.fetchall()
+    detail = "".join(detailList[0])
+    # print(detail)
+    conn.commit()
+    conn.close()
+    return detail
