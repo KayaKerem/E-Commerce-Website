@@ -1,4 +1,5 @@
 import sqlite3
+from webbrowser import get
 
 def addProduct(name,quantity,price,weightofpackages,details):#Product Ekler
     conn = sqlite3.connect('Dunder.db')
@@ -219,10 +220,40 @@ def getDetails(product_id):#Ürün detayını string olarak döndürür(text şe
     cursor = conn.cursor()
     detailList = []
     detail = ""
-    cursor.execute(''' SELECT DETAILS FROM PRODUCTS WHERE ID = ?''',(product_id,))
+    cursor.execute(''' SELECT DETAILS FROM PRODUCTS WHERE ID = ? ''',(product_id,))
     detailList = cursor.fetchall()
     detail = "".join(detailList[0])
     # print(detail)
     conn.commit()
     conn.close()
     return detail
+
+#Verilen user_id nin geçmiş siparişlerini en son verilen siparişten ilk verilen siparişe list içinde list olarak [[Ürünİsmi, Miktar, PaketFiyatı, Tarih],...] şeklinde döndürür
+def getPastOrders(user_id):
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
+
+    cursor.execute('''SELECT PRODUCT_ID,QUANTITYOFPACKAGE,PRICEPERPRODUCT,DATE FROM ORDERS WHERE USER_ID = ? ORDER BY DATE DESC''',(user_id,))
+    tupleOfOrders = cursor.fetchall()
+    listOfOrders = []
+    tuple2 =[]
+    tmp =[]
+    # print(tupleOfOrders)
+    for i in tupleOfOrders:
+        listOfOrders.append(list(i))
+    # print(listOfOrders)
+    for i in listOfOrders:
+        cursor.execute('''SELECT NAME FROM PRODUCTS WHERE ID = ?''',(i[0],))
+        tuple2 = cursor.fetchall()
+        # print(tuple2)
+        for j in tuple2:
+            tmp.append(''.join(tuple2[0]))
+    # print(tmp)
+    k = 0
+    for i in listOfOrders:
+        i[0] =tmp[k]
+        k+=1
+    print(listOfOrders)
+    conn.commit()
+    conn.close()
+    return listOfOrders
