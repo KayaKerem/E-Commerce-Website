@@ -253,7 +253,7 @@ def getPastOrders(user_id):
     for i in listOfOrders:
         i[0] =tmp[k]
         k+=1
-    print(listOfOrders)
+    # print(listOfOrders)
     conn.commit()
     conn.close()
     return listOfOrders
