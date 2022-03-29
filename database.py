@@ -1,22 +1,22 @@
 import sqlite3
 from webbrowser import get
 
-def addProduct(name,quantity,price,weightofpackages,details):#Product Ekler
+def addProduct(name,quantity,price,weightofpackages,details,image):#Product Ekler
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
 
-    add_command = '''INSERT INTO PRODUCTS(NAME,QUANTITY,PRICE,WEIGHTOFPACKAGES,DETAILS)VALUES{}'''
-    data = (name,quantity,price,weightofpackages,details)
+    add_command = '''INSERT INTO PRODUCTS(NAME,QUANTITY,PRICE,WEIGHTOFPACKAGES,DETAILS,IMAGE)VALUES{}'''
+    data = (name,quantity,price,weightofpackages,details,image)
     cursor.execute(add_command.format(data))
 
     conn.commit()
     conn.close()
-def addProductFirst(id,name,quantity,price,weightofpackages,details):#addProduct ile aynı olup ID yi spesifik bir sayıdan başlatmak için ilk eleman bununla eklenir
+def addProductFirst(id,name,quantity,price,weightofpackages,details,image):#addProduct ile aynı olup ID yi spesifik bir sayıdan başlatmak için ilk eleman bununla eklenir
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
 
-    add_command = '''INSERT INTO PRODUCTS(ID,NAME,QUANTITY,PRICE,WEIGHTOFPACKAGES,DETAILS)VALUES{}'''
-    data = (id,name,quantity,price,weightofpackages,details)
+    add_command = '''INSERT INTO PRODUCTS(ID,NAME,QUANTITY,PRICE,WEIGHTOFPACKAGES,DETAILS,IMAGE)VALUES{}'''
+    data = (id,name,quantity,price,weightofpackages,details,image)
     cursor.execute(add_command.format(data))
 
     conn.commit()
