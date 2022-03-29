@@ -1,5 +1,7 @@
 import { ref, firebaseAuth } from '../config/firebaseConfig';
-// import axios from 'axios'
+import axios from 'axios'
+
+
 
 // import axios from 'axios'
 export const updateCart = ({
@@ -32,7 +34,20 @@ export const logout = ({commit}) => {
 }
 
 export function loginWithEmail (_, {email, password}) {
-  return firebaseAuth().signInWithEmailAndPassword(email, password);
+//   return firebaseAuth().signInWithEmailAndPassword(email, password);
+	let check = axios.post("http://127.0.0.1:5000/login", { "email": email, "password": password }).then((res) => {
+		console.log(res.data["data"])
+		return res.data["data"]
+	});
+	if (check == 0) {
+		return null
+	}
+	else if (check != null) {
+		return {"res":check}
+
+	} else {
+		return null
+	}
 }
 
 export function listenToProductList({ commit }) {
@@ -66,14 +81,16 @@ export function listenToProductList({ commit }) {
 //   "thumbnail_url" : "https://www.parafofis.com/image/cache/catalog/products/11027-800x600.webp",
 //   "title" : "HAMUR KAĞIT"
 // }]
-  let products = []
-  // axios.get("http://127.0.0.1:5000/products").then((res) => {
-  //     products = res.data["data"];
-     
-  //     console.log(res.data["data"][0]["thumbnail_url"]);
-  //     console.log("AAAAAAAAAAA");
-  //     console.log(products);
-  //   });
+  let products =  axios.get("http://127.0.0.1:5000/products").then((res) => {
+    let a = res.data["data"];
+	return a
+  }).catch((res) => {
+	let a = res.data["data"];
+	return a
+  });
+  console.log("AAAAAAAAAA")
+  console.log(products)
+
   
   return commit('UPDATE_PRODUCT_LIST', products);
 	

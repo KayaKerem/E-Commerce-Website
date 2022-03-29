@@ -53,12 +53,12 @@ export default {
       loaderSize: "50px",
       displayList: false,
       products1: [],
-      isProductLoading: true,
+      isProductLoading: false,
     };
   },
-  // computed: {
-  //   ...mapGetters(["products", "isProductLoading"]),
-  // },
+  computed: {
+    // ...mapGetters(["products", "isProductLoading"]),
+  },
   components: {
     appProductItem: ProductItem,
     Loader,
@@ -117,7 +117,7 @@ h5 {
   height: 100%;
 }
 #urunler {
-  color: red;
+  color: #efb631;
   font-size: 25px;
 }
 </style>

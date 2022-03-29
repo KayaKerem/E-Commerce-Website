@@ -8,7 +8,10 @@ const state = {
 const mutations = {
 	'UPDATE_PRODUCT_LIST' (state, productList) {
 		state.productList = productList;
-		state.isLoading = false;
+		if (productList.length > 1) {
+			state.isLoading = false;
+		}
+		
 	}
 }
 

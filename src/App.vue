@@ -26,12 +26,12 @@ export default {
   methods: {
     ...mapActions(["getShoppingCart", "listenToProductList"]),
   },
+  mounted() {
+    console.log(this.listenToProductList());
+  },
   created() {
     let uid = this.$store.getters.currentUser.uid;
-
     this.listenToProductList();
-
-    console.log(this.listenToProductList());
     this.getShoppingCart({
       uid,
       currentCart: this.$store.getters.cartItemList,

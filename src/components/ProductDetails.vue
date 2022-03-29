@@ -2,12 +2,7 @@
   <div class="container">
     <div class="col-md-12">
       <div v-if="isProductLoading" class="text-center">
-        <grid-loader
-          :loading="isProductLoading"
-          :color="loaderColor"
-          :size="loaderSize"
-          class="d-inline-block"
-        />
+        <loader></loader>
       </div>
       <div v-else class="card">
         <div class="row">
@@ -46,34 +41,59 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
-import GridLoader from "vue-spinner/src/GridLoader.vue";
-
+// import { mapGetters } from "vuex";
+import { mapActions } from "vuex";
+import axios from "axios";
+import Loader from "./Loader.vue";
 export default {
   components: {
-    GridLoader,
+    Loader,
   },
   data() {
     return {
       loaderColor: "#5cb85c",
       loaderSize: "50px",
+      products: [],
+      isProductLoading: true,
+      item: null,
     };
   },
-  computed: {
-    ...mapGetters(["isProductLoading", "products"]),
-    item() {
+  mounted() {
+    axios.get("http://127.0.0.1:5000/products").then((res) => {
+      let dt = res.data["data"];
+      this.products = dt;
+      console.log("products");
+      console.log(this.products);
       let id = this.$route.params.id;
-      if (this.products.length >= id) {
-        let filterArr = this.products.filter((item) => {
-          return item.id == id;
-        });
-        if (filterArr.length > 0) {
-          return filterArr[0];
+      for (let i in dt) {
+        console.log("İ");
+        console.log(dt[i]);
+        if (dt[i]["id"] == id) {
+          this.item = dt[i];
+          console.log("AAa");
+          console.log(this.item);
         }
       }
-      return {};
-    },
+      this.isProductLoading = false;
+    });
   },
+
+  // computed: {
+  //   // ...mapGetters(["isProductLoading", "products"]),
+
+  //   item() {
+  //     let id = this.$route.params.id;
+  //     if (this.products.length >= id) {
+  //       let filterArr = this.products.filter((item) => {
+  //         return item.id == id;
+  //       });
+  //       if (filterArr.length > 0) {
+  //         return filterArr[0];
+  //       }
+  //     }
+  //     return {};
+  //   },
+  // },
   methods: {
     ...mapActions(["updateCart"]),
     addItem() {
