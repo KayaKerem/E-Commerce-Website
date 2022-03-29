@@ -51,5 +51,3 @@ def initialize():
 
     conn.commit()
     conn.close()
-
-initialize()
