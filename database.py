@@ -22,7 +22,7 @@ def addProductFirst(id,name,quantity,price,weightofpackages,details,image):#addP
     conn.commit()
     conn.close()    
 
-def addUser(name,surname,mail,password):#Kullanıcı Ekler eğer mail adresi zaten kullanılıyor ise '0' döner
+def addUser(name,surname,mail,password,address):#Kullanıcı Ekler eğer mail adresi zaten kullanılıyor ise '0' döner
     conn = sqlite3.connect('Dunder.db')
     cursor=conn.cursor()
     flag = 0
@@ -32,8 +32,8 @@ def addUser(name,surname,mail,password):#Kullanıcı Ekler eğer mail adresi zat
         if mail == i[3]:
             flag = 1
     if flag == 0:
-        add_command = ''' INSERT INTO USERS(NAME,SURNAME,MAIL,PASSWORD) VALUES {}'''
-        data = (name,surname,mail,password)
+        add_command = ''' INSERT INTO USERS(NAME,SURNAME,MAIL,PASSWORD,ADDRESS) VALUES {}'''
+        data = (name,surname,mail,password,address)
         cursor.execute(add_command.format(data))
     else:
         # print('Girmiş Olduğunuz Mail Adresi Zaten Kullanılmaktadır')
@@ -41,7 +41,7 @@ def addUser(name,surname,mail,password):#Kullanıcı Ekler eğer mail adresi zat
 
     conn.commit()
     conn.close()
-def addUserFirst(id,name,surname,mail,password):#AddUser ile aynı olup ID yi spesifik sayıdan başlatmak için ilk eleman bununla eklenir
+def addUserFirst(id,name,surname,mail,password,address):#AddUser ile aynı olup ID yi spesifik sayıdan başlatmak için ilk eleman bununla eklenir
     conn = sqlite3.connect('Dunder.db')
     cursor=conn.cursor()
     flag = 0
@@ -51,8 +51,8 @@ def addUserFirst(id,name,surname,mail,password):#AddUser ile aynı olup ID yi sp
         if mail == i[3]:
             flag = 1
     if flag == 0:
-        add_command = ''' INSERT INTO USERS(ID,NAME,SURNAME,MAIL,PASSWORD) VALUES {}'''
-        data = (id,name,surname,mail,password)
+        add_command = ''' INSERT INTO USERS(ID,NAME,SURNAME,MAIL,PASSWORD,ADDRESS) VALUES {}'''
+        data = (id,name,surname,mail,password,address)
         cursor.execute(add_command.format(data))
     else:
         # print('Girmiş Olduğunuz Mail Adresi Zaten Kullanılmaktadır')
@@ -169,6 +169,20 @@ def getTradeOfUser(user_id):#Kullanıcının aldığı  ürünlerin toplam sayı
     conn.commit()
     conn.close()
     return dictOfData
+def getNamesOfProducts():
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
+    cursor.execute('''SELECT NAME FROM PRODUCTS''')
+    tupleOfNames = cursor.fetchall()
+    listOfNames = []
+
+    for i in tupleOfNames:
+        listOfNames.append(i[0])
+    # print(listOfNames)
+
+    conn.commit()
+    conn.close()
+    return listOfNames
 
 def getProductName(product_id):#ID si verilen ürünün ismini döndürür.
     conn = sqlite3.connect('Dunder.db')
