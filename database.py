@@ -172,16 +172,19 @@ def getTradeOfUser(user_id):#Kullanıcının aldığı  ürünlerin toplam sayı
 def getNamesOfProducts():
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
-    cursor.execute('''SELECT NAME FROM PRODUCTS''')
+    cursor.execute('''SELECT NAME,ID FROM PRODUCTS''')
     tupleOfNames = cursor.fetchall()
-    listOfNames = []
-
+    listOfInfo = []
+    
     for i in tupleOfNames:
-        listOfNames.append(i[0])
-    # print(listOfNames)
+        dictionary = {}
+        dictionary.update({'name' : i[1]})
+        dictionary.update({'id' : i[0]})
+        listOfInfo.append(dictionary)
+    # print(listOfInfo)    
     conn.commit()
     conn.close()
-    return listOfNames
+    return listOfInfo
 
 def getProductName(product_id):#ID si verilen ürünün ismini döndürür.
     conn = sqlite3.connect('Dunder.db')
@@ -281,7 +284,7 @@ def getPastOrders(user_id):
     conn.commit()
     conn.close()
     return listOfOrders
-def getIdsOfProducts():
+def getIdsOfProducts():#Ürünlerin id bilgilerini döndürür
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
 
