@@ -49,7 +49,7 @@ def login():
     else:
         return {"data":0}
 
-@app.route("/showtable/pastorders")
+@app.route("/showtable/pastorders", methods = ["GET", "POST"])
 def pastorders():
     id = request.form.dict()
     temp  = db.totalPackageOfBought(id)#tarih, ürünıd, paket sayısı
