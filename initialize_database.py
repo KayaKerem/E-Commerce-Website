@@ -1,7 +1,6 @@
 from mimetypes import init
 import sqlite3
 import database as db
-
 def initialize():
     conn = sqlite3.connect('Dunder.db')
     print('Bağlantı Gerçekleşti')
@@ -51,3 +50,4 @@ def initialize():
 
     conn.commit()
     conn.close()
+db.buyProduct(2001,1003,200)
