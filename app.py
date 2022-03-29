@@ -1,8 +1,10 @@
-from flask import Flask
+from urllib import request
+from flask import Flask, request
 from initialize_database import initialize
+from flask_cors import CORS
 import database as db
 app = Flask(__name__)
-
+CORS(app)
 
 
 @app.route("/showtable")
@@ -16,7 +18,6 @@ def show_table():
 @app.route("/products", methods = ['GET'])
 def products():
     res = db.getProducts()
-    print(res)
     all_products = []
     for i in res:
         temp = {}
@@ -28,6 +29,13 @@ def products():
         temp.update({"title":i[1]})
         all_products.append(temp)
     return {"data":all_products}
+@app.route("/login", methods = ['GET', 'POST'])
+def login():
+    var = request.form.dict()
+    mail = var["mail"]
+    password = var["password"]
+    
+    return mail,password
 
 
 app.debug=False
