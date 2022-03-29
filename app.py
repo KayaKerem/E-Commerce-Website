@@ -25,17 +25,26 @@ def products():
         temp.update({"id":i[0]})
         temp.update({"price":i[3]})
         temp.update({"quantity":i[2]})
-        temp.update({"tumbnail_url":5})
+        temp.update({"tumbnail_url":i[6]})
         temp.update({"title":i[1]})
         all_products.append(temp)
     return {"data":all_products}
+
+
 @app.route("/login", methods = ['GET', 'POST'])
 def login():
     var = request.form.dict()
     mail = var["mail"]
     password = var["password"]
-    
-    return mail,password
+    if(db.checkUser(mail,password)!=0):
+        data = {}
+        id,name,surname = db.checkUser(mail,password)
+        data.update({"id":id})
+        data.update({"name":name})
+        data.update({"surname":surname})
+        return data
+    else:
+        return 0
 
 
 app.debug=False

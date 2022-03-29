@@ -104,9 +104,10 @@ def checkUser(mail,password):#Kullanıcı giriş kontrolü yapılır.Doğru bilg
     if listofuser is not None:
         if  listofuser[3] == mail :
             if listofuser[4] == password:
+                id = listofuser[0]
                 name =listofuser[1]
                 surname = listofuser[2]
-                return name,surname
+                return id,name,surname
                 # print('Giriş Başarılı')
             else:
                 return 0
