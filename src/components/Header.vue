@@ -3,7 +3,8 @@
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <router-link to="/home" class="navbar-brand mr-auto"
-        >Dunder Mifflin</router-link
+        ><img id="logo" class="col-md-4" src="../assets/img/logo.png" />Dunder
+        Mifflin</router-link
       >
       <button
         class="navbar-toggler"
@@ -146,5 +147,8 @@ export default {
 }
 #sepettitle {
   color: #091239 !important;
+}
+#logo {
+  width: 30px;
 }
 </style>

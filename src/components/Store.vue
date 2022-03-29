@@ -4,6 +4,11 @@
       <loader></loader>
     </div>
     <div v-else class="row action-panel">
+      <div class="row align-items-center" style="padding-top: 5%">
+        <div class="col">
+          <span id="urunler">Ürünlerimiz</span>
+        </div>
+      </div>
       <div class="col-12">
         <div class="btn-group btn-group-sm pull-right">
           <button
@@ -26,7 +31,7 @@
 
     <div class="row" v-if="!isProductLoading">
       <app-product-item
-        v-for="prod in products"
+        v-for="prod in products1"
         :item="prod"
         :key="prod.id"
         :displayList="displayList"
@@ -36,25 +41,39 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+// import { mapGetters } from "vuex";
 import ProductItem from "./product/ProductItem.vue";
 // import GridLoader from "vue-spinner/src/GridLoader.vue";
 import Loader from "./Loader.vue";
+import axios from "axios";
 export default {
   data() {
     return {
       loaderColor: "#5cb85c",
       loaderSize: "50px",
       displayList: false,
+      products1: [],
+      isProductLoading: true,
     };
   },
-  computed: {
-    ...mapGetters(["products", "isProductLoading"]),
-  },
+  // computed: {
+  //   ...mapGetters(["products", "isProductLoading"]),
+  // },
   components: {
     appProductItem: ProductItem,
     Loader,
     // GridLoader,
+  },
+  mounted() {
+    axios.get("http://127.0.0.1:5000/products").then((res) => {
+      let dt = res.data["data"];
+      this.products1 = dt;
+      console.log(res.data["data"][0]["thumbnail_url"]);
+      console.log("products");
+      console.log(this.products1);
+
+      this.isProductLoading = false;
+    });
   },
   methods: {
     changeDisplay(isList) {
@@ -96,5 +115,9 @@ h5 {
 }
 .list-group-item .card-body[data-v-ae4ae6fc] {
   height: 100%;
+}
+#urunler {
+  color: red;
+  font-size: 25px;
 }
 </style>

@@ -1,5 +1,7 @@
 import { ref, firebaseAuth } from '../config/firebaseConfig';
 // import axios from 'axios'
+
+// import axios from 'axios'
 export const updateCart = ({
   commit
 }, {item, quantity, isAdd}) => {
@@ -35,36 +37,46 @@ export function loginWithEmail (_, {email, password}) {
 
 export function listenToProductList({ commit }) {
   
-	let products = [ {
-  "description" : "En temelde kağıt grubunda yer alan bir endüstriyel üründür. Özellikle kutu üretiminde ve taşıma sektöründe oldukça pay sahibi olması nedeni ile ön plana çıkar.",
-  "id" : 1,
-  "price" : 180,
-  "quantity" : 100,
-  "thumbnail_url" : "https://n11scdn.akamaized.net/a1/1024/ev-yasam/kartonvekoli/sun-ka-mukavva-70x100-140-mm-30-lu__0951053207730760.jpg",
-  "title" : "MUKAVVA KAĞIT"
-}, {
-  "description" : "Genellikle antetli kağıt, kitap, broşür gibi çalışmaların baskısında kullanılır.Bileşimindeki selüloz miktarı çok, odun miktarı azdır.",
-  "id" : 2,
-  "price" : 150,
-  "quantity" : 15,
-  "thumbnail_url" : "https://www.parafofis.com/image/cache/catalog/products/11027-800x600.webp",
-  "title" : "HAMUR KAĞIT"
-}, {
-  "description" : "Genellikle antetli kağıt, kitap, broşür gibi çalışmaların baskısında kullanılır.Bileşimindeki selüloz miktarı çok, odun miktarı azdır.",
-  "id" : 2,
-  "price" : 150,
-  "quantity" : 15,
-  "thumbnail_url" : "https://www.parafofis.com/image/cache/catalog/products/11027-800x600.webp",
-  "title" : "HAMUR KAĞIT"
-}, {
-  "description" : "Genellikle antetli kağıt, kitap, broşür gibi çalışmaların baskısında kullanılır.Bileşimindeki selüloz miktarı çok, odun miktarı azdır.",
-  "id" : 2,
-  "price" : 150,
-  "quantity" : 15,
-  "thumbnail_url" : "https://www.parafofis.com/image/cache/catalog/products/11027-800x600.webp",
-  "title" : "HAMUR KAĞIT"
-}]
-	return commit('UPDATE_PRODUCT_LIST', products);
+// 	let products = [ {
+//   "description" : "En temelde kağıt grubunda yer alan bir endüstriyel üründür. Özellikle kutu üretiminde ve taşıma sektöründe oldukça pay sahibi olması nedeni ile ön plana çıkar.",
+//   "id" : 1,
+//   "price" : 180,
+//   "quantity" : 100,
+//   "thumbnail_url" : "https://n11scdn.akamaized.net/a1/1024/ev-yasam/kartonvekoli/sun-ka-mukavva-70x100-140-mm-30-lu__0951053207730760.jpg",
+//   "title" : "MUKAVVA KAĞIT"
+// }, {
+//   "description" : "Genellikle antetli kağıt, kitap, broşür gibi çalışmaların baskısında kullanılır.Bileşimindeki selüloz miktarı çok, odun miktarı azdır.",
+//   "id" : 2,
+//   "price" : 150,
+//   "quantity" : 15,
+//   "thumbnail_url" : "https://www.parafofis.com/image/cache/catalog/products/11027-800x600.webp",
+//   "title" : "HAMUR KAĞIT"
+// }, {
+//   "description" : "Genellikle antetli kağıt, kitap, broşür gibi çalışmaların baskısında kullanılır.Bileşimindeki selüloz miktarı çok, odun miktarı azdır.",
+//   "id" : 2,
+//   "price" : 150,
+//   "quantity" : 15,
+//   "thumbnail_url" : "https://www.parafofis.com/image/cache/catalog/products/11027-800x600.webp",
+//   "title" : "HAMUR KAĞIT"
+// }, {
+//   "description" : "Genellikle antetli kağıt, kitap, broşür gibi çalışmaların baskısında kullanılır.Bileşimindeki selüloz miktarı çok, odun miktarı azdır.",
+//   "id" : 2,
+//   "price" : 150,
+//   "quantity" : 15,
+//   "thumbnail_url" : "https://www.parafofis.com/image/cache/catalog/products/11027-800x600.webp",
+//   "title" : "HAMUR KAĞIT"
+// }]
+  let products = []
+  // axios.get("http://127.0.0.1:5000/products").then((res) => {
+  //     products = res.data["data"];
+     
+  //     console.log(res.data["data"][0]["thumbnail_url"]);
+  //     console.log("AAAAAAAAAAA");
+  //     console.log(products);
+  //   });
+  
+  return commit('UPDATE_PRODUCT_LIST', products);
+	
 	
 }
 
