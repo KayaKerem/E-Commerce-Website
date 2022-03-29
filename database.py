@@ -179,7 +179,6 @@ def getNamesOfProducts():
     for i in tupleOfNames:
         listOfNames.append(i[0])
     # print(listOfNames)
-
     conn.commit()
     conn.close()
     return listOfNames
@@ -213,7 +212,7 @@ def totalSpentOfMoney(user_id):
 def totalPackageOfBought(user_id):
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()    
-    cursor.execute(''' SELECT DATE,PRODUCT_ID,SUM(QUANTITYOFPACKAGE) FROM ORDERS WHERE USER_ID = ? GROUP BY DATE,PRODUCT_ID ORDER BY DATE''',(user_id,))
+    cursor.execute(''' SELECT STRFTIME('%d-%m-%Y',DATE) as DATE,PRODUCT_ID,SUM(QUANTITYOFPACKAGE) FROM ORDERS WHERE USER_ID = ? GROUP BY DATE,PRODUCT_ID ORDER BY DATE''',(user_id,))
     x = cursor.fetchall()
     newList = []
     for i in x:
@@ -282,3 +281,14 @@ def getPastOrders(user_id):
     conn.commit()
     conn.close()
     return listOfOrders
+def getIdsOfProducts():
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
+
+    cursor.execute(''' SELECT ID FROM PRODUCTS''')
+    tupleOfIds = cursor.fetchall()
+    listOfIds = []
+    for i in tupleOfIds:
+        listOfIds.append(i[0])
+    # print(listOfIds)
+    return listOfIds
