@@ -13,11 +13,11 @@ def show_table():
         dict.update({i[1]:i})
     return dict
    
-@app.route("/products")
+@app.route("/products", methods = ['GET'])
 def products():
     res = db.getProducts()
     print(res)
-    dict = []
+    all_products = []
     for i in res:
         temp = {}
         temp.update({"description":i[5]})
@@ -26,8 +26,8 @@ def products():
         temp.update({"quantity":i[2]})
         temp.update({"tumbnail_url":5})
         temp.update({"title":i[1]})
-        dict.append(temp)
-    return {"products":dict}
+        all_products.append(temp)
+    return {"data":all_products}
 
 
 app.debug=False
