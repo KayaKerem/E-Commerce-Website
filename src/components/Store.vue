@@ -4,11 +4,13 @@
       <loader></loader>
     </div>
     <div v-else class="row action-panel">
-      <div class="row align-items-center" style="padding-top: 5%">
-        <div class="col">
-          <span id="urunler">Ürünlerimiz</span>
+      <div class="container" style="padding-top: 60px">
+        <div class="section-title">
+          <h2 style="color: #444444">Ürünlerimiz</h2>
         </div>
+        <!-- <span id="urunler">Ürünlerimiz</span> -->
       </div>
+
       <div class="col-12">
         <div class="btn-group btn-group-sm pull-right">
           <button

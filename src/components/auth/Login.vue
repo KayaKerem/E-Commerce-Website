@@ -7,7 +7,21 @@
         style="display: block"
         @submit.prevent="onSubmit"
       >
-        <h3 class="text-center">Login</h3>
+        <div class="container" style="padding-top: 50px; padding-bottom: 30px">
+          <div class="section-title">
+            <img
+              class="col-xs-3 col-s-4 col-md-7 col-lg-7 col-xl-4"
+              src="https://images.fineartamerica.com/images/artworkimages/medium/3/the-office-dunder-mifflin-logo-tv-show-andrea-transparent.png"
+              alt=""
+            />
+            <h2></h2>
+          </div>
+        </div>
+        <!-- <div class="container" style="padding-top: 60px">
+          <div class="section-title">
+            <h2 style="color: rgb(68, 68, 68)">Login</h2>
+          </div>
+        </div> -->
         <div class="form-group">
           <input
             type="email"
@@ -34,12 +48,12 @@
         <div class="form-group">
           <button
             type="submit"
-            class="btn btn-success"
-            style="width: 100%"
+            class="btn btn-primary"
+            style="width: 100%; background-color: #091239"
             :disabled="isLoading"
           >
             <i v-if="isLoading" class="fa fa-spinner fa-spin" />
-            Log in
+            Log In
           </button>
         </div>
         <div class="form-group">
@@ -157,3 +171,9 @@ export default {
   },
 };
 </script>
+
+<style>
+.btn {
+  background-color: blue;
+}
+</style>
