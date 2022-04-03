@@ -422,6 +422,7 @@
 export default {
   components: {},
   methods: {},
+  created() {},
   mounted() {},
 };
 </script>

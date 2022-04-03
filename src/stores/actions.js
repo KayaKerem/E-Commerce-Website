@@ -48,6 +48,7 @@ export function loginWithEmail (_, {email, password}) {
 	} else {
 		return null
 	}
+	
 }
 
 export function listenToProductList({ commit }) {

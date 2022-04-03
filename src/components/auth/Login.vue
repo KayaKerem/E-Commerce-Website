@@ -28,7 +28,7 @@
             name="email"
             id="email"
             class="form-control"
-            placeholder="Email Address"
+            placeholder="Email"
             v-model="email"
             required
           />
@@ -39,7 +39,7 @@
             name="password"
             id="password"
             class="form-control"
-            placeholder="Password"
+            placeholder="Şifre"
             v-model="password"
             required
           />
@@ -53,7 +53,7 @@
             :disabled="isLoading"
           >
             <i v-if="isLoading" class="fa fa-spinner fa-spin" />
-            Log In
+            Giriş Yap
           </button>
         </div>
         <div class="form-group">
@@ -61,7 +61,7 @@
             <div class="col-lg-12">
               <div class="text-center">
                 <router-link to="/register">
-                  <a>Register</a>
+                  <a>Üye Ol</a>
                 </router-link>
               </div>
             </div>
@@ -82,7 +82,12 @@ export default {
       password: "",
       isLoading: false,
       check: null,
+      isLogged: false,
     };
+  },
+  created() {
+    console.log("CHE");
+    console.log(localStorage.getItem("user_id"));
   },
   methods: {
     ...mapActions(["addMessage", "clearMessage", "loginWithEmail"]),
@@ -96,6 +101,7 @@ export default {
         .post("http://127.0.0.1:5000/login", data)
         .then((res) => {
           this.check = res.data["data"];
+          // localStorage.removeItem("user_id");
         })
         .then(() => {
           console.log("Check");
@@ -112,9 +118,19 @@ export default {
             this.addMessage(message_obj);
           } else if (this.check != null) {
             console.log("geçerli");
+            this.isLogged = true;
+            localStorage.setItem("user_id", this.check["id"]);
+            localStorage.setItem(
+              "user_name",
+              this.check["name"] + " " + this.check["surname"]
+            );
             this.clearMessage();
+            // this.$router.go({
+            //   name: "home",
+            // });
+
             this.$router.push({
-              name: "mainpage",
+              name: "home",
             });
           } else {
             console.log("arada");

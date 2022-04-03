@@ -1,13 +1,13 @@
 import { firebaseAuth } from '../../config/firebaseConfig';
-
+import {isLogged} from "../../components/auth/Login.vue"
 const state = {
-	isLoggedIn: firebaseAuth().currentUser != null,
+	isLoggedIn: isLogged,
 	user: firebaseAuth().currentUser,
 }
 
 const mutations = {
 	'AUTH_STATUS_CHANGE' (state) {
-		state.isLoggedIn = firebaseAuth().currentUser != null;
+		state.isLoggedIn = isLogged;
 		state.user = firebaseAuth().currentUser;
 	}
 }

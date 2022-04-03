@@ -1,0 +1,4 @@
+Kullanıcı ikonu giriş yapılmadığında da gözüküce ve tıklandığında
+login sayfası gözükücek.
+çıkış yap fonksiyonu kullanıcı profiline girince kullanılabilecek.
+
