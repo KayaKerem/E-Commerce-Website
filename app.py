@@ -5,7 +5,17 @@ from initialize_database import initialize
 from flask_cors import CORS
 import database as db
 import json
-app = Flask(__name__)
+app = Flask(__name__)def packageOfTotalBought():
+    id = request.data.decode("UTF-8")
+    id = json.loads(id)
+    id = id["id"]
+    temp = db.getPastOrders(id)#ürünıd, miktar
+    pck = db.getNamesOfProducts()
+    labels = []
+    for i in pck:
+        labels.append(i["name"])
+    for i in temp:
+        
 CORS(app)
 
 
@@ -79,7 +89,7 @@ def pastorders():
 
       
 
-@app.route("/showtable/pastorders_money", methods = ["GET", "POST"])                     
+@app.route("/showtable/pastorders_money", methods = ["GET", "POST"])                  
 def pastordersMoney():
     id = request.data.decode("UTF-8")
     id = json.loads(id)
@@ -105,6 +115,30 @@ def pastordersMoney():
                     if(k[0] == categories[j]):
                         i["data"][j] = k[2]  
     return {"dates":categories, "pastOrders":res}
+
+
+@app.route("/showtable/packageoftotalbought",method = ["GET", "POST"])
+def packageOfTotalBought():
+    id = request.data.decode("UTF-8")
+    id = json.loads(id)
+    id = id["id"]
+    temp = db.getPastOrders(id)#ürünıd, miktar
+    pck = db.getNamesOfProducts()
+    labels = []
+    series = []
+    for i in pck:
+        labels.append(i["name"])
+    for i in pck:
+        series.append(0)
+    a = 0
+    for i in pck:
+        for j in temp:
+            if(i["name"]==j[0]):
+                series[a] +=j[1]
+        a+=1
+    return {"labels":labels, "series":series}
+    
+        
 
 
 
