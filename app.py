@@ -54,8 +54,9 @@ def login():
 def pastorders():
     id = request.data.decode("UTF-8")
     id = json.loads(id)
+    id = id["id"]
     temp  = db.totalPackageOfBought(id)#tarih, ürünıd, paket sayısı
-    products = db.getNamesAndIdsOfProducts() #{{"id":value, "name":value}}
+    products = db.getNamesOfProducts() #{{"id":value, "name":value}}
     categories = []
     for i in temp:
         categories.append(i[0]) #dates
@@ -74,10 +75,38 @@ def pastorders():
                 if(i["name"] == db.getProductName(k[1])):
                     if(k[0] == categories[j]):
                         i["data"][j] = k[2]  
-    return {"dates":categories, "pastOrders":res}            
-                        
-  
+    return {"dates":categories, "pastOrders":res}      
+
+      
+
+@app.route("/showtable/pastorders_money", methods = ["GET", "POST"])                     
+def pastordersMoney():
+    id = request.data.decode("UTF-8")
+    id = json.loads(id)
+    id = id["id"]
+    temp = db.totalSpentOfMoney(id)#tarih, ürünıd, paket sayısı
+    products = db.getNamesOfProducts() #{{"id":value, "name":value}}
+    categories = []
+    for i in temp:
+        categories.append(i[0]) #dates
+    categories = list(set(categories))    
+    res = []    
+    for i in products:
+        d = {}
+        datas = []
+        for j in categories:
+            datas.append(0)
+        d.update({"name":i["name"],"data":datas})
+        res.append(d)
+    for i in res:
+        for j in range(len(categories)):    
+            for k in temp:
+                if(i["name"] == db.getProductName(k[1])):
+                    if(k[0] == categories[j]):
+                        i["data"][j] = k[2]  
+    return {"dates":categories, "pastOrders":res}
+
+
 
 app.debug=False
 app.run()
-

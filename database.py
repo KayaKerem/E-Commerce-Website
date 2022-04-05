@@ -202,8 +202,8 @@ def getNamesOfProducts():
     
     for i in tupleOfNames:
         dictionary = {}
-        dictionary.update({'name' : i[1]})
-        dictionary.update({'id' : i[0]})
+        dictionary.update({'name' : i[0]})
+        dictionary.update({'id' : i[1]})
         listOfInfo.append(dictionary)
     # print(listOfInfo)    
     conn.commit()
