@@ -1,5 +1,18 @@
 import sqlite3
 from webbrowser import get
+def initializeOrder():
+    addOrderWithDate(2001,1002,100,175,"2022-02-09 13:26:28")
+    addOrderWithDate(2001,1002,100,175,"2022-11-09 13:26:28")
+    addOrderWithDate(2001,1001,100,175,"2022-10-09 13:26:28")
+    addOrderWithDate(2001,1001,100,175,"2022-07-09 13:26:28")
+    addOrderWithDate(2001,1004,100,175,"2022-05-09 13:26:28")
+    addOrderWithDate(2001,1004,100,175,"2022-04-09 13:26:28")
+    addOrderWithDate(2001,1003,100,175,"2022-10-09 13:26:28")
+    addOrderWithDate(2001,1000,100,175,"2022-07-09 13:26:28")
+    addOrderWithDate(2001,1000,100,175,"2022-02-09 13:26:28")
+    addOrderWithDate(2001,1002,100,175,"2022-01-09 13:26:28")
+    addOrderWithDate(2001,1000,100,175,"2022-03-09 13:26:28")
+    addOrderWithDate(2001,1003,100,175,"2022-01-09 13:26:28")
 
 def addProduct(name,quantity,price,weightofpackages,details,image):#Product Ekler
     conn = sqlite3.connect('Dunder.db')
@@ -82,6 +95,17 @@ def addOrder(userId,ProductId,quantityOfPackage,pricePerProduct):#Sipariş Ekler
 
     conn.commit()
     conn.close()
+
+def addOrderWithDate(userId,ProductId,quantityOfPackage,pricePerProduct,date):#Sipariş Ekler
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
+
+    add_command = ''' INSERT INTO ORDERS(USER_ID,PRODUCT_ID,QUANTITYOFPACKAGE,PRICEPERPRODUCT,DATE)VALUES{}'''
+    data = (userId,ProductId,quantityOfPackage,pricePerProduct,date)
+    cursor.execute(add_command.format(data))
+
+    conn.commit()
+    conn.close()    
 
 def getOrders():#Order Table ındakileri Döndürür(Liste içinde Liste olarak)
     orderList = []

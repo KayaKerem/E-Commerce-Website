@@ -1,3 +1,4 @@
+import imp
 from mimetypes import init
 import sqlite3
 import database as db
@@ -49,6 +50,7 @@ def initialize():
     db.addUser('İrem','Avcı','iremavci@gmail.com','iremavci','Yıldız Teknik Üniversitesi')
 
 
+    db.initializeOrder()
+
     conn.commit()
     conn.close()
-db.buyProduct(2001,1003,200)

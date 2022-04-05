@@ -37,7 +37,7 @@ def products():
 def login():
     var = request.data.decode("UTF-8")
     var = json.loads(var)
-    mail = var["mail"]
+    mail = var["email"]
     password = var["password"]
     if(db.checkUser(mail,password)!=0):
         data = {}
