@@ -1,35 +1,35 @@
 import sqlite3
 from webbrowser import get
 def initializeOrder():
-    addOrderWithDate(2001,1002,100,175,"2022-02-09 13:26:28")
+    addOrderWithDate(2001,1002,130,175,"2022-02-09 13:26:28")
     addOrderWithDate(2001,1002,100,175,"2022-11-09 13:26:28")
-    addOrderWithDate(2001,1001,100,175,"2022-10-09 13:26:28")
-    addOrderWithDate(2001,1001,100,175,"2022-07-09 13:26:28")
-    addOrderWithDate(2001,1004,100,175,"2022-05-09 13:26:28")
-    addOrderWithDate(2001,1004,100,175,"2022-04-09 13:26:28")
-    addOrderWithDate(2001,1003,100,175,"2022-10-09 13:26:28")
-    addOrderWithDate(2001,1000,100,175,"2022-07-09 13:26:28")
-    addOrderWithDate(2001,1000,100,175,"2022-02-09 13:26:28")
-    addOrderWithDate(2001,1002,100,175,"2022-01-09 13:26:28")
-    addOrderWithDate(2001,1000,100,175,"2022-03-09 13:26:28")
-    addOrderWithDate(2001,1003,100,175,"2022-01-09 13:26:28")
+    addOrderWithDate(2001,1001,125,175,"2022-10-09 13:26:28")
+    addOrderWithDate(2001,1001,115,175,"2022-07-09 13:26:28")
+    addOrderWithDate(2001,1004,90,175,"2022-05-09 13:26:28")
+    addOrderWithDate(2001,1004,136,175,"2022-04-09 13:26:28")
+    addOrderWithDate(2001,1003,41,175,"2022-10-09 13:26:28")
+    addOrderWithDate(2001,1000,78,175,"2022-07-09 13:26:28")
+    addOrderWithDate(2001,1000,69,175,"2022-02-09 13:26:28")
+    addOrderWithDate(2001,1002,59,175,"2022-01-09 13:26:28")
+    addOrderWithDate(2001,1000,131,175,"2022-03-09 13:26:28")
+    addOrderWithDate(2001,1003,44,175,"2022-01-09 13:26:28")
 
-def addProduct(name,quantity,price,weightofpackages,details,image):#Product Ekler
+def addProduct(name,quantity,price,weightofpackages,details,image,thickness,dimension):#Product Ekler
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
 
-    add_command = '''INSERT INTO PRODUCTS(NAME,QUANTITY,PRICE,WEIGHTOFPACKAGES,DETAILS,IMAGE)VALUES{}'''
-    data = (name,quantity,price,weightofpackages,details,image)
+    add_command = '''INSERT INTO PRODUCTS(NAME,QUANTITY,PRICE,WEIGHTOFPACKAGES,DETAILS,IMAGE,THICKNESS,DIMENSION)VALUES{}'''
+    data = (name,quantity,price,weightofpackages,details,image,thickness,dimension)
     cursor.execute(add_command.format(data))
 
     conn.commit()
     conn.close()
-def addProductFirst(id,name,quantity,price,weightofpackages,details,image):#addProduct ile aynı olup ID yi spesifik bir sayıdan başlatmak için ilk eleman bununla eklenir
+def addProductFirst(id,name,quantity,price,weightofpackages,details,image,thickness,dimension):#addProduct ile aynı olup ID yi spesifik bir sayıdan başlatmak için ilk eleman bununla eklenir
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
 
-    add_command = '''INSERT INTO PRODUCTS(ID,NAME,QUANTITY,PRICE,WEIGHTOFPACKAGES,DETAILS,IMAGE)VALUES{}'''
-    data = (id,name,quantity,price,weightofpackages,details,image)
+    add_command = '''INSERT INTO PRODUCTS(ID,NAME,QUANTITY,PRICE,WEIGHTOFPACKAGES,DETAILS,IMAGE,THICKNESS,DIMENSION)VALUES{}'''
+    data = (id,name,quantity,price,weightofpackages,details,image,thickness,dimension)
     cursor.execute(add_command.format(data))
 
     conn.commit()
@@ -202,8 +202,8 @@ def getNamesOfProducts():
     
     for i in tupleOfNames:
         dictionary = {}
-        dictionary.update({'name' : i[1]})
-        dictionary.update({'id' : i[0]})
+        dictionary.update({'name' : i[0]})
+        dictionary.update({'id' : i[1]})
         listOfInfo.append(dictionary)
     # print(listOfInfo)    
     conn.commit()

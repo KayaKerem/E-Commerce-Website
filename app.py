@@ -54,8 +54,9 @@ def login():
 def pastorders():
     id = request.data.decode("UTF-8")
     id = json.loads(id)
+    id = id["id"]
     temp  = db.totalPackageOfBought(id)#tarih, ürünıd, paket sayısı
-    products = db.getNamesAndIdsOfProducts() #{{"id":value, "name":value}}
+    products = db.getNamesOfProducts() #{{"id":value, "name":value}}
     categories = []
     for i in temp:
         categories.append(i[0]) #dates
