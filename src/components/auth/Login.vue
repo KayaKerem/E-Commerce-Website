@@ -124,14 +124,16 @@ export default {
               "user_name",
               this.check["name"] + " " + this.check["surname"]
             );
+
             this.clearMessage();
             // this.$router.go({
             //   name: "home",
             // });
 
-            this.$router.push({
-              name: "home",
-            });
+            // this.$router.push({
+            //   name: "home",
+            // });
+            window.location.href = "/home";
           } else {
             console.log("arada");
             let message_obj = {

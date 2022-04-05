@@ -5,11 +5,13 @@ import { routes } from './routes';
 import store from './stores/store';
 // import { firebaseListener } from './config/firebaseConfig';
 import './assets/styles/app.scss'
-
+import VueApexCharts from 'vue-apexcharts'
 import App from './App.vue';
 
 Vue.use(VueRouter);
+Vue.use(VueApexCharts)
 
+Vue.component('apexchart', VueApexCharts)
 
 // firebaseListener(authStatusChange);
 

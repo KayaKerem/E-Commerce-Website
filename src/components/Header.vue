@@ -3,8 +3,7 @@
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <router-link to="/home" class="navbar-brand mr-auto"
-        ><img id="logo" class="col-md-4" src="../assets/img/logo.png" />Dunder
-        Mifflin</router-link
+        >Dunder Mifflin</router-link
       >
       <button
         class="navbar-toggler"
@@ -30,7 +29,7 @@
             <a class="nav-link">Ürünlerimiz</a>
           </router-link>
           <!--  -->
-          <router-link
+          <!-- <router-link
             to="/login"
             tag="li"
             v-if="!isLoggedIn"
@@ -38,11 +37,9 @@
             active-class="active"
           >
             <a class="nav-link">Giriş Yap</a>
-          </router-link>
-          <li v-if="isLoggedIn" class="li-pointer nav-item">
-            <a @click="logout" class="nav-link"> Çıkış Yap</a>
-          </li>
-          <router-link
+          </router-link> -->
+
+          <!-- <router-link
             to="/register"
             tag="li"
             v-if="!isLoggedIn"
@@ -50,15 +47,17 @@
             active-class="active"
           >
             <a class="nav-link">Üye Ol</a>
-          </router-link>
+          </router-link> -->
           <!-- ---------- -->
 
           <!-- <li v-if="isLoggedIn" class="li-pointer nav-item">
             <a @click="logout" class="nav-link">Main {{ userEmail }}</a>
           </li> -->
-          <li v-if="isLoggedIn">
+
+          <li>
             <router-link
-              to="/cart"
+              v-if="isLoggedIn"
+              to="/profile"
               class="btn btn-light navbar-btn"
               tag="button"
             >
@@ -74,7 +73,32 @@
                   <path
                     d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
                   /></svg
-                >{{ this.userName }}</a
+                >{{ this.userName }} {{ this.surname }}.</a
+              >
+            </router-link>
+          </li>
+
+          <!--  -->
+          <li>
+            <router-link
+              v-if="!isLoggedIn"
+              to="/login"
+              class="btn btn-light navbar-btn"
+              tag="button"
+            >
+              <a id="sepettitle">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-person"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
+                  /></svg
+                >{{ this.userName }} {{ this.surname }}</a
               >
               <!-- <span class="badge badge-light"
                 >{{ numItems }} ($ {{ cartValue }})</span
@@ -82,8 +106,10 @@
             </router-link>
           </li>
           <!--  -->
+
           <li>
             <router-link
+              v-if="isLoggedIn"
               to="/cart"
               class="btn btn-light navbar-btn"
               tag="button"
@@ -107,6 +133,23 @@
               >
             </router-link>
           </li>
+          <!-- ÇIKIŞ YAP BUTONU -->
+          <li v-if="isLoggedIn" class="li-pointer nav-item">
+            <a @click="logout" class="nav-link">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-power"
+                viewBox="0 0 16 16"
+              >
+                <path d="M7.5 1v7h1V1h-1z" />
+                <path
+                  d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812z"
+                /></svg
+            ></a>
+          </li>
         </ul>
       </div>
     </div>
@@ -123,11 +166,13 @@ export default {
     return {
       isNavOpen: false,
       isLoggedIn: false,
-      userName: "",
+      userName: "Giriş Yap",
+      surname: "",
+      router_link: "/login",
     };
   },
   computed: {
-    ...mapGetters(["isLoggedIn", "cartValue", "currentUser", "cartItemList"]),
+    ...mapGetters(["cartValue", "currentUser", "cartItemList"]),
     numItems() {
       return this.cartItemList.reduce((total, item) => {
         total += item.quantity;
@@ -142,6 +187,11 @@ export default {
     if (localStorage.getItem("user_id") != null) {
       this.isLoggedIn = true;
       this.userName = localStorage.getItem("user_name");
+
+      let surname = this.userName.split(" ")[1].slice(0, 1);
+      this.surname = surname;
+      this.userName = this.userName.split(" ")[0];
+      this.router_link = "/home";
     }
   },
   methods: {
@@ -161,7 +211,7 @@ export default {
       localStorage.removeItem("user_name");
       this.clearMessage();
       this.isLoggedIn = false;
-      location.reload();
+      window.location.href = "/home";
       // this.$router.go();
     },
   },
