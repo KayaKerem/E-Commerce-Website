@@ -49,25 +49,32 @@ def login():
     else:
         return {"data":0}
 
+
 @app.route("/showtable/pastorders", methods = ["GET", "POST"])
 def pastorders():
-    id = request.form.dict()
+    id = request.data.decode("UTF-8")
+    id = json.loads(id)
     temp  = db.totalPackageOfBought(id)#tarih, ürünıd, paket sayısı
-    products = db.getNamesOfProducts()
-    #products =  [{"id":1000, "name":"mukavva"}, {"id":1001,  "name":"hamur"}]
+    products = db.getNamesAndIdsOfProducts() #{{"id":value, "name":value}}
     categories = []
     for i in temp:
-        categories.append(i[0])
-    res = []
+        categories.append(i[0]) #dates
+    categories = list(set(categories))    
+    res = []    
     for i in products:
+        d = {}
         datas = []
         for j in categories:
+            datas.append(0)
+        d.update({"name":i["name"],"data":datas})
+        res.append(d)
+    for i in res:
+        for j in range(len(categories)):    
             for k in temp:
-                if(i["id"]==k[1] and k[0]==j):
-                    res.append({j["name"]:datas.append(i[2])})
-                else:
-                    res.append({j["name"]:datas.append(0)})
-    return {{"dates": categories},{"pastOrders":res}}             
+                if(i["name"] == db.getProductName(k[1])):
+                    if(k[0] == categories[j]):
+                        i["data"][j] = k[2]  
+    return {"dates":categories, "pastOrders":res}            
                         
   
 
