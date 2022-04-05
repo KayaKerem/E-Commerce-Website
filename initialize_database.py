@@ -40,11 +40,11 @@ def initialize():
     )''')
    
     conn.commit()
-    db.addProductFirst(1000,'Mukavva',7000,250,175,'En temelde kağıt grubunda yer alan bir endüstriyel üründür. Özellikle kutu üretiminde ve taşıma sektöründe oldukça pay sahibi olması nedeni ile ön plana çıkar.','./src/assets/Mukavva.jpg','3,20 mm – 1,00 mm','70*100')
-    db.addProduct('Hamur',6500,150,200,'Genellikle antetli kağıt, kitap, broşür gibi çalışmaların baskısında kullanılır. Bileşimindeki selüloz miktarı çok, odun miktarı azdır.','./src/assets/hamur_kagt.png','2,90 mm – 1,30 mm','65*110')
-    db.addProduct('Kuşe',7000,200,150,'Tasarımcılar tarafından hazırlanan afiş, broşür ve el ilanlarında en çok verim sağlayan kuşe kağıt kullanılır.','./src/assets/kuse_kagt.png','2,20 mm – 0,90 mm','60*90')
-    db.addProduct('Pelur',8000,125,100,'İnce ve hafif bir yapısı olduğundan dolayı ürün ambalajında kullanılır. Ayakkabı mağazaları, bujiteriler, çanta üreticileri, kuyumcular vs. tarafından kullanılmaktadır.','./src/assets/pelur_kagt.png','3,00 mm – 1,10 mm','40*120')
-    db.addProduct('Kroma Karton',7700,175,220,'Genelde ambalaj sektöründe kullanılan bir yüzeyi parlak diğer yüzeyi mat bir kağıttır.','./src/assets/kroma_karton.png','2,40 mm – 1,00 mm','50*100')
+    db.addProductFirst(1000,'Mukavva',7000,250,175,'En temelde kağıt grubunda yer alan bir endüstriyel üründür. Özellikle kutu üretiminde ve taşıma sektöründe oldukça pay sahibi olması nedeni ile ön plana çıkar.','./src/Mukavva.jpg','3,20 mm – 1,00 mm','70*100')
+    db.addProduct('Hamur',6500,150,200,'Genellikle antetli kağıt, kitap, broşür gibi çalışmaların baskısında kullanılır. Bileşimindeki selüloz miktarı çok, odun miktarı azdır.','./src/hamur_kagt.png','2,90 mm – 1,30 mm','65*110')
+    db.addProduct('Kuşe',7000,200,150,'Tasarımcılar tarafından hazırlanan afiş, broşür ve el ilanlarında en çok verim sağlayan kuşe kağıt kullanılır.','./src/kuse_kagt.png','2,20 mm – 0,90 mm','60*90')
+    db.addProduct('Pelur',8000,125,100,'İnce ve hafif bir yapısı olduğundan dolayı ürün ambalajında kullanılır. Ayakkabı mağazaları, bujiteriler, çanta üreticileri, kuyumcular vs. tarafından kullanılmaktadır.','./src/pelur_kagt.png','3,00 mm – 1,10 mm','40*120')
+    db.addProduct('Kroma Karton',7700,175,220,'Genelde ambalaj sektöründe kullanılan bir yüzeyi parlak diğer yüzeyi mat bir kağıttır.','./src/kroma_karton.png','2,40 mm – 1,00 mm','50*100')
 
     db.addUserFirst(2000,'Kutay','Sarı','kutaysari@gmail.com','kutaysari','Yıldız Teknik Üniversitesi')
     db.addUser('Kerem','Kaya','keremkaya@gmail.com','keremkaya','Yıldız Teknik Üniversitesi')
