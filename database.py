@@ -308,6 +308,7 @@ def getPastOrders(user_id):
     conn.commit()
     conn.close()
     return listOfOrders
+    
 def getIdsOfProducts():#Ürünlerin id bilgilerini döndürür
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()

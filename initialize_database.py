@@ -40,11 +40,11 @@ def initialize():
     )''')
    
     conn.commit()
-    db.addProductFirst(1000,'Mukavva',7000,250,175,'En temelde kağıt grubunda yer alan bir endüstriyel üründür. Özellikle kutu üretiminde ve taşıma sektöründe oldukça pay sahibi olması nedeni ile ön plana çıkar.','./src/Mukavva.jpg','3,20 mm – 1,00 mm','70*100')
-    db.addProduct('Hamur',6500,150,200,'Genellikle antetli kağıt, kitap, broşür gibi çalışmaların baskısında kullanılır. Bileşimindeki selüloz miktarı çok, odun miktarı azdır.','./src/hamur_kagt.png','2,90 mm – 1,30 mm','65*110')
-    db.addProduct('Kuşe',7000,200,150,'Tasarımcılar tarafından hazırlanan afiş, broşür ve el ilanlarında en çok verim sağlayan kuşe kağıt kullanılır.','./src/kuse_kagt.png','2,20 mm – 0,90 mm','60*90')
-    db.addProduct('Pelur',8000,125,100,'İnce ve hafif bir yapısı olduğundan dolayı ürün ambalajında kullanılır. Ayakkabı mağazaları, bujiteriler, çanta üreticileri, kuyumcular vs. tarafından kullanılmaktadır.','./src/pelur_kagt.png','3,00 mm – 1,10 mm','40*120')
-    db.addProduct('Kroma Karton',7700,175,220,'Genelde ambalaj sektöründe kullanılan bir yüzeyi parlak diğer yüzeyi mat bir kağıttır.','./src/kroma_karton.png','2,40 mm – 1,00 mm','50*100')
+    db.addProductFirst(1000,'Mukavva',7000,250,175,'En temelde kağıt grubunda yer alan bir endüstriyel üründür. Özellikle kutu üretiminde ve taşıma sektöründe oldukça pay sahibi olması nedeni ile ön plana çıkar.','https://www.elegansgrup.com/wp-content/uploads/2021/06/Mukavva-550x550-1.jpg','3,20 mm – 1,00 mm','70*100')
+    db.addProduct('Hamur',6500,150,200,'Genellikle antetli kağıt, kitap, broşür gibi çalışmaların baskısında kullanılır. Bileşimindeki selüloz miktarı çok, odun miktarı azdır.','https://www.bordoambalaj.com/wp-content/uploads/2020/07/1.hamur-banner.jpg','2,90 mm – 1,30 mm','65*110')
+    db.addProduct('Kuşe',7000,200,150,'Tasarımcılar tarafından hazırlanan afiş, broşür ve el ilanlarında en çok verim sağlayan kuşe kağıt kullanılır.','https://cdn03.ciceksepeti.com/cicek/kcm47418413-1/XL/100-adet-parlak-kuse-kagit-kalin-300-gr-a4-kuse-kcm47418413-1-0969d6e8487e470a8036ff4edfedc7e3.jpg','2,20 mm – 0,90 mm','60*90')
+    db.addProduct('Pelur',8000,125,100,'İnce ve hafif bir yapısı olduğundan dolayı ürün ambalajında kullanılır. Ayakkabı mağazaları, bujiteriler, çanta üreticileri, kuyumcular vs. tarafından kullanılmaktadır.','https://www.polasambalaj.com/upload/b/pelur-kagitlari_4650384784.jpg','3,00 mm – 1,10 mm','40*120')
+    db.addProduct('Kroma Karton',7700,175,220,'Genelde ambalaj sektöründe kullanılan bir yüzeyi parlak diğer yüzeyi mat bir kağıttır.','http://turkoglumukavva.com/wp-content/uploads/2019/07/kromekarton2.jpg','2,40 mm – 1,00 mm','50*100')
 
     db.addUserFirst(2000,'Kutay','Sarı','kutaysari@gmail.com','kutaysari','Yıldız Teknik Üniversitesi')
     db.addUser('Kerem','Kaya','keremkaya@gmail.com','keremkaya','Yıldız Teknik Üniversitesi')
