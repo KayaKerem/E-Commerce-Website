@@ -5,27 +5,19 @@ from initialize_database import initialize
 from flask_cors import CORS
 import database as db
 import json
-app = Flask(__name__)def packageOfTotalBought():
-    id = request.data.decode("UTF-8")
-    id = json.loads(id)
-    id = id["id"]
-    temp = db.getPastOrders(id)#ürünıd, miktar
-    pck = db.getNamesOfProducts()
-    labels = []
-    for i in pck:
-        labels.append(i["name"])
-    for i in temp:
-        
+
+
+app = Flask(__name__)
 CORS(app)
+        
 
-
-@app.route("/showtable")
-def show_table():
-    dict = {}
-    res = db.getProducts()
-    for i in res:
-        dict.update({i[1]:i})
-    return dict
+# @app.route("/showtable")
+# def show_table():
+#     dict = {}
+#     res = db.getProducts()
+#     for i in res:
+#         dict.update({i[1]:i})
+#     return dict
    
 @app.route("/products", methods = ['GET'])
 def products():
@@ -59,12 +51,15 @@ def login():
     else:
         return {"data":0}
 
-
-@app.route("/showtable/pastorders", methods = ["GET", "POST"])
-def pastorders():
+def getID():
     id = request.data.decode("UTF-8")
     id = json.loads(id)
     id = id["id"]
+    return id
+
+@app.route("/showtable/pastorders", methods = ["GET", "POST"])
+def pastorders():
+    id = getID()
     temp  = db.totalPackageOfBought(id)#tarih, ürünıd, paket sayısı
     products = db.getNamesOfProducts() #{{"id":value, "name":value}}
     categories = []
@@ -87,13 +82,10 @@ def pastorders():
                         i["data"][j] = k[2]  
     return {"dates":categories, "pastOrders":res}      
 
-      
 
 @app.route("/showtable/pastorders_money", methods = ["GET", "POST"])                  
 def pastordersMoney():
-    id = request.data.decode("UTF-8")
-    id = json.loads(id)
-    id = id["id"]
+    id = getID()
     temp = db.totalSpentOfMoney(id)#tarih, ürünıd, paket sayısı
     products = db.getNamesOfProducts() #{{"id":value, "name":value}}
     categories = []
@@ -117,11 +109,9 @@ def pastordersMoney():
     return {"dates":categories, "pastOrders":res}
 
 
-@app.route("/showtable/packageoftotalbought",method = ["GET", "POST"])
+@app.route("/showtable/packageoftotalbought",methods = ["GET", "POST"])
 def packageOfTotalBought():
-    id = request.data.decode("UTF-8")
-    id = json.loads(id)
-    id = id["id"]
+    id = getID()
     temp = db.getPastOrders(id)#ürünıd, miktar
     pck = db.getNamesOfProducts()
     labels = []
@@ -138,7 +128,22 @@ def packageOfTotalBought():
         a+=1
     return {"labels":labels, "series":series}
     
-        
+@app.route("/showtable/spentmoneyformonths",methods = ["GET", "POST"])
+def spentmoneyformonths():
+    id = getID()
+    temp = db.spentOfMoneyForMonths(id) #ay, harcanan para
+    months = [["01","Ocak"],["02","Şubat"],["03","Mart"],["04","Nisan"],["05","Mayıs"],["06","Haziran"],["07","Temmuz"],["08","Ağustos"],["09","Eylül"],["10","Ekim"],["11","Kasım"],["12","Aralık"]]
+    series = []
+    labels = []
+    for i in months:
+        labels.append(i[1])
+        series.append(0)
+    for i in temp:
+        for j in range(len(months)):
+            if(i[0]==months[j][0]):
+                series[j]+=i[1]
+                
+    return {"labels":labels, "series":series}
 
 
 
