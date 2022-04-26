@@ -51,15 +51,27 @@ def login():
     else:
         return {"data":0}
 
-def getID():
+def getUserID():
     id = request.data.decode("UTF-8")
     id = json.loads(id)
     id = id["id"]
     return id
 
+def getProductID():
+    id = request.data.decode("UTF-8")
+    id = json.loads(id)
+    id = id["product_id"]
+    return id
+
+def getAmount():
+    amount = request.data.decode("UTF-8")
+    amount = json.loads(amount)
+    amount = amount["amount"]
+    return amount
+
 @app.route("/showtable/pastorders", methods = ["GET", "POST"])
 def pastorders():
-    id = getID()
+    id = getUserID()
     temp  = db.totalPackageOfBought(id)#tarih, ürünıd, paket sayısı
     products = db.getNamesOfProducts() #{{"id":value, "name":value}}
     categories = []
@@ -85,7 +97,7 @@ def pastorders():
 
 @app.route("/showtable/pastorders_money", methods = ["GET", "POST"])                  
 def pastordersMoney():
-    id = getID()
+    id = getUserID()
     temp = db.totalSpentOfMoney(id)#tarih, ürünıd, paket sayısı
     products = db.getNamesOfProducts() #{{"id":value, "name":value}}
     categories = []
@@ -111,7 +123,7 @@ def pastordersMoney():
 
 @app.route("/showtable/packageoftotalbought",methods = ["GET", "POST"])
 def packageOfTotalBought():
-    id = getID()
+    id = getUserID()
     temp = db.getPastOrders(id)#ürünıd, miktar
     pck = db.getNamesOfProducts()
     labels = []
@@ -130,7 +142,7 @@ def packageOfTotalBought():
     
 @app.route("/showtable/spentmoneyformonths",methods = ["GET", "POST"])
 def spentmoneyformonths():
-    id = getID()
+    id = getUserID()
     temp = db.spentOfMoneyForMonths(id) #ay, harcanan para
     months = [["01","Ocak"],["02","Şubat"],["03","Mart"],["04","Nisan"],["05","Mayıs"],["06","Haziran"],["07","Temmuz"],["08","Ağustos"],["09","Eylül"],["10","Ekim"],["11","Kasım"],["12","Aralık"]]
     series = []
@@ -145,7 +157,13 @@ def spentmoneyformonths():
                 
     return {"labels":labels, "series":series}
 
-
+@app.route("/buyProduct",methods = ["GET", "POST"])
+def buyProduct():
+    user_id = getUserID()
+    product_id = getProductID()
+    amount = getAmount()
+    res = db.buyProduct(user_id, product_id, amount)
+    return res
 
 app.debug=False
 app.run()

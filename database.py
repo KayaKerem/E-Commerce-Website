@@ -166,14 +166,26 @@ def updateQuantity(newQuantity,productId):#Ürünün miktarını yeniler
 def buyProduct(userId,productId,amount):#ürün satın alır order tablosuna ekler
     conn =sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
-
-    cursor.execute('SELECT * FROM PRODUCTS WHERE ID = ?',(productId,))
-    listProduct = list(cursor.fetchone())
+    try:
+        print("Hata ürünleri listelemede")
+        cursor.execute('SELECT * FROM PRODUCTS WHERE ID = ?',(productId,))
+        listProduct = list(cursor.fetchone())
+    except:
+        return 0
     # print(listProduct)
-    updateQuantity(listProduct[2]-amount,productId)
-    addOrder(userId,productId,amount,listProduct[3])
+    try:
+        print("Error in updateQuantity Funciton")
+        updateQuantity(listProduct[2]-amount,productId)
+    except:
+        return 0
+    try:
+        print("Error in addOrder Function")
+        addOrder(userId,productId,amount,listProduct[3])
+    except:
+        return 0
     conn.commit()
     conn.close()
+    return 1
 
 def getTradeOfUser(user_id):#Kullanıcının aldığı  ürünlerin toplam sayısını dict olarak {ürün:toplam alınan miktar} şeklinde döndürür
     conn = sqlite3.connect('Dunder.db')
