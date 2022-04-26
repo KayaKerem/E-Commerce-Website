@@ -76,7 +76,7 @@
               class="text-primary text-center pb-1"
               style="font-size: bold !important"
             >
-              Grafik 3
+              Ürün başına harcamalar
             </h3>
             <div id="chart" class="p-1 rounded-lg">
               <apexchart
@@ -97,15 +97,15 @@
               class="text-primary text-center pb-1"
               style="font-size: bold !important"
             >
-              Grafik 4
+              Aylara göre harcamalar
             </h3>
             <div id="chart" class="p-1 rounded-lg">
               <apexchart
                 type="donut"
                 height="300"
                 width="100%"
-                :options="piechart"
-                :series="seriesDonut"
+                :options="piechart2"
+                :series="seriesDonut2"
                 class="businessChart"
               ></apexchart>
             </div>
@@ -148,7 +148,7 @@ export default {
           colors: ["#fff"],
         },
         title: {
-          text: "Fiction Books Sales",
+          text: "",
         },
         xaxis: {
           categories: this.categories1,
@@ -184,6 +184,10 @@ export default {
       piechart: {
         labels: [],
       },
+      seriesDonut2: [],
+      piechart2: {
+        labels: [],
+      },
     };
   },
   created() {
@@ -203,6 +207,18 @@ export default {
         console.log(this.piechart);
         // console.log(res.data["data"]["labels"]);
         // console.log(res);
+      });
+    axios
+      .post("http://127.0.0.1:5000/showtable/spentmoneyformonths", {
+        id: user_id,
+      })
+      .then((res) => {
+        this.seriesDonut2 = res.data["series"];
+        this.piechart2["labels"] = res.data["labels"];
+        // this.$set(this.piechart, 0, res.data["labels"]);
+
+        console.log(this.seriesDonut2);
+        console.log(this.piechart2);
       });
   },
 
@@ -229,7 +245,7 @@ export default {
             colors: ["#fff"],
           },
           title: {
-            text: "Fiction Books Sales",
+            text: "",
           },
           xaxis: {
             categories: this.categories1,
@@ -295,7 +311,7 @@ export default {
             colors: ["#fff"],
           },
           title: {
-            text: "Fiction Books Sales",
+            text: "",
           },
           xaxis: {
             categories: this.categories1,

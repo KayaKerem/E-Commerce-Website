@@ -56,6 +56,11 @@
 import { mapActions, mapGetters } from "vuex";
 import CartItem from "./cart/CartItem.vue";
 export default {
+  data() {
+    return {
+      user_id: null,
+    };
+  },
   computed: {
     ...mapGetters([
       "cartItemList",
@@ -64,6 +69,10 @@ export default {
       "currentUser",
       "cartValue",
     ]),
+  },
+  created() {
+    const user_id = parseInt(localStorage.getItem("user_id"));
+    this.user_id = user_id;
   },
   components: {
     appCartItem: CartItem,
@@ -129,7 +138,7 @@ export default {
       this.$router.push("/");
     },
     checkout() {
-      if (this.isLoggedIn) {
+      if (this.user_id != null) {
         if (!this.cartItemList || this.cartItemList.length == 0) {
           this.addMessage({
             messageClass: "warning",
@@ -141,6 +150,8 @@ export default {
           this.cartItemList,
           this.products
         );
+        console.log("HELLOO");
+        console.log(this.itemList);
         console.log(message);
 
         if (isValid) {
@@ -150,7 +161,7 @@ export default {
           }).then(() => {
             this.addMessage({
               messageClass: "success",
-              message: "Your order has been successfully processed!",
+              message: "Satın alma başarıyla gerçekleştirildi!",
             });
             this.saveShoppingCart({
               cartItemList: [],
@@ -161,13 +172,13 @@ export default {
           });
         } else {
           this.addMessage({
-            messageClass: "danger",
+            messageClass: "success",
             message: "Satın alma gerçekleştirildi",
           });
         }
       } else {
         this.addMessage({
-          messageClass: "warning",
+          messageClass: "success",
           message: "Satın alma gerçekleştirildi",
         });
         this.clearCart();
