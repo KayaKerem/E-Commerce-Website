@@ -183,10 +183,83 @@ export default {
       seriesDonut: [],
       piechart: {
         labels: [],
+        chart: {
+          type: "donut",
+        },
+        plotOptions: {
+          pie: {
+            donut: {
+              labels: {
+                show: true,
+                name: {
+                  show: true,
+                  fontSize: "22px",
+                  fontFamily: "Rubik",
+                  color: "#dfsda",
+                  offsetY: -10,
+                },
+                value: {
+                  show: true,
+                  fontSize: "32px",
+                  fontFamily: "Helvetica, Arial, sans-serif",
+                  color: undefined,
+                  offsetY: 16,
+                },
+                total: {
+                  show: true,
+                  label: "Total",
+                  color: "#373d3f",
+                  formatter: function (w) {
+                    return w.globals.seriesTotals.reduce((a, b) => {
+                      return a + b;
+                    }, 0);
+                  },
+                },
+              },
+            },
+          },
+        },
       },
+
       seriesDonut2: [],
       piechart2: {
         labels: [],
+        chart: {
+          type: "donut",
+        },
+        plotOptions: {
+          pie: {
+            donut: {
+              labels: {
+                show: true,
+                name: {
+                  show: true,
+                  fontSize: "22px",
+                  fontFamily: "Rubik",
+                  color: "#dfsda",
+                  offsetY: -10,
+                },
+                value: {
+                  show: true,
+                  fontSize: "32px",
+                  fontFamily: "Helvetica, Arial, sans-serif",
+                  color: undefined,
+                  offsetY: 16,
+                },
+                total: {
+                  show: true,
+                  label: "Total",
+                  color: "#373d3f",
+                  formatter: function (w) {
+                    return w.globals.seriesTotals.reduce((a, b) => {
+                      return a + b;
+                    }, 0);
+                  },
+                },
+              },
+            },
+          },
+        },
       },
     };
   },
