@@ -55,6 +55,7 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 import CartItem from "./cart/CartItem.vue";
+import axios from "axios";
 export default {
   data() {
     return {
@@ -142,7 +143,7 @@ export default {
         if (!this.cartItemList || this.cartItemList.length == 0) {
           this.addMessage({
             messageClass: "warning",
-            message: "Your cart is empty!",
+            message: "Sepetiniz Boş!",
           });
           return;
         }
@@ -150,8 +151,32 @@ export default {
           this.cartItemList,
           this.products
         );
-        console.log("HELLOO");
-        console.log(this.itemList);
+        let buyInfo = { id: this.user_id, product_id: [], amount: [] };
+        console.log("CARTITEMLİST");
+        console.log(this.cartItemList);
+        for (let i in this.cartItemList) {
+          buyInfo.product_id.push(this.cartItemList[i]["id"]);
+          buyInfo.amount.push(this.cartItemList[i]["quantity"]);
+        }
+        console.log("BUYINFO");
+        console.log(buyInfo);
+        let headers = {
+          "Access-Control-Request-Headers": "*",
+          "Access-Control-Allow-Methods": "POST, GET, PUT, OPTIONS, DELETE",
+          "Access-Control-Max-Age": "3600",
+          "Access-Control-Allow-Headers": "x-requested-with, content-type",
+        };
+
+        axios
+          .post("http://127.0.0.1:5000/buyProduct", buyInfo, { headers })
+          .then((res) => {
+            console.log(res);
+          });
+
+        // console.log("ITEM LİSTESİ GÖRMEYE ÇALIŞIYORUZ");
+
+        // console.log(this.cartItemList);
+        // console.log("ITEM LİSTESİ GÖRMEYE ÇALIŞIYORUZ2");
         console.log(message);
 
         if (isValid) {

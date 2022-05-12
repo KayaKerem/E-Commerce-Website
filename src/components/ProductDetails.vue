@@ -62,7 +62,7 @@ export default {
     axios.get("http://127.0.0.1:5000/products").then((res) => {
       let dt = res.data["data"];
       this.products = dt;
-      console.log("products");
+      console.log("PORODUCTS");
       console.log(this.products);
       let id = this.$route.params.id;
       for (let i in dt) {
@@ -70,8 +70,6 @@ export default {
         console.log(dt[i]);
         if (dt[i]["id"] == id) {
           this.item = dt[i];
-          console.log("AAa");
-          console.log(this.item);
         }
       }
       this.isProductLoading = false;
