@@ -1,18 +1,23 @@
+from math import prod
 import sqlite3
 from webbrowser import get
+import random
 def initializeOrder():
-    addOrderWithDate(2001,1002,130,175,"2022-02-09 13:26:28")
-    addOrderWithDate(2001,1002,100,175,"2022-11-09 13:26:28")
-    addOrderWithDate(2001,1001,125,175,"2022-10-09 13:26:28")
-    addOrderWithDate(2001,1001,115,175,"2022-07-09 13:26:28")
-    addOrderWithDate(2001,1004,90,175,"2022-05-09 13:26:28")
-    addOrderWithDate(2001,1004,136,175,"2022-04-09 13:26:28")
-    addOrderWithDate(2001,1003,41,175,"2022-10-09 13:26:28")
-    addOrderWithDate(2001,1000,78,175,"2022-07-09 13:26:28")
-    addOrderWithDate(2001,1000,69,175,"2022-02-09 13:26:28")
-    addOrderWithDate(2001,1002,59,175,"2022-01-09 13:26:28")
-    addOrderWithDate(2001,1000,131,175,"2022-03-09 13:26:28")
-    addOrderWithDate(2001,1003,44,175,"2022-01-09 13:26:28")
+    firstOrderItems = [1002,1002,1001,1001,1004]
+    firstOrderAmounts = [130,100,125,115,90]
+    firstOrderPrice = [175,175,175,175,175]
+
+    secondOrderItems = [1004,1003,1000,1000,1002]
+    secondOrderAmounts = [136,41,78,69,59]
+    secondOrderPrice = [175,175,175,175,175]
+
+    thirdOrderItems = [1000,1003]
+    thirdOrderAmounts = [131,44]
+    thirdOrderPrice = [175,175]
+    addOrderWithDate(2001,firstOrderItems,firstOrderAmounts,firstOrderPrice,"2022-02-09 13:26:28")
+    addOrderWithDate(2001,secondOrderItems,secondOrderAmounts,secondOrderPrice,"2022-02-09 13:26:28")
+    addOrderWithDate(2001,thirdOrderItems,thirdOrderAmounts,thirdOrderPrice,"2022-02-09 13:26:28")
+
 
 def addProduct(name,quantity,price,weightofpackages,details,image,thickness,dimension):#Product Ekler
     conn = sqlite3.connect('Dunder.db')
@@ -88,10 +93,12 @@ def getProducts():#Product Table ındakileri Döndürür(Liste içinde Liste ola
 def addOrder(userId,ProductId,quantityOfPackage,pricePerProduct):#Sipariş Ekler
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
-
-    add_command = ''' INSERT INTO ORDERS(USER_ID,PRODUCT_ID,QUANTITYOFPACKAGE,PRICEPERPRODUCT)VALUES{}'''
-    data = (userId,ProductId,quantityOfPackage,pricePerProduct)
-    cursor.execute(add_command.format(data))
+    orderNumber = createOrderNumber()
+    for i in range(len(ProductId)):
+        add_command = ''' INSERT INTO ORDERS(USER_ID,PRODUCT_ID,QUANTITYOFPACKAGE,PRICEPERPRODUCT,ORDERNUMBER)VALUES{}'''
+        
+        data = (userId,ProductId[i],quantityOfPackage[i],pricePerProduct[i],orderNumber)
+        cursor.execute(add_command.format(data))
 
     conn.commit()
     conn.close()
@@ -99,10 +106,11 @@ def addOrder(userId,ProductId,quantityOfPackage,pricePerProduct):#Sipariş Ekler
 def addOrderWithDate(userId,ProductId,quantityOfPackage,pricePerProduct,date):#Sipariş Ekler
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
-
-    add_command = ''' INSERT INTO ORDERS(USER_ID,PRODUCT_ID,QUANTITYOFPACKAGE,PRICEPERPRODUCT,DATE)VALUES{}'''
-    data = (userId,ProductId,quantityOfPackage,pricePerProduct,date)
-    cursor.execute(add_command.format(data))
+    orderNumber = createOrderNumber()
+    for i in range(len(ProductId)):
+        add_command = ''' INSERT INTO ORDERS(USER_ID,PRODUCT_ID,QUANTITYOFPACKAGE,PRICEPERPRODUCT,DATE,ORDERNUMBER)VALUES{}'''
+        data = (userId,ProductId[i],quantityOfPackage[i],pricePerProduct[i],date,orderNumber)
+        cursor.execute(add_command.format(data))
 
     conn.commit()
     conn.close()    
@@ -166,21 +174,35 @@ def updateQuantity(newQuantity,productId):#Ürünün miktarını yeniler
 def buyProduct(userId,productId,amount):#ürün satın alır order tablosuna ekler
     conn =sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
+    listOfPrices = []
+
     try:
+        listProduct = []
         print("Hata ürünleri listelemede")
-        cursor.execute('SELECT * FROM PRODUCTS WHERE ID = ?',(productId,))
-        listProduct = list(cursor.fetchone())
+        for i in range(len(productId)):
+            cursor.execute('SELECT * FROM PRODUCTS WHERE ID = ?',(productId[i],))
+            prod = list(cursor.fetchone())
+            listProduct.append(prod)
     except:
         return 0
     # print(listProduct)
+
     try:
         print("Error in updateQuantity Funciton")
-        updateQuantity(listProduct[2]-amount,productId)
+        k = 0
+        for i in listProduct:
+
+            updateQuantity(i[2]-amount[k],productId[k])
+            k += 1 
     except:
         return 0
     try:
+        for i in listProduct:
+            x = i[3]
+            listOfPrices.append(x)
+        print(listOfPrices)          
         print("Error in addOrder Function")
-        addOrder(userId,productId,amount,listProduct[3])
+        addOrder(userId,productId,amount,listOfPrices)
     except:
         return 0
     conn.commit()
@@ -332,3 +354,22 @@ def getIdsOfProducts():#Ürünlerin id bilgilerini döndürür
         listOfIds.append(i[0])
     # print(listOfIds)
     return listOfIds
+
+def createOrderNumber():#unique bir orderNuber yaratır
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
+    cursor.execute('''SELECT ORDERNUMBER FROM ORDERS''')#id yerine orderNumber olucak
+    tuple = cursor.fetchall()
+    list = []
+    for i in tuple:
+        list.append(i[0])
+
+    orderNumber = random.randint(40000,50000)
+    for i in list:
+        if i == orderNumber:
+            orderNumber = random.randint(40000,50000)
+            i = 0
+    return orderNumber         
+    conn.commit()
+    conn.close()
+    
