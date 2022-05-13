@@ -41,6 +41,58 @@
           </div>
         </div>
       </form>
+      <!-- End What We Do Section -->
+      <!-- ======= About Section ======= -->
+      <section id="about" class="about">
+        <div class="container pt-5">
+          <div class="row">
+            <div class="col-lg-6">
+              <img
+                src="../assets/package4.jpg"
+                class="img-fluid"
+                id="package"
+                alt=""
+              />
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0">
+              <h3>Some Info</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              <ul>
+                <li>
+                  <i class="bx bx-check-double"></i> Ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat.
+                </li>
+                <li>
+                  <i class="bx bx-check-double"></i> Duis aute irure dolor in
+                  reprehenderit in voluptate velit.
+                </li>
+              </ul>
+              <div class="row icon-boxes">
+                <div class="col-md-6">
+                  <i class="bx bx-receipt"></i>
+                  <h4>Corporis voluptates sit</h4>
+                  <p>
+                    Consequuntur sunt aut quasi enim aliquam quae harum pariatur
+                    laboris nisi ut aliquip
+                  </p>
+                </div>
+                <div class="col-md-6 mt-4 mt-md-0">
+                  <i class="bx bx-cube-alt"></i>
+                  <h4>Ullamco laboris nisi</h4>
+                  <p>
+                    Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End About Section -->
     </div>
   </div>
 </template>
@@ -105,5 +157,51 @@ export default {
   align-items: center;
   justify-content: center;
   display: flex;
+}
+
+.about {
+  padding: 10px 0;
+}
+.about h3 {
+  font-weight: 600;
+  font-size: 32px;
+}
+.about ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+.about ul li + li {
+  margin-top: 10px;
+}
+.about ul li {
+  position: relative;
+  padding-left: 26px;
+}
+.about ul i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 22px;
+  color: #3498db;
+}
+.about .icon-boxes {
+  padding-top: 10px;
+}
+.about .icon-boxes h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 5px;
+}
+.about .icon-boxes i {
+  font-size: 48px;
+  color: #3498db;
+}
+.about .icon-boxes p {
+  font-size: 15px;
+  color: #848484;
+}
+#package {
+  border-radius: 20%;
 }
 </style>

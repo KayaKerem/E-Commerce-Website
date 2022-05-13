@@ -22,7 +22,7 @@
       <tfoot>
         <tr class="d-table-row d-sm-none">
           <td class="text-center">
-            <strong>Total ${{ cartValue }}</strong>
+            <strong>Toplam ${{ cartValue }}</strong>
           </td>
         </tr>
         <tr>
@@ -233,5 +233,8 @@ export default {
 #keepshopbtn {
   background-color: #091239;
   border: none;
+}
+#cart {
+  margin-top: 40px !important;
 }
 </style>

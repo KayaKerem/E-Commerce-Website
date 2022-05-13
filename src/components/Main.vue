@@ -283,137 +283,182 @@
         </div>
 
         <div class="row">
-          <div class="col-md-8 col-lg-4">
-            <div class="testimonial-item">
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Proin iaculis purus consequat sem cure digni ssim donec
-                porttitora entum suscipit rhoncus. Accusantium quam, ultricies
-                eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-              <img
-                src="https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/MichaelScott.png/220px-MichaelScott.png"
-                class="testimonial-img"
-                alt=""
-              />
-              <h3>Michael Scott</h3>
-              <h4>Manager</h4>
+          <div
+            id="carouselExampleIndicators"
+            class="carousel slide"
+            data-ride="carousel"
+          >
+            <ol class="carousel-indicators">
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="0"
+                class="active"
+              ></li>
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="1"
+              ></li>
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="2"
+              ></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="testimonial-item">
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Proin iaculis purus consequat sem cure digni ssim donec
+                    porttitora entum suscipit rhoncus. Accusantium quam,
+                    ultricies eget id, aliquam eget nibh et. Maecen aliquam,
+                    risus at semper.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/MichaelScott.png/220px-MichaelScott.png"
+                    class="testimonial-img"
+                    alt=""
+                  />
+                  <h3>Michael Scott</h3>
+                  <h4>Manager</h4>
+                </div>
+                <!-- <img
+                  class="d-block w-100 img-fluid"
+                  src="https://placeimg.com/1080/500/animals"
+                  alt="First slide"
+                />
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>My Caption Title (1st Image)</h5>
+                  <p>
+                    The whole caption will only show up if the screen is at
+                    least medium size.
+                  </p>
+                </div> -->
+              </div>
+              <div class="carousel-item">
+                <div class="testimonial-item">
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Enim nisi quem export duis labore cillum quae magna enim
+                    sint quorum nulla quem veniam duis minim tempor labore quem
+                    eram duis noster aute amet eram fore quis sint minim.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                  <img
+                    src="https://i.pinimg.com/originals/9a/a3/48/9aa348cc3fd22c9eb1f5413058164738.jpg"
+                    class="testimonial-img"
+                    alt=""
+                  />
+                  <h3>Pam Beesly</h3>
+                  <h4>Receptionist</h4>
+                </div>
+                <!-- <img
+                  class="d-block w-100 img-fluid"
+                  src="https://placeimg.com/1080/500/arch"
+                  alt="Second slide"
+                /> -->
+              </div>
+
+              <div class="carousel-item">
+                <div class="testimonial-item">
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Export tempor illum tamen malis malis eram quae irure esse
+                    labore quem cillum quid cillum eram malis quorum velit fore
+                    eram velit sunt aliqua noster fugiat irure amet legam anim
+                    culpa.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                  <img
+                    src="https://i.pinimg.com/originals/01/b0/71/01b071bef3bb8e3d61ebed3af1903a11.jpg"
+                    class="testimonial-img"
+                    alt=""
+                  />
+                  <h3>Dwight Schrute</h3>
+                  <h4>Salesman &amp; Assistant Manager</h4>
+                </div>
+                <!-- <img
+                  class="d-block w-100 img-fluid"
+                  src="https://placeimg.com/1080/500/nature"
+                  alt="Third slide"
+                /> -->
+              </div>
+
+              <div class="carousel-item">
+                <div class="testimonial-item">
+                  <div class="testimonial-item">
+                    <p>
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                      Fugiat enim eram quae cillum dolore dolor amet nulla culpa
+                      multos export minim fugiat minim velit minim dolor enim
+                      duis veniam ipsum anim magna sunt elit fore quem dolore
+                      labore illum veniam.
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <img
+                      src="https://media1.popsugar-assets.com/files/thumbor/pGaXO5z7n_4s__CUMajM1btm2qE/1165x157:2676x1668/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2020/08/03/142/n/1922283/2e3ca0ba5f28c706c113e3.69387310_/i/office-jim-best-pranks-ranked.png"
+                      class="testimonial-img"
+                      alt=""
+                    />
+                    <h3>Jim Halpert</h3>
+                    <h4>Salesman</h4>
+                  </div>
+                </div>
+              </div>
+
+              <div class="carousel-item">
+                <div class="testimonial-item">
+                  <div class="testimonial-item">
+                    <p>
+                      <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                      Quis quorum aliqua sint quem legam fore sunt eram irure
+                      aliqua veniam tempor noster veniam enim culpa labore duis
+                      sunt culpa nulla illum cillum fugiat legam esse veniam
+                      culpa fore nisi cillum quid.
+                      <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <img
+                      src="https://i.pinimg.com/originals/bd/dd/3e/bddd3e97980826284f64095c082767a3.jpg"
+                      class="testimonial-img"
+                      alt=""
+                    />
+                    <h3>Kevin Malone</h3>
+                    <h4>Accountant</h4>
+                  </div>
+                </div>
+              </div>
             </div>
+            <a
+              class="carousel-control-prev"
+              href="#carouselExampleIndicators"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carouselExampleIndicators"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Next</span>
+            </a>
           </div>
-
-          <!-- End testimonial item -->
-
-          <div class="col-md-8 col-lg-4">
-            <div class="testimonial-item">
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Export tempor illum tamen malis malis eram quae irure esse
-                labore quem cillum quid cillum eram malis quorum velit fore eram
-                velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-              <img
-                src="https://i.pinimg.com/originals/01/b0/71/01b071bef3bb8e3d61ebed3af1903a11.jpg"
-                class="testimonial-img"
-                alt=""
-              />
-              <h3>Dwight Schrute</h3>
-              <h4>Salesman &amp; Assistant Manager</h4>
-            </div>
-          </div>
-
-          <!-- End testimonial item -->
-
-          <div class="col-md-8 col-lg-4">
-            <div class="testimonial-item">
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Enim nisi quem export duis labore cillum quae magna enim sint
-                quorum nulla quem veniam duis minim tempor labore quem eram duis
-                noster aute amet eram fore quis sint minim.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-              <img
-                src="https://i.pinimg.com/originals/9a/a3/48/9aa348cc3fd22c9eb1f5413058164738.jpg"
-                class="testimonial-img"
-                alt=""
-              />
-              <h3>Pam Beesly</h3>
-              <h4>Receptionist</h4>
-            </div>
-          </div>
-          <!-- End testimonial item -->
-
-          <div class="col-md-8 col-lg-4">
-            <div class="testimonial-item">
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Fugiat enim eram quae cillum dolore dolor amet nulla culpa
-                multos export minim fugiat minim velit minim dolor enim duis
-                veniam ipsum anim magna sunt elit fore quem dolore labore illum
-                veniam.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-              <img
-                src="https://media1.popsugar-assets.com/files/thumbor/pGaXO5z7n_4s__CUMajM1btm2qE/1165x157:2676x1668/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2020/08/03/142/n/1922283/2e3ca0ba5f28c706c113e3.69387310_/i/office-jim-best-pranks-ranked.png"
-                class="testimonial-img"
-                alt=""
-              />
-              <h3>Jim Halpert</h3>
-              <h4>Salesman</h4>
-            </div>
-          </div>
-          <!-- End testimonial item -->
-
-          <div class="col-md-8 col-lg-4">
-            <div class="testimonial-item">
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua
-                veniam tempor noster veniam enim culpa labore duis sunt culpa
-                nulla illum cillum fugiat legam esse veniam culpa fore nisi
-                cillum quid.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-              <img
-                src="https://i.pinimg.com/originals/bd/dd/3e/bddd3e97980826284f64095c082767a3.jpg"
-                class="testimonial-img"
-                alt=""
-              />
-              <h3>Kevin Malone</h3>
-              <h4>Accountant</h4>
-            </div>
-          </div>
-
-          <!-- End testimonial item -->
-          <div class="col-md-8 col-lg-4">
-            <div class="testimonial-item">
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua
-                veniam tempor noster veniam enim culpa labore duis sunt culpa
-                nulla illum cillum fugiat legam esse veniam culpa fore nisi
-                cillum quid.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-              <img
-                src="https://img-s1.onedio.com/id-617a68d8a086b34948d38d80/rev-0/w-620/f-jpg/s-5fbf955eaadeffd04328f8129ed045268dde3cb4.jpg"
-                class="testimonial-img"
-                alt=""
-              />
-              <h3>Ryan Howard</h3>
-              <h4>Temp</h4>
-            </div>
-          </div>
-
-          <!-- End testimonial item -->
-
-          <div class="swiper-pagination"></div>
         </div>
       </div>
     </section>
     <!-- End Testimonials Section -->
+
+    <!------->
     <footer
       v-if="footerStick"
       id="sticky-footer"
@@ -462,6 +507,10 @@ export default {
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+.carousel {
+  width: 100%;
+  height: 100%;
+}
 .body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -1089,7 +1138,7 @@ section {
   text-align: center;
   min-height: 350px;
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
-  background: #fff;
+  background: #fff8cc;
 }
 .testimonials .testimonial-item .testimonial-img {
   max-width: 30%;
