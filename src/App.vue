@@ -1,10 +1,11 @@
 <template>
   <div class="d-flex flex-column sticky-footer-wrapper">
     <main class="flex-fill">
-      <app-header></app-header>
+      <app-header class="fixed-top"></app-header>
       <message-component></message-component>
 
-      <router-view></router-view>
+      <router-view class="pt-5"></router-view>
+
       <!-- <div class="container mt-3">
         <div class="row">
          
@@ -66,5 +67,8 @@ footer a:hover {
   footer {
     height: 50px;
   }
+}
+#sticky-footer {
+  background-color: #091239 !important;
 }
 </style>

@@ -414,16 +414,47 @@
       </div>
     </section>
     <!-- End Testimonials Section -->
+    <footer
+      v-if="footerStick"
+      id="sticky-footer"
+      class="flex-shrink-0 py-4 bg-dark text-white-50 fixed-bottom"
+    >
+      <div class="container text-center" id="footer-part">
+        <small>Copyright &copy; Dunder Mifflin INC.</small>
+      </div>
+    </footer>
   </div>
 </template>
 
 <script>
 // import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 export default {
+  data() {
+    return { footerStick: false, navbarStick: false };
+  },
   components: {},
-  methods: {},
-  created() {},
+
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
   mounted() {},
+  methods: {
+    handleScroll(event) {
+      var navHeight = window.innerHeight - 920;
+      console.log("navHeight : " + navHeight);
+      console.log("windowHeight : " + window.innerHeight);
+
+      if (window.scrollY > navHeight) {
+        this.footerStick = true;
+      } else {
+        this.footerStick = false;
+        console.log(event);
+      }
+    },
+  },
 };
 </script>
 

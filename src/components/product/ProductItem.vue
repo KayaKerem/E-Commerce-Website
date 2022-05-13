@@ -15,8 +15,8 @@
         <router-link :to="'/product/' + item.id" tag="h5" class="card-title"
           ><a>{{ item.title }}</a></router-link
         >
-        <h6 class="card-subtitle mb-2 remain">
-          {{ item.quantity }} adet kaldı
+        <h6 v-if="item.quantity < 7000" class="card-subtitle mb-2 remain">
+          Son {{ item.quantity }} adet kaldı!
         </h6>
 
         <p class="card-text truncate">

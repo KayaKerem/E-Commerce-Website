@@ -24,8 +24,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Siparişiniz yolda</h5>
                   <p class="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    Siparişiniz yola çıktı. En kısa sürede adresinizde olacağız.
                   </p>
                 </div>
               </div>
@@ -95,5 +94,13 @@ export default {
 .card-img-top {
   width: 100% !important;
   height: 100% !important;
+}
+.card-text {
+  font-family: 'Poppins", sans-serif' !important;
+}
+.card-title {
+  font-family: 'Poppins", sans-serif' !important;
+  font-weight: 800;
+  font-size: 30px;
 }
 </style>

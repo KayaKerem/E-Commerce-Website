@@ -39,6 +39,14 @@
         :displayList="displayList"
       ></app-product-item>
     </div>
+    <footer
+      id="sticky-footer"
+      class="flex-shrink-0 py-4 bg-dark text-white-50 fixed-bottom"
+    >
+      <div class="container text-center" id="footer-part">
+        <small>Copyright &copy; Your Website</small>
+      </div>
+    </footer>
   </div>
 </template>
 

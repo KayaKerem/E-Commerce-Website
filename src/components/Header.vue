@@ -24,13 +24,38 @@
         :class="{ show: isNavOpen }"
       >
         <ul class="navbar-nav mr-auto"></ul>
+
         <ul class="nav navbar-nav">
-          <router-link to="/" tag="li" class="nav-item">
+          <li>
+            <router-link
+              id="productbutton"
+              v-if="isLoggedIn"
+              to="/"
+              class="btn btn-dark navbar-btn"
+              tag="button"
+            >
+              Ürünlerimiz
+            </router-link>
+          </li>
+          <!-- <router-link to="/" tag="li" class="nav-item">
             <a class="nav-link">Ürünlerimiz</a>
-          </router-link>
-          <router-link to="/order" tag="li" class="nav-item">
+          </router-link> -->
+          <!--     -------------   -->
+          <li>
+            <router-link
+              id="orderbutton"
+              v-if="isLoggedIn"
+              to="/order"
+              class="btn btn-dark navbar-btn"
+              tag="button"
+            >
+              Sipariş Takip
+            </router-link>
+          </li>
+
+          <!-- <router-link v-if="isLoggedIn" to="/order" tag="li" class="nav-item">
             <a class="nav-link">Sipariş Takip</a>
-          </router-link>
+          </router-link> -->
           <!--  -->
           <!-- <router-link
             to="/login"
@@ -248,5 +273,21 @@ export default {
 }
 #logo {
   width: 30px;
+}
+#orderbutton {
+  background-color: #091239 !important;
+  border-color: #091239;
+}
+#orderbutton:hover {
+  border-color: white;
+  transition: 0.3s;
+}
+#productbutton {
+  background-color: #091239 !important;
+  border-color: #091239;
+}
+#productbutton:hover {
+  border-color: white;
+  transition: 0.3s;
 }
 </style>
