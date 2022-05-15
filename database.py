@@ -99,9 +99,9 @@ def addOrder(userId,ProductId,quantityOfPackage,pricePerProduct):#Sipariş Ekler
         
         data = (userId,ProductId[i],quantityOfPackage[i],pricePerProduct[i],orderNumber)
         cursor.execute(add_command.format(data))
-
     conn.commit()
     conn.close()
+    return orderNumber
 
 def addOrderWithDate(userId,ProductId,quantityOfPackage,pricePerProduct,date):#Sipariş Ekler
     conn = sqlite3.connect('Dunder.db')
@@ -113,7 +113,8 @@ def addOrderWithDate(userId,ProductId,quantityOfPackage,pricePerProduct,date):#S
         cursor.execute(add_command.format(data))
 
     conn.commit()
-    conn.close()    
+    conn.close()
+    return orderNumber    
 
 def getOrders():#Order Table ındakileri Döndürür(Liste içinde Liste olarak)
     orderList = []
@@ -178,7 +179,7 @@ def buyProduct(userId,productId,amount):#ürün satın alır order tablosuna ekl
 
     try:
         listProduct = []
-        print("Hata ürünleri listelemede")
+        # print("Hata ürünleri listelemede")
         for i in range(len(productId)):
             cursor.execute('SELECT * FROM PRODUCTS WHERE ID = ?',(productId[i],))
             prod = list(cursor.fetchone())
@@ -188,7 +189,7 @@ def buyProduct(userId,productId,amount):#ürün satın alır order tablosuna ekl
     # print(listProduct)
 
     try:
-        print("Error in updateQuantity Funciton")
+        # print("Error in updateQuantity Funciton")
         k = 0
         for i in listProduct:
 
@@ -200,14 +201,16 @@ def buyProduct(userId,productId,amount):#ürün satın alır order tablosuna ekl
         for i in listProduct:
             x = i[3]
             listOfPrices.append(x)
-        print(listOfPrices)          
-        print("Error in addOrder Function")
-        addOrder(userId,productId,amount,listOfPrices)
+        # print(listOfPrices)          
+        # print("Error in addOrder Function")
+        orderNumber = addOrder(userId,productId,amount,listOfPrices)
     except:
         return 0
     conn.commit()
     conn.close()
-    return 1
+
+
+    return orderNumber
 
 def getTradeOfUser(user_id):#Kullanıcının aldığı  ürünlerin toplam sayısını dict olarak {ürün:toplam alınan miktar} şeklinde döndürür
     conn = sqlite3.connect('Dunder.db')
