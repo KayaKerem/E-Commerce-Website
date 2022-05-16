@@ -29,7 +29,7 @@ def products():
         temp.update({"id":i[0]})
         temp.update({"price":i[3]})
         temp.update({"quantity":i[2]})
-        temp.update({"tumbnail_url":i[6]})
+        temp.update({"thumbnail_url":i[6]})
         temp.update({"title":i[1]})
         all_products.append(temp)
     return {"data":all_products}
