@@ -57,17 +57,7 @@ def getUserID():
     id = id["id"]
     return id
 
-def getProductID():
-    id = request.data.decode("UTF-8")
-    id = json.loads(id)
-    id = id["product_id"]
-    return id
 
-def getAmount():
-    amount = request.data.decode("UTF-8")
-    amount = json.loads(amount)
-    amount = amount["amount"]
-    return amount
 
 @app.route("/showtable/pastorders", methods = ["GET", "POST"])
 def pastorders():
@@ -159,11 +149,30 @@ def spentmoneyformonths():
 
 @app.route("/buyProduct",methods = ["GET", "POST"])
 def buyProduct():
-    user_id = getUserID()
-    product_id = getProductID()
-    amount = getAmount()
+    data = request.data.decode("UTF-8")
+    data = json.loads(data)
+    user_id = data["id"]
+    product_id =  data["product_id"]
+    amount = data["amount"]
     res = db.buyProduct(user_id, product_id, amount)
-    return res
+    return {"order_id":res},
+
+@app.route("/checkOrderNumber",methods=["POST"])
+def checkOrderNum():
+    orderNum = request.data.decode("UTF-8")
+    orderNum = json.loads(orderNum)
+    orderNum = orderNum["order_id"]
+    return  db.checkOrderNumber(orderNum)
+
+
+@app.route("/queryOrderNumber",methods=["POST"])
+def queryOrderNum():
+    orderNum = request.data.decode("UTF-8")
+    orderNum = json.loads(orderNum)
+    orderNum = orderNum["order_id"]
+    return  db.queryOrderNumber(orderNum)
+
 
 app.debug=False
 app.run()
+
