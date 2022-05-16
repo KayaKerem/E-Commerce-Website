@@ -261,12 +261,12 @@ def getProductName(product_id):#ID si verilen ürünün ismini döndürür.
 def totalSpentOfMoney(user_id):
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()    
-    cursor.execute(''' SELECT DATE,PRODUCT_ID,SUM(PRICEPERPRODUCT*QUANTITYOFPACKAGE) FROM ORDERS WHERE USER_ID = ? GROUP BY DATE,PRODUCT_ID ORDER BY DATE''',(user_id,))
+    cursor.execute(''' SELECT STRFTIME('%d-%m-%Y',DATE) as DATE,PRODUCT_ID,SUM(PRICEPERPRODUCT*QUANTITYOFPACKAGE) FROM ORDERS WHERE USER_ID = ? GROUP BY DATE,PRODUCT_ID ORDER BY DATE''',(user_id,))
     x = cursor.fetchall()
     newList = []
     for i in x:
         newList.append(list(i))
-    # print(newList)
+    print(newList)
 
     conn.commit()
     conn.close()
@@ -281,7 +281,7 @@ def totalPackageOfBought(user_id):
     newList = []
     for i in x:
         newList.append(list(i))
-    # print(newList)
+    print(newList)
 
     conn.commit()
     conn.close()
