@@ -67,6 +67,8 @@ def pastorders():
     categories = []
     for i in temp:
         categories.append(i[0]) #dates
+    print("bbb")
+    print(categories)
     categories = list(set(categories))    
     res = []    
     for i in products:
@@ -82,6 +84,8 @@ def pastorders():
                 if(i["name"] == db.getProductName(k[1])):
                     if(k[0] == categories[j]):
                         i["data"][j] = k[2]  
+    print("aaaaaaaa")
+    print(categories)
     return {"dates":categories, "pastOrders":res}      
 
 
@@ -162,7 +166,7 @@ def checkOrderNum():
     orderNum = request.data.decode("UTF-8")
     orderNum = json.loads(orderNum)
     orderNum = orderNum["order_id"]
-    return  db.checkOrderNumber(orderNum)
+    return  {"orderNum":db.checkOrderNumber(orderNum)}
 
 
 @app.route("/queryOrderNumber",methods=["POST"])

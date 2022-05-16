@@ -18,7 +18,6 @@ def initializeOrder():
     addOrderWithDate(2001,secondOrderItems,secondOrderAmounts,secondOrderPrice,"2022-02-09 13:26:28")
     addOrderWithDate(2001,thirdOrderItems,thirdOrderAmounts,thirdOrderPrice,"2022-02-09 13:26:28")
 
-
 def addProduct(name,quantity,price,weightofpackages,details,image,thickness,dimension):#Product Ekler
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
