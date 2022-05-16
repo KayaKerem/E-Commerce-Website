@@ -372,7 +372,49 @@ def createOrderNumber():#unique bir orderNuber yaratır
         if i == orderNumber:
             orderNumber = random.randint(40000,50000)
             i = 0
-    return orderNumber         
+            
     conn.commit()
     conn.close()
+    return orderNumber 
+
+def queryOrderNumber(orderNumber):#girilen sipariş numarasına ait sipariş bilgilerini dict olarak döner
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
     
+    cursor.execute('''SELECT USER_ID,PRODUCT_ID,QUANTITYOFPACKAGE,PRICEPERPRODUCT,STRFTIME('%d-%m-%Y',DATE) as DATE FROM ORDERS WHERE ORDERNUMBER = ?''',(orderNumber,))
+    tupleOfInfo = cursor.fetchall()
+    # print(tupleOfInfo)
+    listOfTitles = ["user_id","product_id","quantityOfPackage","pricePerProduct","date"]
+    dictOfInfo = {}
+    list =[]
+    for j in range(5):
+        for i in tupleOfInfo:
+            list.append(i[j])
+        dictOfInfo.update({listOfTitles[j]:list})
+        list = []
+    # print(dictOfInfo)
+    conn.commit()
+    conn.close()
+    return dictOfInfo    
+def checkOrderNumber(orderNumber):#eğer doğru sipraiş numarası girildiyse 1 aksi takdirde 0 döner
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('''SELECT ORDERNUMBER FROM ORDERS''')
+    tup = cursor.fetchall()
+    # print(tup)
+    list1=[]
+    for i in tup:
+        list1.append(i[0])
+    list1=list(set(list1))
+    # print(list1)
+
+    for i in list1:
+        if orderNumber == i:
+            conn.commit()
+            conn.close()
+            return 1
+        
+    conn.commit()
+    conn.close()
+    return 0
