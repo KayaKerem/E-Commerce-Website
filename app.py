@@ -4,6 +4,7 @@ from initialize_database import initialize
 from flask_cors import CORS
 import database as db
 import json
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -66,9 +67,8 @@ def pastorders():
     categories = []
     for i in temp:
         categories.append(i[0]) #dates
-    print("bbb")
-    print(categories)
-    categories = list(set(categories))    
+    categories = list(set(categories))
+    categories.sort(key=lambda date: datetime.strptime(date, "%Y-%m-%d"))  
     res = []    
     for i in products:
         d = {}
@@ -83,8 +83,6 @@ def pastorders():
                 if(i["name"] == db.getProductName(k[1])):
                     if(k[0] == categories[j]):
                         i["data"][j] = k[2]  
-    print("aaaaaaaa")
-    print(categories)
     return {"dates":categories, "pastOrders":res}      
 
 
@@ -96,7 +94,8 @@ def pastordersMoney():
     categories = []
     for i in temp:
         categories.append(i[0]) #dates
-    categories = list(set(categories))    
+    categories = list(set(categories))  
+    categories.sort(key=lambda date: datetime.strptime(date, "%Y-%m-%d"))    
     res = []    
     for i in products:
         d = {}
