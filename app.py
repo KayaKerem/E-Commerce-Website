@@ -163,7 +163,7 @@ def buyProduct():
 
 @app.route("/checkOrderNumber",methods=["POST"])
 def checkOrderNum():
-    orderNum = request.data.decode("UTF-8")
+    orderNum = request.data.decode("UTF-8")data
     orderNum = json.loads(orderNum)
     orderNum = orderNum["order_id"]
     return  {"orderNum":db.checkOrderNumber(orderNum)}
@@ -176,6 +176,17 @@ def queryOrderNum():
     orderNum = orderNum["order_id"]
     return  db.queryOrderNumber(orderNum)
 
+@app.route("/registerUser",methods=["POST"])
+def registerUser():
+    var = request.data.decode("UTF-8")
+    var = json.loads(var)
+    name = var["name"]
+    surname = var["surname"]
+    mail = var["email"]
+    password = var["password"]
+    address = var["address"]
+    res = db.addUser(name,surname,mail,password,address)
+    return {"return":res}
 
 app.debug=False
 app.run()

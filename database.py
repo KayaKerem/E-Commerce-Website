@@ -52,6 +52,7 @@ def addUser(name,surname,mail,password,address):#Kullanıcı Ekler eğer mail ad
         add_command = ''' INSERT INTO USERS(NAME,SURNAME,MAIL,PASSWORD,ADDRESS) VALUES {}'''
         data = (name,surname,mail,password,address)
         cursor.execute(add_command.format(data))
+        return 1
     else:
         # print('Girmiş Olduğunuz Mail Adresi Zaten Kullanılmaktadır')
         return 0
