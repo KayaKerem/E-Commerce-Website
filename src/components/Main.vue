@@ -7,8 +7,8 @@
       <div class="container text-center text-md-left" data-aos="fade-up">
         <h1><span>Dunder Mifflin</span>'e Hoşgeldiniz</h1>
         <h2>
-          Kaliteli dokusuyla dayanaklığı birleştirdiğimiz kağıtlarımızı
-          kullanınca pişman olmayacaksınız. Unutmayın ki, Kağıt bizim işimiz...
+          Kalitesi kendi ormanlarımızdan gelen ürünlerimizle doğaya nefes olun.
+          Eşsiz dayanıklılığı ve dokusu ile unutmayın ki kağıt bizim işimiz...
         </h2>
         <a href="/" class="btn-get-started scrollto">Alışverişe Başla</a>
       </div>
@@ -22,7 +22,6 @@
       <div class="container">
         <div class="section-title">
           <h2>NEDEN BİZ?</h2>
-          <p>Magnam dolores commodi suscipit consequatur ex aliquid</p>
         </div>
 
         <div class="row">
@@ -44,8 +43,9 @@
               </div>
               <h4><a href="">Çevre Dostu</a></h4>
               <p>
-                Voluptatum deleniti atque corrupti quos dolores et quas
-                molestias excepturi
+                Üretimde, akciğerlerimiz olan ağaçlarımızın yerine endüstriyel
+                yetiştirdiğimiz ağaçları kullanıyoruz ve kullandığımızın iki
+                katı kadar yeni fidanı doğaya kazandırıyoruz.
               </p>
             </div>
           </div>
@@ -66,10 +66,10 @@
                   />
                 </svg>
               </div>
-              <h4><a href="">Ekonomik</a></h4>
+              <h4><a href="">Kalite</a></h4>
               <p>
-                Voluptatum deleniti atque corrupti quos dolores et quas
-                molestias excepturi
+                Tüm üretim sürecini hassasiyetle sürdürdüğümüz kağıtlarımızın
+                kalitesinin tadına varınca başka kağıt kullanamayacaksınız.
               </p>
             </div>
           </div>
@@ -90,10 +90,10 @@
                   />
                 </svg>
               </div>
-              <h4><a href="">Hizmet</a></h4>
+              <h4><a href="">Yenilikçi</a></h4>
               <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore
+                Geleneksel kağıt endüstrisinin aksine üretimde ve satışta en
+                güncel teknolojileri sizin için kullanıyoruz.
               </p>
             </div>
           </div>
@@ -117,8 +117,8 @@
               </div>
               <h4><a href="">Memnuniyet</a></h4>
               <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia
+                Bizim için en önemli şey sizin memnuniyetiniz. İstek, öneri,
+                şikayet için her zaman bir telefon kadar uzağınızdayız.
               </p>
             </div>
           </div>
@@ -134,10 +134,14 @@
             <img src="../assets/img/about.jpg" class="img-fluid" alt="" />
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
-            <h3>About Us</h3>
+            <h3>Hakkımızda</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Müşteri memnuniyetini ilke edinmiş olan firmamız, öncelikle
+              müşteri odaklı çalışmayı öngören eğitimli elemanlarımızla,
+              müşterilerimizin isteklerini doğru bir biçimde algılayıp, bu
+              istekler doğrultusunda en uygun çözümü sunmayı hedefleyen ve
+              Matbaa firmalarımızın çözüm ortağı olarak sektöründe en iyi
+              tedarikçi olma yolunda emin adımlarla ilerlemektedir.
             </p>
             <ul>
               <li>

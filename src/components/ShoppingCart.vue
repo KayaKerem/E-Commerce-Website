@@ -225,6 +225,8 @@ export default {
           .post("http://127.0.0.1:5000/buyProduct", buyInfo, { headers })
           .then((res) => {
             console.log(res);
+
+            localStorage.setItem("order_id", res.data["order_id"]);
           });
 
         // console.log("ITEM LİSTESİ GÖRMEYE ÇALIŞIYORUZ");

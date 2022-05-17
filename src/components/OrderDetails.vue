@@ -5,31 +5,95 @@
         <loader></loader>
       </div>
       <div v-else class="row action-panel">
-        <div class="container" style="padding-top: 60px">
-          <div class="section-title">
-            <h2 style="color: #444444">Sipariş Durumu</h2>
-          </div>
-        </div>
+        <div class="container" style="padding-top: 60px"></div>
         <!--Google map-->
 
         <div class="container-fluid" style="margin-top: 30px">
           <div class="row">
             <div class="col-lg-6 col-xl-6">
+              <div class="section-title">
+                <h2 style="color: #444444">Sipariş Durumu</h2>
+              </div>
               <div class="card" style="width: 18rem">
                 <img
                   class="card-img-top"
-                  src="../assets/car3.png"
+                  src="https://www.pamcargo.com/assets/v.2/img/icon/bc685251038249.58ef136283a3b.gif"
                   alt="Card image cap"
                 />
                 <div class="card-body">
-                  <h5 class="card-title">Siparişiniz yolda</h5>
+                  <h5 class="card-title" id="order-state-text">
+                    Siparişiniz yolda
+                  </h5>
                   <p class="card-text">
                     Siparişiniz yola çıktı. En kısa sürede adresinizde olacağız.
                   </p>
+                  <br />
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 col-xl-6">
+            <div class="col-lg-6 col-xl-6" :v-if="isTableLoad">
+              <div class="section-title">
+                <h2 style="color: #444444">Sipariş Detayı</h2>
+              </div>
+              <table id="cart" class="table table-hover table-sm">
+                <thead>
+                  <tr>
+                    <th style="width: 50%">Ürün</th>
+
+                    <th style="width: 10%">Fiyat</th>
+                    <th style="width: 8%">Miktar(Ton)</th>
+                    <th style="width: 22%">Sipariş Tarihi</th>
+
+                    <th style="width: 10%"></th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p v-for="index in nameList" :key="index">{{ index }}</p>
+                    </td>
+                    <td>
+                      <p v-for="item2 in priceList" :key="item2">{{ item2 }}</p>
+                    </td>
+                    <td>
+                      <p v-for="item3 in quantityList" :key="item3">
+                        {{ item3 }}
+                      </p>
+                    </td>
+                    <td>
+                      <p v-for="item4 in dateList" :key="item4">{{ item4 }}</p>
+                    </td>
+                  </tr>
+                </thead>
+
+                <transition-group name="list-shopping-cart" tag="tbody">
+                  <!-- <app-cart-item
+                    v-for="cartItem in cartItemList"
+                    :cartItem="cartItem"
+                    :key="cartItem.id"
+                  ></app-cart-item> -->
+                </transition-group>
+
+                <tfoot>
+                  <tr class="d-table-row d-sm-none">
+                    <td class="text-center">
+                      <strong>Toplam ${{ totalValue }}</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" class="d-none d-sm-table-cell"></td>
+                    <td class="d-none d-sm-table-cell text-center">
+                      <strong>Toplam ${{ totalValue }}</strong>
+                    </td>
+                    <td class="px-0"></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-12">
+              <div class="section-title">
+                <h2 style="color: #444444">Canlı Takip</h2>
+              </div>
               <div class="map-responsive">
                 <iframe
                   src="https://maps.google.com/maps?q=Y%C4%B1ld%C4%B1z%20Teknik%20%C3%9Cniversitesi%20Teknopark&t=&z=15&ie=UTF8&iwloc=&output=embed"
@@ -108,14 +172,49 @@
 
 <script>
 import Loader from "./Loader.vue";
+import axios from "axios";
 export default {
   data() {
     return {
-      isLoading: false,
+      isLoading: true,
+      order_id: null,
+      totalValue: null,
+      nameList: [],
+      dateList: [],
+      quantityList: [],
+      priceList: [],
+      test_list: ["kerem", "kaya"],
+      isTableLoad: false,
+      item: null,
     };
   },
   components: {
     Loader,
+  },
+  created() {
+    this.order_id = localStorage.getItem("order_id");
+  },
+  mounted() {
+    let total = 0;
+    axios
+      .post("http://127.0.0.1:5000/queryOrderNumber", {
+        order_id: this.order_id,
+      })
+      .then((res) => {
+        for (let i in res.data) {
+          this.nameList.push(i);
+
+          this.priceList.push(res.data[i]["price"]);
+          total = total + res.data[i]["price"];
+
+          this.quantityList.push(res.data[i]["quantityOfPackage"]);
+          this.dateList.push(res.data[i]["date"]);
+        }
+
+        this.totalValue = total;
+        this.isLoading = false;
+        this.isTableLoad = true;
+      });
   },
 };
 </script>
@@ -150,8 +249,9 @@ export default {
   height: 100% !important;
 }
 .card-text {
-  font-family: 'Poppins", sans-serif' !important;
+  font-family: "Raleway", sans-serif !important;
 }
+
 .card-title {
   font-family: 'Poppins", sans-serif' !important;
   font-weight: 800;

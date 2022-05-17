@@ -153,7 +153,7 @@
 
 <script>
 import Loader from "./Loader.vue";
-
+import { mapActions } from "vuex";
 import axios from "axios";
 export default {
   data() {
@@ -167,8 +167,11 @@ export default {
     Loader,
   },
   methods: {
+    ...mapActions(["addMessage"]),
     onSubmit() {
       this.isPageLoading = true;
+
+      this.queryCode = parseInt(this.queryCode);
       //post querycode
       console.log(this.queryCode);
       axios
@@ -176,10 +179,22 @@ export default {
           order_id: this.queryCode,
         })
         .then((res) => {
-          if (res["orderNum"] == 1) {
+          if (res.data["orderNum"] == 1) {
+            localStorage.setItem("order_id", this.queryCode);
             this.$router.push("/orderdetails");
           } else if (res.data["orderNum"] == 0) {
-            this.$router.push("/order");
+            // this.$router.push("/order");
+            console.log(res);
+
+            this.addMessage({
+              messageClass: "warning",
+              message: "Sipariş bulunamadı!",
+            });
+            this.isPageLoading = false;
+          } else {
+            console.log(typeof this.queryCode);
+            console.log(res);
+            this.$router.push("/sorry");
           }
         });
     },

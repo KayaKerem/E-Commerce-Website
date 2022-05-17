@@ -14,6 +14,34 @@
         </div>
         <div class="form-group">
           <input
+            id="name"
+            class="form-control"
+            placeholder="İsim"
+            v-model="input"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            id="surname"
+            class="form-control"
+            placeholder="Soyisim"
+            v-model="input"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <input
+            id="address"
+            class="form-control"
+            placeholder="Adres"
+            v-model="input"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <input
             type="email"
             name="email"
             id="email"
@@ -35,6 +63,18 @@
             required
           />
         </div>
+        <div class="form-group">
+          <input
+            type="password"
+            name="password"
+            id="password2"
+            class="form-control"
+            placeholder="Şifre tekrar"
+            v-model="password"
+            required
+          />
+        </div>
+
         <div class="form-group">
           <button
             type="submit"

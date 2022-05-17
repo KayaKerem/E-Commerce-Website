@@ -12,7 +12,7 @@
       >
         <i class="checkmark">✓</i>
       </div>
-      <h1 id="success-text">28756 numaralı siparişiniz alındı</h1>
+      <h1 id="success-text">{{ order_id }} numaralı siparişiniz alındı</h1>
       <p id="response-message">
         Siparişiniz başarıyla tarafımıza ulaşmıştır;<br />
         En kısa sürede teslim edeceğiz!
@@ -24,9 +24,13 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      order_id: null,
+    };
   },
-  created() {},
+  created() {
+    this.order_id = localStorage.getItem("order_id");
+  },
   methods: {},
   mounted() {},
 };
