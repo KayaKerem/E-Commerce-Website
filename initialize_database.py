@@ -51,11 +51,10 @@ def initialize():
     db.addUser('Sena','Eser','senaeser@gmail.com','senaeser','Yıldız Teknik Üniversitesi')
     db.addUser('Berkay','Gündüz','berkaygunduz@gmail.com','berkaygunduz','Yıldız Teknik Üniversitesi')
     db.addUser('İrem','Avcı','iremavci@gmail.com','iremavci','Yıldız Teknik Üniversitesi')
-
+    db.addUser('Oya',"Kalıpsız","oyakalipsiz@gmail.com","oyakalipsiz","Yıldız Teknik Üniversitesi")
 
     db.initializeOrder()
 
     conn.commit()
     conn.close()
 
-initialize()
