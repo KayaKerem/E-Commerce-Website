@@ -1,4 +1,3 @@
-import imp
 from mimetypes import init
 import sqlite3
 import database as db
@@ -59,3 +58,4 @@ def initialize():
     conn.commit()
     conn.close()
 
+initialize()

@@ -1,4 +1,3 @@
-from this import d
 from urllib import request
 from flask import Flask, request
 from initialize_database import initialize

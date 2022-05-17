@@ -1,4 +1,3 @@
-from math import prod
 import sqlite3
 from webbrowser import get
 import random
@@ -52,13 +51,16 @@ def addUser(name,surname,mail,password,address):#Kullanıcı Ekler eğer mail ad
         add_command = ''' INSERT INTO USERS(NAME,SURNAME,MAIL,PASSWORD,ADDRESS) VALUES {}'''
         data = (name,surname,mail,password,address)
         cursor.execute(add_command.format(data))
+        conn.commit()
+        conn.close() 
         return 1
     else:
         # print('Girmiş Olduğunuz Mail Adresi Zaten Kullanılmaktadır')
+        conn.commit()
+        conn.close()
         return 0
 
-    conn.commit()
-    conn.close()
+
 def addUserFirst(id,name,surname,mail,password,address):#AddUser ile aynı olup ID yi spesifik sayıdan başlatmak için ilk eleman bununla eklenir
     conn = sqlite3.connect('Dunder.db')
     cursor=conn.cursor()
