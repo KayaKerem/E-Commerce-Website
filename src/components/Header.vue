@@ -29,7 +29,6 @@
           <li>
             <router-link
               id="productbutton"
-              v-if="isLoggedIn"
               to="/"
               class="btn btn-dark navbar-btn"
               tag="button"
@@ -44,7 +43,6 @@
           <li>
             <router-link
               id="orderbutton"
-              v-if="isLoggedIn"
               to="/order"
               class="btn btn-dark navbar-btn"
               tag="button"

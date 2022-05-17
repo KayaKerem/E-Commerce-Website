@@ -47,12 +47,16 @@ export default {
   methods: {
     ...mapActions(["updateCart"]),
     addItem() {
-      const order = {
-        item: Object.assign({}, this.item),
-        quantity: 1,
-        isAdd: true,
-      };
-      this.updateCart(order);
+      if (localStorage.getItem("user_id") == null) {
+        this.$router.push("/login");
+      } else {
+        const order = {
+          item: Object.assign({}, this.item),
+          quantity: 1,
+          isAdd: true,
+        };
+        this.updateCart(order);
+      }
     },
   },
   filters: {

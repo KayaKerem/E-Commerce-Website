@@ -7,6 +7,8 @@ import Profile from './components/Profile.vue'
 import Main from './components/Main.vue'
 import Order from './components/Order.vue';
 import OrderDetails from './components/OrderDetails.vue'
+import Success from './components/Success.vue';
+import Sorry from './components/Sorry.vue'
 
 export const routes = [
 	{path: '/', component: Store, name: 'mainpage'},
@@ -17,6 +19,8 @@ export const routes = [
 	{ path: '/home', component: Main, name: 'home', onlyGuest: true },
 	{ path: '/profile', component: Profile, name: 'profile', onlyGuest: true },
 	{ path: '/order', component: Order, name: 'order', onlyGuest: true },
-	{path: '/orderdetails',component:OrderDetails,name:'orderdetails',onlyGuest:true},
+	{ path: '/orderdetails', component: OrderDetails, name: 'orderdetails', onlyGuest: true },
+	{ path: '/success', component: Success, name: 'success', onlyGuest: true },
+	{path:'/sorry',component:Sorry,name:'sorry',onlyGuest:true},
 	{path: '*', redirect: '/' }
 ];
