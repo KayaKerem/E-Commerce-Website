@@ -399,11 +399,14 @@ def queryOrderNumber(orderNumber):#girilen sipariş numarasına ait sipariş bil
     dict1 = {}
     dictInfo = {}
     i = 0
+    # print(tupleOfInfo)
+    # print(listOfTitles)
+    # print(listOfNames)
     for j in tupleOfInfo:
         for k in range(3):
             dict1.update({listOfTitles[k]:j[k+1]})
-        # print(dict1)
         dictInfo.update({listOfNames[i]:dict1})
+        dict1 = {}
         i+=1
     # print(dictInfo)   
 
