@@ -162,7 +162,7 @@ def buyProduct():
 
 @app.route("/checkOrderNumber",methods=["POST"])
 def checkOrderNum():
-    orderNum = request.data.decode("UTF-8")data
+    orderNum = request.data.decode("UTF-8")
     orderNum = json.loads(orderNum)
     orderNum = orderNum["order_id"]
     return  {"orderNum":db.checkOrderNumber(orderNum)}

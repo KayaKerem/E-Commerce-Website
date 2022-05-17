@@ -383,21 +383,33 @@ def queryOrderNumber(orderNumber):#girilen sipariş numarasına ait sipariş bil
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
     
-    cursor.execute('''SELECT USER_ID,PRODUCT_ID,QUANTITYOFPACKAGE,PRICEPERPRODUCT,STRFTIME('%d-%m-%Y',DATE) as DATE FROM ORDERS WHERE ORDERNUMBER = ?''',(orderNumber,))
+    cursor.execute('''SELECT PRODUCT_ID,STRFTIME('%d-%m-%Y',DATE) as DATE,QUANTITYOFPACKAGE,PRICEPERPRODUCT FROM ORDERS WHERE ORDERNUMBER = ?''',(orderNumber,))
     tupleOfInfo = cursor.fetchall()
+    listOfNames = []
+    listOfId = []
     # print(tupleOfInfo)
-    listOfTitles = ["user_id","product_id","quantityOfPackage","pricePerProduct","date"]
-    dictOfInfo = {}
-    list =[]
-    for j in range(5):
-        for i in tupleOfInfo:
-            list.append(i[j])
-        dictOfInfo.update({listOfTitles[j]:list})
-        list = []
-    # print(dictOfInfo)
+    for i in tupleOfInfo:
+        listOfId.append(i[0])
+    for i in listOfId:
+        cursor.execute('''SELECT NAME FROM PRODUCTS WHERE ID = ?''',(i,))
+        x = cursor.fetchone()
+        listOfNames.append((x[0]))
+    
+    listOfTitles = ["date","quantityOfPackage","price",]
+    dict1 = {}
+    dictInfo = {}
+    i = 0
+    for j in tupleOfInfo:
+        for k in range(3):
+            dict1.update({listOfTitles[k]:j[k+1]})
+        # print(dict1)
+        dictInfo.update({listOfNames[i]:dict1})
+        i+=1
+    # print(dictInfo)   
+
     conn.commit()
     conn.close()
-    return dictOfInfo    
+    return dictInfo    
 def checkOrderNumber(orderNumber):#eğer doğru sipraiş numarası girildiyse 1 aksi takdirde 0 döner
     conn = sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
