@@ -1,10 +1,17 @@
 <template>
   <div class="container-fluid">
     <loader v-if="isShow" />
-    <div class="section-title" v-if="!isShow">
-      <h2 style="color: #444444; padding-top: 40px">Satın Alma Verileri</h2>
+
+    <div class="section-title" v-if="categories1.length <= 0">
+      <h2 style="color: #444444; padding-top: 40px">
+        Henüz alışveriş yapmadınız...
+      </h2>
     </div>
-    <!-- <div class="btn-group">
+    <div v-if="categories1.length > 0">
+      <div class="section-title" v-if="!isShow">
+        <h2 style="color: #444444; padding-top: 40px">Satın Alma Verileri</h2>
+      </div>
+      <!-- <div class="btn-group">
       <button type="button" class="btn btn-danger">Action</button>
       <button
         type="button"
@@ -23,95 +30,96 @@
         <a class="dropdown-item" href="#">Separated link</a>
       </div>
     </div> -->
-    <div class="full-height" v-if="!isShow">
-      <div class="row justify-content-center">
-        <div class="col-12 col-xs-9 col-sm-9 col-lg-6 col-md-6 pt-3">
-          <div class="border">
-            <h3
-              class="text-primary text-center pb-1"
-              style="font-size: bold !important"
-            >
-              Geçmiş Siparişler (Adet)
-            </h3>
-            <div id="chart" class="p-1 rounded-lg">
-              <apexchart
-                v-if="series.length"
-                type="bar"
-                height="300"
-                width="100%"
-                :options="options"
-                :series="series"
-                class="businessChart"
-              ></apexchart>
+      <div class="full-height" v-if="!isShow">
+        <div class="row justify-content-center">
+          <div class="col-12 col-xs-9 col-sm-9 col-lg-6 col-md-6 pt-3">
+            <div class="border">
+              <h3
+                class="text-primary text-center pb-1"
+                style="font-size: bold !important"
+              >
+                Geçmiş Siparişler (Adet)
+              </h3>
+              <div id="chart" class="p-1 rounded-lg">
+                <apexchart
+                  v-if="series.length"
+                  type="bar"
+                  height="300"
+                  width="100%"
+                  :options="options"
+                  :series="series"
+                  class="businessChart"
+                ></apexchart>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- -------------------- -->
-        <div class="col-12 col-xs-9 col-sm-9 col-lg-6 col-md-6 pt-3">
-          <div class="border">
-            <h3
-              class="text-primary text-center pb-1"
-              style="font-size: bold !important"
-            >
-              Geçmiş Siparişler (Fiyat)
-            </h3>
-            <div id="chart" class="p-1 rounded-lg">
-              <apexchart
-                v-if="series.length"
-                type="bar"
-                height="300"
-                width="100%"
-                :options="options2"
-                :series="series2"
-                class="businessChart"
-              ></apexchart>
+          <!-- -------------------- -->
+          <div class="col-12 col-xs-9 col-sm-9 col-lg-6 col-md-6 pt-3">
+            <div class="border">
+              <h3
+                class="text-primary text-center pb-1"
+                style="font-size: bold !important"
+              >
+                Geçmiş Siparişler (Fiyat)
+              </h3>
+              <div id="chart" class="p-1 rounded-lg">
+                <apexchart
+                  v-if="series.length"
+                  type="bar"
+                  height="300"
+                  width="100%"
+                  :options="options2"
+                  :series="series2"
+                  class="businessChart"
+                ></apexchart>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- -------------------- -->
+          <!-- -------------------- -->
 
-        <div class="col-12 col-xs-9 col-sm-9 col-lg-6 col-md-6 pt-3">
-          <div class="border">
-            <h3
-              class="text-primary text-center pb-1"
-              style="font-size: bold !important"
-            >
-              Ürün Başına Harcamalar
-            </h3>
-            <div id="chart" class="p-1 rounded-lg">
-              <apexchart
-                type="donut"
-                height="300"
-                width="100%"
-                :options="piechart"
-                :series="seriesDonut"
-                class="businessChart"
-              ></apexchart>
+          <div class="col-12 col-xs-9 col-sm-9 col-lg-6 col-md-6 pt-3">
+            <div class="border">
+              <h3
+                class="text-primary text-center pb-1"
+                style="font-size: bold !important"
+              >
+                Ürün Başına Harcamalar
+              </h3>
+              <div id="chart" class="p-1 rounded-lg">
+                <apexchart
+                  type="donut"
+                  height="300"
+                  width="100%"
+                  :options="piechart"
+                  :series="seriesDonut"
+                  class="businessChart"
+                ></apexchart>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="col-12 col-xs-9 col-sm-9 col-lg-6 col-md-6 pt-3">
-          <div class="border">
-            <h3
-              class="text-primary text-center pb-1"
-              style="font-size: bold !important"
-            >
-              Aylara Göre Harcamalar
-            </h3>
-            <div id="chart" class="p-1 rounded-lg">
-              <apexchart
-                type="donut"
-                height="300"
-                width="100%"
-                :options="piechart2"
-                :series="seriesDonut2"
-                class="businessChart"
-              ></apexchart>
+          <div class="col-12 col-xs-9 col-sm-9 col-lg-6 col-md-6 pt-3">
+            <div class="border">
+              <h3
+                class="text-primary text-center pb-1"
+                style="font-size: bold !important"
+              >
+                Aylara Göre Harcamalar
+              </h3>
+              <div id="chart" class="p-1 rounded-lg">
+                <apexchart
+                  type="donut"
+                  height="300"
+                  width="100%"
+                  :options="piechart2"
+                  :series="seriesDonut2"
+                  class="businessChart"
+                ></apexchart>
+              </div>
             </div>
           </div>
+          <!-- -------------------- -->
         </div>
-        <!-- -------------------- -->
       </div>
     </div>
   </div>
@@ -264,6 +272,7 @@ export default {
     };
   },
   created() {
+    console.log(this.series);
     const user_id = parseInt(localStorage.getItem("user_id"));
     axios
       .post("http://127.0.0.1:5000/showtable/packageoftotalbought", {
@@ -289,8 +298,9 @@ export default {
         this.seriesDonut2 = res.data["series"];
         this.piechart2["labels"] = res.data["labels"];
         // this.$set(this.piechart, 0, res.data["labels"]);
-
+        console.log("seriesDonut2");
         console.log(this.seriesDonut2);
+        console.log("piechart2");
         console.log(this.piechart2);
       });
   },
@@ -355,7 +365,8 @@ export default {
         }
         for (let k in res.data["dates"]) {
           let a = res.data["dates"][k];
-          console.log(a);
+          console.log("Anana");
+          console.log(res.data["dates"][k]);
 
           options["xaxis"]["categories"].push(a.slice(0, 10));
           //   this.categories1.push(parseInt(a));

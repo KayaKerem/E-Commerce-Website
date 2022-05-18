@@ -22,7 +22,7 @@
                 />
                 <div class="card-body">
                   <h5 class="card-title" id="order-state-text">
-                    Siparişiniz yolda
+                    {{ order_id }} Numaralı Siparişiniz Yolda
                   </h5>
                   <p class="card-text">
                     Siparişiniz yola çıktı. En kısa sürede adresinizde olacağız.
