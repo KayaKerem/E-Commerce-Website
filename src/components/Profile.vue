@@ -31,7 +31,7 @@
               class="text-primary text-center pb-1"
               style="font-size: bold !important"
             >
-              Geçmiş Siparişler
+              Geçmiş Siparişler (Adet)
             </h3>
             <div id="chart" class="p-1 rounded-lg">
               <apexchart
@@ -53,7 +53,7 @@
               class="text-primary text-center pb-1"
               style="font-size: bold !important"
             >
-              Grafik 2
+              Geçmiş Siparişler (Fiyat)
             </h3>
             <div id="chart" class="p-1 rounded-lg">
               <apexchart
@@ -76,7 +76,7 @@
               class="text-primary text-center pb-1"
               style="font-size: bold !important"
             >
-              Ürün başına harcamalar
+              Ürün Başına Harcamalar
             </h3>
             <div id="chart" class="p-1 rounded-lg">
               <apexchart
@@ -97,7 +97,7 @@
               class="text-primary text-center pb-1"
               style="font-size: bold !important"
             >
-              Aylara göre harcamalar
+              Aylara Göre Harcamalar
             </h3>
             <div id="chart" class="p-1 rounded-lg">
               <apexchart
@@ -207,7 +207,7 @@ export default {
                 },
                 total: {
                   show: true,
-                  label: "Total",
+                  label: "Toplam",
                   color: "#373d3f",
                   formatter: function (w) {
                     return w.globals.seriesTotals.reduce((a, b) => {
@@ -248,7 +248,7 @@ export default {
                 },
                 total: {
                   show: true,
-                  label: "Total",
+                  label: "Toplam",
                   color: "#373d3f",
                   formatter: function (w) {
                     return w.globals.seriesTotals.reduce((a, b) => {
@@ -356,6 +356,7 @@ export default {
         for (let k in res.data["dates"]) {
           let a = res.data["dates"][k];
           console.log(a);
+
           options["xaxis"]["categories"].push(a.slice(0, 10));
           //   this.categories1.push(parseInt(a));
         }

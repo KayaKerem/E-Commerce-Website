@@ -9,7 +9,7 @@ import Order from './components/Order.vue';
 import OrderDetails from './components/OrderDetails.vue'
 import Success from './components/Success.vue';
 import Sorry from './components/Sorry.vue'
-
+import Forget from './components/Forget.vue'
 export const routes = [
 	{path: '/', component: Store, name: 'mainpage'},
 	{path: '/product/:id', component: ProductDetails, name: 'product'},
@@ -22,5 +22,6 @@ export const routes = [
 	{ path: '/orderdetails', component: OrderDetails, name: 'orderdetails', onlyGuest: true },
 	{ path: '/success', component: Success, name: 'success', onlyGuest: true },
 	{path:'/sorry',component:Sorry,name:'sorry',onlyGuest:true},
-	{path: '*', redirect: '/' }
+	{path:'/forget',component:Forget,name:'forget',onlyGuest:true},
+	{ path: '*', redirect: '/' }
 ];

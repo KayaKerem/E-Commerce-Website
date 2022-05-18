@@ -33,17 +33,6 @@
             required
           />
         </div>
-        <div class="form-group">
-          <input
-            type="password"
-            name="password"
-            id="password"
-            class="form-control form-control-lg"
-            placeholder="Şifre"
-            v-model="password"
-            required
-          />
-        </div>
 
         <div class="form-group">
           <button
@@ -53,30 +42,8 @@
             :disabled="isLoading"
           >
             <i v-if="isLoading" class="fa fa-spinner fa-spin" />
-            Giriş Yap
+            Giriş Bağlantısı Gönder
           </button>
-        </div>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="text-center">
-                <router-link to="/register">
-                  <a><b>Üye Ol</b></a>
-                </router-link>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="text-center">
-                <router-link to="/forget">
-                  <a>Şifremi Unuttum</a>
-                </router-link>
-              </div>
-            </div>
-          </div>
         </div>
       </form>
     </div>
@@ -138,125 +105,51 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
 import axios from "axios";
+import { mapActions } from "vuex";
 export default {
   data() {
-    return {
-      email: "",
-      password: "",
-      isLoading: false,
-      check: null,
-      isLogged: false,
-    };
-  },
-  created() {
-    console.log("CHE");
-    console.log(localStorage.getItem("user_id"));
+    return { isLoading: false, email: "" };
   },
   methods: {
     ...mapActions(["addMessage", "clearMessage"]),
     onSubmit() {
       this.isLoading = true;
-      let data = {
+      let postData = {
         email: this.email,
-        password: this.password,
       };
+
       axios
-        .post("http://127.0.0.1:5000/login", data)
+        .post("http://127.0.0.1:5000/forgetpassword", postData)
         .then((res) => {
-          this.check = res.data["data"];
-          // localStorage.removeItem("user_id");
-        })
-        .then(() => {
-          console.log("Check");
-          console.log(this.check);
-          if (this.check == 0) {
-            console.log("geçersiz");
+          console.log(res);
+          if (res.data["response"]) {
             let message_obj = {
-              message:
-                "Kullanıcı adı veya şifre yanlış. Lütfen Tekrar Deneyiniz",
-              messageClass: "danger",
+              message: "Kurtarma bağlantısı email adresinize gönderildi.",
+              messageClass: "success",
               autoClose: true,
             };
-            console.log(message_obj);
+
             this.addMessage(message_obj);
-          } else if (this.check != null) {
-            console.log("geçerli");
-            this.isLogged = true;
-            localStorage.setItem("user_id", this.check["id"]);
-            localStorage.setItem(
-              "user_name",
-              this.check["name"] + " " + this.check["surname"]
-            );
-
-            this.clearMessage();
-            // this.$router.go({
-            //   name: "home",
-            // });
-
-            // this.$router.push({
-            //   name: "home",
-            // });
-            window.location.href = "/home";
+            this.isLoading = false;
+            this.$router.push("/login");
           } else {
-            console.log("arada");
             let message_obj = {
-              message: data.res,
-              messageClass: "danger",
+              message: "Girdiğiniz email adresi sisteme kayıtlı değildir.",
+              messageClass: "warning",
               autoClose: true,
             };
+
             this.addMessage(message_obj);
+            this.isLoading = false;
           }
-        })
-        .then(() => {
-          this.isLoading = false;
         });
 
-      // this.loginWithEmail(data)
-      //   .then(() => {
-      //     console.log("AAAA");
-      //     console.log(data.res);
-      //     if (data.res == 0) {
-      //       let message_obj = {
-      //         message: data.res,
-      //         messageClass: "danger",
-      //         autoClose: true,
-      //       };
-      //       this.addMessage(message_obj);
-      //     } else if (data.res == "null") {
-      //       let message_obj = {
-      //         message: data.res,
-      //         messageClass: "danger",
-      //         autoClose: true,
-      //       };
-      //       this.addMessage(message_obj);
-      //     } else {
-      //       console.log("sa");
-      //       this.clearMessage();
-      //       this.$router.push({
-      //         name: "mainpage",
-      //       });
-      //     }
-      //   })
-      //   .catch((error) => {
-      //     let message_obj = {
-      //       message: error.message,
-      //       messageClass: "danger",
-      //       autoClose: true,
-      //     };
-      //     this.addMessage(message_obj);
-      //   })
-      // .then(() => {
-      //   this.isLoading = false;
-      // });
+      this.isLoading = false;
     },
   },
 };
 </script>
 
 <style>
-.btn {
-  background-color: blue;
-}
 </style>

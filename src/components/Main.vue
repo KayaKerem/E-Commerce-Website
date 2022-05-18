@@ -328,12 +328,12 @@
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                   <img
-                    src="https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/MichaelScott.png/220px-MichaelScott.png"
+                    src="../assets/img/kerem.jpeg"
                     class="testimonial-img"
                     alt=""
                   />
-                  <h3>Michael Scott</h3>
-                  <h4>Manager</h4>
+                  <h3>Kerem Kaya</h3>
+                  <h4>Proje Yöneticisi &amp; Front-End Geliştirici</h4>
                 </div>
                 <!-- <img
                   class="d-block w-100 img-fluid"
@@ -358,12 +358,12 @@
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                   <img
-                    src="https://i.pinimg.com/originals/9a/a3/48/9aa348cc3fd22c9eb1f5413058164738.jpg"
+                    src="../assets/img/kutaypasa.jpeg"
                     class="testimonial-img"
                     alt=""
                   />
-                  <h3>Pam Beesly</h3>
-                  <h4>Receptionist</h4>
+                  <h3>Hasan Kutay Sarı</h3>
+                  <h4>Back-End Geliştirici</h4>
                 </div>
                 <!-- <img
                   class="d-block w-100 img-fluid"
@@ -383,12 +383,12 @@
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                   <img
-                    src="https://i.pinimg.com/originals/01/b0/71/01b071bef3bb8e3d61ebed3af1903a11.jpg"
+                    src="../assets/img/berkay.jpeg"
                     class="testimonial-img"
                     alt=""
                   />
-                  <h3>Dwight Schrute</h3>
-                  <h4>Salesman &amp; Assistant Manager</h4>
+                  <h3>Berkay Gündüz</h3>
+                  <h4>Veri Tabanı Uzmanı &amp; Back-End Geliştirici</h4>
                 </div>
                 <!-- <img
                   class="d-block w-100 img-fluid"
@@ -409,12 +409,12 @@
                       <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                     </p>
                     <img
-                      src="https://media1.popsugar-assets.com/files/thumbor/pGaXO5z7n_4s__CUMajM1btm2qE/1165x157:2676x1668/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2020/08/03/142/n/1922283/2e3ca0ba5f28c706c113e3.69387310_/i/office-jim-best-pranks-ranked.png"
+                      src="../assets/img/aysos.jpeg"
                       class="testimonial-img"
                       alt=""
                     />
-                    <h3>Jim Halpert</h3>
-                    <h4>Salesman</h4>
+                    <h3>Sena Eser</h3>
+                    <h4>Sistem Analisti</h4>
                   </div>
                 </div>
               </div>
@@ -431,12 +431,12 @@
                       <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                     </p>
                     <img
-                      src="https://i.pinimg.com/originals/bd/dd/3e/bddd3e97980826284f64095c082767a3.jpg"
+                      src="../assets/img/irem.jpeg"
                       class="testimonial-img"
                       alt=""
                     />
-                    <h3>Kevin Malone</h3>
-                    <h4>Accountant</h4>
+                    <h3>İrem Avcı</h3>
+                    <h4>İş Geliştirici &amp; Test Uzmanı</h4>
                   </div>
                 </div>
               </div>

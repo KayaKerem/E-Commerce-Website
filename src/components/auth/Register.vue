@@ -12,79 +12,99 @@
             <h2></h2>
           </div>
         </div>
-        <div class="form-group">
-          <input
-            id="name"
-            class="form-control"
-            placeholder="İsim"
-            v-model="input"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <input
-            id="surname"
-            class="form-control"
-            placeholder="Soyisim"
-            v-model="input"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <input
-            id="address"
-            class="form-control"
-            placeholder="Adres"
-            v-model="input"
-            required
-          />
-        </div>
 
+        <div class="row">
+          <div class="col">
+            <input
+              id="name"
+              class="form-control form-control-lg"
+              placeholder="Ad"
+              v-model="name"
+              required
+            />
+          </div>
+          <div class="col">
+            <input
+              id="surname"
+              class="form-control form-control-lg"
+              placeholder="Soyad"
+              v-model="surname"
+              required
+            />
+          </div>
+        </div>
         <div class="form-group">
           <input
             type="email"
             name="email"
             id="email"
-            class="form-control"
+            style="margin-top: 15px"
+            class="form-control form-control-lg"
             placeholder="Email"
             value
             v-model="email"
             required
           />
         </div>
-        <div class="form-group">
-          <input
-            type="password"
-            name="password"
-            id="password"
-            class="form-control"
-            placeholder="Şifre"
-            v-model="password"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <input
-            type="password"
-            name="password"
-            id="password2"
-            class="form-control"
-            placeholder="Şifre tekrar"
-            v-model="password"
-            required
-          />
-        </div>
 
         <div class="form-group">
-          <button
-            type="submit"
-            class="btn btn-primary"
-            style="width: 100%; background-color: #091239"
-            :disabled="isLoading"
-          >
-            <i v-if="isLoading" class="fa fa-spinner fa-spin" />
-            Üye Ol
-          </button>
+          <textarea
+            class="form-control form-control-lg"
+            id="address"
+            style="margin-top: 15px"
+            rows="3"
+            placeholder="Adres"
+            v-model="address"
+            required
+          ></textarea>
+        </div>
+        <div class="row">
+          <div class="col">
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="form-control form-control-lg"
+              placeholder="Şifre"
+              style="margin-top: 15px"
+              v-model="password"
+              required
+            />
+          </div>
+
+          <div class="col">
+            <input
+              type="password"
+              name="password2"
+              id="password2"
+              style="margin-top: 15px"
+              class="form-control form-control-lg"
+              placeholder="Şifre tekrar"
+              v-model="password2"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-lg-12">
+              <div col="text-center">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="
+                    width: 100%;
+                    background-color: #091239;
+                    margin-top: 20px;
+                  "
+                  :disabled="isLoading"
+                >
+                  <i v-if="isLoading" class="fa fa-spinner fa-spin" />
+                  Üye Ol
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="form-group">
           <div class="row">
@@ -158,11 +178,17 @@
 
 <script>
 import { mapActions } from "vuex";
+import axios from "axios";
+
 export default {
   data() {
     return {
       email: "",
       password: "",
+      password2: "",
+      address: "",
+      name: "",
+      surname: "",
       isLoading: false,
     };
   },
@@ -171,26 +197,78 @@ export default {
     onSubmit() {
       this.isLoading = true;
       let data = {
+        name: this.name,
+        surname: this.surname,
+        address: this.address,
         email: this.email,
         password: this.password,
       };
-      this.registerByEmail(data)
-        .then(() => {
-          this.clearMessage();
-          this.$router.push({ name: "mainpage" });
-        })
-        .catch((error) => {
-          // console.log('register error', error);
+      if (this.password != this.password2) {
+        let message_obj = {
+          message: "Girdiğiniz şifreler uyuşmuyor",
+          messageClass: "danger",
+          autoClose: true,
+        };
+        this.addMessage(message_obj);
+        this.isLoading = false;
+        return null;
+      }
+
+      axios.post("http://127.0.0.1:5000/registerUser", data).then((res) => {
+        console.log(res);
+
+        if (res.data["response"] == 1) {
           let message_obj = {
-            message: error.message,
+            message:
+              "Kaydınız başarıyla oluşturuldu. Devam etmek için lütfen giriş yapınız.",
+            messageClass: "success",
+            autoClose: true,
+          };
+          this.addMessage(message_obj);
+          this.$router.push({ name: "login" });
+        } else if (res.data["response"] == 0) {
+          let message_obj = {
+            message: "Bu mail adresi ile kayıt yapılmıştır.",
             messageClass: "danger",
             autoClose: true,
           };
           this.addMessage(message_obj);
-        })
-        .then(() => {
           this.isLoading = false;
-        });
+        } else {
+          // let message_obj = {
+          //   message: "Bir hata meydana geldi",
+          //   messageClass: "danger",
+          //   autoClose: true,
+          // };
+          // this.addMessage(message_obj);
+          this.$router.push("/sorry");
+        }
+      });
+
+      // this.registerByEmail(data)
+      //   .then(() => {
+      //     let message_obj = {
+      //       message:
+      //         "Kaydınız başarıyla oluşturuldu. Devam etmek için lütfen giriş yapınız.",
+      //       messageClass: "success",
+      //       autoClose: true,
+      //     };
+      //     this.addMessage(message_obj);
+      //     // this.clearMessage();
+      //     this.$router.push({ name: "mainpage" });
+      //   })
+      //   .catch((error) => {
+      //     // console.log('register error', error);
+      //     let message_obj = {
+      //       message: error.message,
+      //       messageClass: "danger",
+      //       autoClose: true,
+      //     };
+      //     this.addMessage(message_obj);
+      //   })
+      //   .then(() => {
+      //     this.isLoading = false;
+      //   });
     },
   },
 };
