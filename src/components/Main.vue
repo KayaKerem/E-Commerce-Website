@@ -30,8 +30,8 @@
               <div class="icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="24"
+                  height="24"
                   fill="currentColor"
                   class="bi bi-tree-fill"
                   viewBox="0 0 16 16"
@@ -43,9 +43,9 @@
               </div>
               <h4><a href="">Çevre Dostu</a></h4>
               <p>
-                Üretimde, akciğerlerimiz olan ağaçlarımızın yerine endüstriyel
-                yetiştirdiğimiz ağaçları kullanıyoruz ve kullandığımızın iki
-                katı kadar yeni fidanı doğaya kazandırıyoruz.
+                Üretimde,ağaçlarımızı kesmek yerine endüstriyel yetiştirdiğimiz
+                ağaçları kullanıyoruz ve kullandığımızın iki katı kadar yeni
+                fidanı doğaya kazandırıyoruz.
               </p>
             </div>
           </div>
@@ -55,8 +55,8 @@
               <div class="icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="24"
+                  height="24"
                   fill="currentColor"
                   class="bi bi-bar-chart-line-fill"
                   viewBox="0 0 16 16"
@@ -79,8 +79,8 @@
               <div class="icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="24"
+                  height="24"
                   fill="currentColor"
                   class="bi bi-keyboard-fill"
                   viewBox="0 0 16 16"
@@ -103,15 +103,14 @@
               <div class="icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
+                  width="32"
+                  height="32"
                   fill="currentColor"
-                  class="bi bi-telephone-fill"
+                  class="bi bi-headset"
                   viewBox="0 0 16 16"
                 >
                   <path
-                    fill-rule="evenodd"
-                    d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"
+                    d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5z"
                   />
                 </svg>
               </div>
@@ -143,7 +142,7 @@
               Matbaa firmalarımızın çözüm ortağı olarak sektöründe en iyi
               tedarikçi olma yolunda emin adımlarla ilerlemektedir.
             </p>
-            <ul>
+            <!-- <ul>
               <li>
                 <i class="bx bx-check-double"></i> Ullamco laboris nisi ut
                 aliquip ex ea commodo consequat.
@@ -152,22 +151,31 @@
                 <i class="bx bx-check-double"></i> Duis aute irure dolor in
                 reprehenderit in voluptate velit.
               </li>
-            </ul>
+            </ul> -->
             <div class="row icon-boxes">
               <div class="col-md-6">
                 <i class="bx bx-receipt"></i>
-                <h4>Corporis voluptates sit</h4>
+                <h4>
+                  Kolay kullanıcı arayüzümüzle artık alışverişleriniz daha
+                  kolay!
+                </h4>
                 <p>
-                  Consequuntur sunt aut quasi enim aliquam quae harum pariatur
-                  laboris nisi ut aliquip
+                  Günümüzde müşteriler; kaliteli ürüne sahip olmak istemenin
+                  yanında; kolay bir kullanıcı arayüzüne sahip olmak,
+                  siparişlerini takip etmek, anlık olarak siparişlerine müdahale
+                  etmek, satış sonrası hizmetlerden faydalanmak ve kendilerine
+                  özel satış verilerini takip etmek istemektedir.
                 </p>
               </div>
               <div class="col-md-6 mt-4 mt-md-0">
                 <i class="bx bx-cube-alt"></i>
-                <h4>Ullamco laboris nisi</h4>
+                <h4>Doğaya zarar vermeden kalitenin tadını çıkarın!</h4>
                 <p>
-                  Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                  qui officia deserunt
+                  Değişen dünya koşulları ve artan farkındalıklar ile birlikte
+                  sürdürülebilirlik de müşterilerin karar vermesinde çok önemli
+                  bir etken olarak dikkat çekmektedir.Dunder Mifflin bütün bu
+                  ihtiyaçlar ve talepler dikkate alınarak geliştirilmiş bir
+                  platformdur.
                 </p>
               </div>
             </div>
@@ -180,8 +188,8 @@
     <section id="services" class="services section-bg">
       <div class="container">
         <div class="section-title">
-          <h2>Services</h2>
-          <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p>
+          <h2>Avantajlarımız</h2>
+          <!-- <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p> -->
         </div>
 
         <div class="row">
@@ -190,8 +198,8 @@
               <!-- icon1 -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="32"
+                height="32"
                 fill="currentColor"
                 class="bi bi-recycle"
                 viewBox="0 0 16 16"
@@ -202,10 +210,11 @@
               </svg>
 
               <!-- <font-awesome-icon icon="fa-solid fa-recycle" class="bi" /> -->
-              <h4><a href="#">Lorem Ipsum</a></h4>
+              <h4><a href="#">Geri Dönüşüm</a></h4>
               <p>
-                Voluptatum deleniti atque corrupti quos dolores et quas
-                molestias excepturi sint occaecati cupiditate non provident
+                Sıfır atık politikasını benimsediğimiz şirketimizde kullanılmış
+                kağıtları getirdiğinizde uyguladığımız indirimler sayesinde
+                doğamızı hep beraber koruyoruz.
               </p>
             </div>
           </div>
@@ -214,8 +223,8 @@
               <!-- icon1 -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="32"
+                height="32"
                 fill="currentColor"
                 class="bi bi-pie-chart-fill"
                 viewBox="0 0 16 16"
@@ -224,10 +233,10 @@
                   d="M15.985 8.5H8.207l-5.5 5.5a8 8 0 0 0 13.277-5.5zM2 13.292A8 8 0 0 1 7.5.015v7.778l-5.5 5.5zM8.5.015V7.5h7.485A8.001 8.001 0 0 0 8.5.015z"
                 />
               </svg>
-              <h4><a href="#">Dolor Sitema</a></h4>
+              <h4><a href="#">Müşteri Arayüzü</a></h4>
               <p>
-                Minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat tarad limino ata
+                Size özel hazırladığımız kullanıcı arayüzümüz ile
+                planlamalarınızı daha kolay yapabileceksiniz.
               </p>
             </div>
           </div>
@@ -236,8 +245,8 @@
               <!-- icon1 -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="32"
+                height="32"
                 fill="currentColor"
                 class="bi bi-clock-fill"
                 viewBox="0 0 16 16"
@@ -246,10 +255,10 @@
                   d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"
                 />
               </svg>
-              <h4><a href="#">Sed ut perspiciatis</a></h4>
+              <h4><a href="#">Hızlı Teslim</a></h4>
               <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur
+                Siparişinizi en geç 3 iş günü içinde kargoya vererek beklemeden
+                güvenle alışveriş imkanı sunuyoruz.
               </p>
             </div>
           </div>
@@ -258,20 +267,20 @@
               <!-- icon1 -->
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="42"
+                height="42"
                 fill="currentColor"
-                class="bi bi-credit-card-fill"
+                class="bi bi-eyeglasses"
                 viewBox="0 0 16 16"
               >
                 <path
-                  d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7H0zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z"
+                  d="M4 6a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm2.625.547a3 3 0 0 0-5.584.953H.5a.5.5 0 0 0 0 1h.541A3 3 0 0 0 7 8a1 1 0 0 1 2 0 3 3 0 0 0 5.959.5h.541a.5.5 0 0 0 0-1h-.541a3 3 0 0 0-5.584-.953A1.993 1.993 0 0 0 8 6c-.532 0-1.016.208-1.375.547zM14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
                 />
               </svg>
-              <h4><a href="#">Nemo Enim</a></h4>
+              <h4><a href="#">Kolay Takip</a></h4>
               <p>
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum
+                Siparişinizi yedi yirmi dört takip edebileceğiniz sipariş takip
+                sistemimizle artık online alışveriş daha kolay.
               </p>
             </div>
           </div>

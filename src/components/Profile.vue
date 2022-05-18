@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <loader v-if="isShow" />
     <div class="section-title" v-if="!isShow">
-      <h2 style="color: #444444; padding-top: 40px">Detaylar</h2>
+      <h2 style="color: #444444; padding-top: 40px">Satın Alma Verileri</h2>
     </div>
     <!-- <div class="btn-group">
       <button type="button" class="btn btn-danger">Action</button>
