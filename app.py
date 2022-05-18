@@ -184,7 +184,15 @@ def registerUser():
     password = var["password"]
     address = var["address"]
     res = db.addUser(name,surname,mail,password,address)
-    return {"respnse":res}
+    return {"response":res}
+
+@app.route("/forgetpassword",methods=['POST'])
+def forgetPassword():
+    mail = request.data.decode("UTF-8")
+    mail = json.loads(mail)
+    mail = mail["email"]
+    res = db.getPassword(mail)
+    return {"response":res}
 
 app.debug=False
 app.run()
