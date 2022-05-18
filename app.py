@@ -184,7 +184,7 @@ def registerUser():
     password = var["password"]
     address = var["address"]
     res = db.addUser(name,surname,mail,password,address)
-    return {"return":res}
+    return {"respnse":res}
 
 app.debug=False
 app.run()
