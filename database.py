@@ -41,25 +41,27 @@ def addProductFirst(id,name,quantity,price,weightofpackages,details,image,thickn
 def addUser(name,surname,mail,password,address):#Kullanıcı Ekler eğer mail adresi zaten kullanılıyor ise '0' döner
     conn = sqlite3.connect('Dunder.db')
     cursor=conn.cursor()
-    flag = 0
-    cursor.execute('''SELECT * FROM USERS''')
-    mailsTuple = cursor.fetchall()
-    for i in mailsTuple:
-        if mail == i[3]:
-            flag = 1
-    if flag == 0:
-        add_command = ''' INSERT INTO USERS(NAME,SURNAME,MAIL,PASSWORD,ADDRESS) VALUES {}'''
-        data = (name,surname,mail,password,address)
-        cursor.execute(add_command.format(data))
-        conn.commit()
-        conn.close() 
-        return 1
-    else:
-        # print('Girmiş Olduğunuz Mail Adresi Zaten Kullanılmaktadır')
-        conn.commit()
-        conn.close()
-        return 0
-
+    try:
+        flag = 0
+        cursor.execute('''SELECT * FROM USERS''')
+        mailsTuple = cursor.fetchall()
+        for i in mailsTuple:
+            if mail == i[3]:
+                flag = 1
+        if flag == 0:
+            add_command = ''' INSERT INTO USERS(NAME,SURNAME,MAIL,PASSWORD,ADDRESS) VALUES {}'''
+            data = (name,surname,mail,password,address)
+            cursor.execute(add_command.format(data))
+            conn.commit()
+            conn.close() 
+            return 1
+        else:
+            # print('Girmiş Olduğunuz Mail Adresi Zaten Kullanılmaktadır')
+            conn.commit()
+            conn.close()
+            return 0
+    except:
+        return None
 
 def addUserFirst(id,name,surname,mail,password,address):#AddUser ile aynı olup ID yi spesifik sayıdan başlatmak için ilk eleman bununla eklenir
     conn = sqlite3.connect('Dunder.db')
