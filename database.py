@@ -437,3 +437,17 @@ def checkOrderNumber(orderNumber):#eğer doğru sipraiş numarası girildiyse 1 
     conn.commit()
     conn.close()
     return 0
+def getPassword(mail):
+    conn = sqlite3.connect('Dunder.db')
+    cursor = conn.cursor()
+    cursor.execute('''SELECT PASSWORD FROM USERS WHERE MAIL = ? ''',(mail,))
+
+    password = cursor.fetchone()
+    if password == None:
+        conn.commit()
+        conn.close()    
+        return None
+    else:
+        conn.commit()
+        conn.close()    
+        return password[0]
