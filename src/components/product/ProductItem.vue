@@ -15,8 +15,11 @@
         <router-link :to="'/product/' + item.id" tag="h5" class="card-title"
           ><a>{{ item.title }}</a></router-link
         >
-        <h6 v-if="item.quantity < 7000" class="card-subtitle mb-2 remain">
-          Son {{ item.quantity }} adet kaldı!
+        <h6
+          v-if="item.quantity < 1000 && item.quantity > 0"
+          class="card-subtitle mb-2 remain"
+        >
+          Son {{ item.quantity }} koli kaldı!
         </h6>
 
         <p class="card-text truncate">
@@ -45,7 +48,7 @@ import { mapActions } from "vuex";
 export default {
   props: ["item", "displayList"],
   methods: {
-    ...mapActions(["updateCart"]),
+    ...mapActions(["updateCart", "addMessage"]),
     addItem() {
       if (localStorage.getItem("user_id") == null) {
         this.$router.push("/login");
@@ -55,6 +58,9 @@ export default {
           quantity: 1,
           isAdd: true,
         };
+
+        console.log("Berkay");
+        console.log(this.item.quantity);
         this.updateCart(order);
       }
     },

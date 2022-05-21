@@ -19,6 +19,7 @@
         :value="cartItem.quantity"
         @input="updateQuantity"
         min="0"
+        :max="10"
       />
     </td>
     <td data-th="Subtotal" class="text-center">${{ subtotal }}</td>
@@ -56,6 +57,7 @@ export default {
       });
     },
   },
+  mounted() {},
 };
 </script>
 

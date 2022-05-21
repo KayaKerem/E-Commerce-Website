@@ -124,10 +124,6 @@ export default {
     axios.get("http://127.0.0.1:5000/products").then((res) => {
       let dt = res.data["data"];
       this.products1 = dt;
-      console.log("STORE LOG");
-      console.log(this.products1[0]["thumbnail_url"]);
-      console.log("products");
-      console.log(this.products1);
 
       this.isProductLoading = false;
     });
