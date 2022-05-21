@@ -10,7 +10,7 @@
           Kalitesi kendi ormanlarımızdan gelen ürünlerimizle doğaya nefes olun.
           Eşsiz dayanıklılığı ve dokusu ile unutmayın ki kağıt bizim işimiz...
         </h2>
-        <a href="/" class="btn-get-started scrollto">Alışverişe Başla</a>
+        <a href="/store" class="btn-get-started scrollto">Alışverişe Başla</a>
       </div>
     </section>
     <!-- End Hero -->
@@ -41,7 +41,7 @@
                   />
                 </svg>
               </div>
-              <h4><a href="">Çevre Dostu</a></h4>
+              <h4><a>Çevre Dostu</a></h4>
               <p>
                 Üretimde,ağaçlarımızı kesmek yerine endüstriyel yetiştirdiğimiz
                 ağaçları kullanıyoruz ve kullandığımızın iki katı kadar yeni
@@ -66,7 +66,7 @@
                   />
                 </svg>
               </div>
-              <h4><a href="">Kalite</a></h4>
+              <h4><a>Kalite</a></h4>
               <p>
                 Tüm üretim sürecini hassasiyetle sürdürdüğümüz kağıtlarımızın
                 kalitesinin tadına varınca başka kağıt kullanamayacaksınız.
@@ -90,7 +90,7 @@
                   />
                 </svg>
               </div>
-              <h4><a href="">Yenilikçi</a></h4>
+              <h4><a>Yenilikçi</a></h4>
               <p>
                 Geleneksel kağıt endüstrisinin aksine üretimde ve satışta en
                 güncel teknolojileri sizin için kullanıyoruz.
@@ -114,7 +114,7 @@
                   />
                 </svg>
               </div>
-              <h4><a href="">Memnuniyet</a></h4>
+              <h4><a>Memnuniyet</a></h4>
               <p>
                 Bizim için en önemli şey sizin memnuniyetiniz. İstek, öneri,
                 şikayet için her zaman bir telefon kadar uzağınızdayız.

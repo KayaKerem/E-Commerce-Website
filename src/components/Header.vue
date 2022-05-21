@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark" role="navigation">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <router-link to="/home" class="navbar-brand mr-auto"
+      <router-link to="/" class="navbar-brand mr-auto"
         >Dunder Mifflin
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@
           <li>
             <router-link
               id="productbutton"
-              to="/"
+              to="/store"
               class="btn btn-dark navbar-btn"
               tag="button"
             >
@@ -271,7 +271,7 @@ export default {
       localStorage.removeItem("user_name");
       this.clearMessage();
       this.isLoggedIn = false;
-      window.location.href = "/home";
+      window.location.href = "/";
       // this.$router.go();
     },
   },

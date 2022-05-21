@@ -198,7 +198,7 @@ export default {
             // this.$router.push({
             //   name: "home",
             // });
-            window.location.href = "/home";
+            window.location.href = "/";
           } else {
             console.log("arada");
             let message_obj = {

@@ -190,7 +190,7 @@ export default {
       //     message: "Please login to save your cart",
       //   });
       // }
-      this.$router.push("/");
+      this.$router.push("/store");
     },
     checkout() {
       if (this.user_id != null) {
