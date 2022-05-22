@@ -81,6 +81,11 @@ export default {
 #item-title{
   font-family: "Open Sans", sans-serif!important;
 }
+#item-title:hover{
+  font-family: "Open Sans", sans-serif!important;
+  color:#EFB631;
+  text-decoration: none!important;
+}
 div.card {
   height: 100%;
 }
