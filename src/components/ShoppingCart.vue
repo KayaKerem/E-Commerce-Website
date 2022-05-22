@@ -114,6 +114,8 @@ export default {
   data() {
     return {
       user_id: null,
+      stock_error:false,
+      str:""
     };
   },
   computed: {
@@ -161,35 +163,7 @@ export default {
       };
     },
     saveShoppingCartLocal() {
-      // if (this.isLoggedIn) {
-      //   let { isValid, message } = this.checkValidCart(
-      //     this.cartItemList,
-      //     this.products
-      //   );
-
-      //   if (isValid) {
-      //     this.saveShoppingCart({
-      //       cartItemList: this.cartItemList,
-      //       uid: this.currentUser.uid,
-      //     }).then(() => {
-      //       this.addMessage({
-      //         messageClass: "success",
-      //         message: "Your shopping cart is saved successfully",
-      //       });
-      //       this.$router.push("/");
-      //     });
-      //   } else {
-      //     this.addMessage({
-      //       messageClass: "danger",
-      //       message: message,
-      //     });
-      //   }
-      // } else {
-      //   this.addMessage({
-      //     messageClass: "warning",
-      //     message: "Please login to save your cart",
-      //   });
-      // }
+ 
       this.$router.push("/store");
     },
     checkout() {
@@ -215,28 +189,37 @@ export default {
         // console.log("BUYINFO");
         // console.log(buyInfo);
         let headers = {
-          "Access-Control-Request-Headers": "*",
+          // "Access-Control-Request-Headers": "*",
           "Access-Control-Allow-Methods": "POST, GET, PUT, OPTIONS, DELETE",
           "Access-Control-Max-Age": "3600",
           "Access-Control-Allow-Headers": "x-requested-with, content-type",
         };
-
+  console.log(message);
         axios
           .post("http://127.0.0.1:5000/buyProduct", buyInfo, { headers })
           .then((res) => {
             console.log(res);
+            
+            if(res.data["order_id"] ==0){
+              let name_info = res.data["error_info"]["names"];
+              let quantity_info = res.data["error_info"]["quantities"];
+             let str=""
+              for(let i=0;i<name_info.length;i++){
+                str+=  "Stokta "+name_info[i]+ " ürününden "+quantity_info[i]+" paket kaldı."
+              }
+this.addMessage({
+              messageClass: "warning",
+              message: str,
+            });
+             
 
-            localStorage.setItem("order_id", res.data["order_id"]);
-          });
+      
 
-        // console.log("ITEM LİSTESİ GÖRMEYE ÇALIŞIYORUZ");
-
-        // console.log(this.cartItemList);
-        // console.log("ITEM LİSTESİ GÖRMEYE ÇALIŞIYORUZ2");
-        console.log(message);
-        console.log("ANAN");
-        if (isValid) {
-          this.saveToTransaction({
+            }else{
+                
+                localStorage.setItem("order_id", res.data["order_id"]);
+                if (isValid){
+                  this.saveToTransaction({
             cartItemList: this.cartItemList,
             uid: this.currentUser.uid,
           }).then(() => {
@@ -251,14 +234,21 @@ export default {
             this.clearCart();
             this.$router.push("/success");
           });
-        } else {
-          this.addMessage({
-            messageClass: "success",
-            message: "Satın alma gerçekleştirildi",
+               
+            }else{
+              this.addMessage({
+            messageClass: "warning",
+            message: "Bir hata meydana geldi",
           });
           this.$router.push("/sorry");
+            
+            }
+            }
+            
+          });
+
         }
-      } else {
+       else {
         this.addMessage({
           messageClass: "warning",
           message: "Alışverişe devam etmek için giriş yapmanız gerekiyor",

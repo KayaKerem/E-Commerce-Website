@@ -23,7 +23,7 @@
           <p>{{ item.description }}</p>
         </div>
         <div class="ratings">
-          <span>{{ item.quantity }} adet kaldı</span>
+          <span v-if="item.quantity<1000">{{ item.quantity }} paket kaldı</span>
           <p class="pull-right">
             <button
               @click="addItem"

@@ -19,7 +19,7 @@
           v-if="item.quantity < 1000 && item.quantity > 0"
           class="card-subtitle mb-2 remain"
         >
-          Son {{ item.quantity }} koli kaldı!
+          Son {{ item.quantity }} paket kaldı!
         </h6>
 
         <p class="card-text truncate">

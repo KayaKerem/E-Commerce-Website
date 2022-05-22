@@ -291,8 +291,14 @@
     <section id="testimonials" class="testimonials section-bg">
       <div class="container">
         <div class="section-title">
-          <h2>Referanslar</h2>
-          <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem</p>
+          <h2>Takımımız</h2>
+          <p>
+            <i>
+              “Talent wins games, but teamwork and intelligence win
+              championships”
+            </i>
+            -Michael Jordan
+          </p>
         </div>
 
         <div class="row">
