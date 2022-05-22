@@ -272,21 +272,21 @@ export default {
     };
   },
   created() {
-    console.log(this.series);
+    // console.log(this.series);
     const user_id = parseInt(localStorage.getItem("user_id"));
     axios
       .post("http://127.0.0.1:5000/showtable/packageoftotalbought", {
         id: user_id,
       })
       .then((res) => {
-        console.log("PPPPPPPPPPPPPPPPp");
+        // console.log("PPPPPPPPPPPPPPPPp");
 
         this.seriesDonut = res.data["series"];
         this.piechart["labels"] = res.data["labels"];
         // this.$set(this.piechart, 0, res.data["labels"]);
 
-        console.log(this.seriesDonut);
-        console.log(this.piechart);
+        // console.log(this.seriesDonut);
+        // console.log(this.piechart);
         // console.log(res.data["data"]["labels"]);
         // console.log(res);
       });
@@ -298,16 +298,16 @@ export default {
         this.seriesDonut2 = res.data["series"];
         this.piechart2["labels"] = res.data["labels"];
         // this.$set(this.piechart, 0, res.data["labels"]);
-        console.log("seriesDonut2");
-        console.log(this.seriesDonut2);
-        console.log("piechart2");
-        console.log(this.piechart2);
+        // console.log("seriesDonut2");
+        // console.log(this.seriesDonut2);
+        // console.log("piechart2");
+        // console.log(this.piechart2);
       });
   },
 
   mounted() {
     const user_id = parseInt(localStorage.getItem("user_id"));
-    console.log(user_id);
+    // console.log(user_id);
 
     axios
       .post("http://127.0.0.1:5000/showtable/pastorders", { id: user_id })
@@ -365,8 +365,8 @@ export default {
         }
         for (let k in res.data["dates"]) {
           let a = res.data["dates"][k];
-          console.log("Anana");
-          console.log(res.data["dates"][k]);
+          
+          // console.log(res.data["dates"][k]);
 
           options["xaxis"]["categories"].push(a.slice(0, 10));
           //   this.categories1.push(parseInt(a));
@@ -374,7 +374,7 @@ export default {
         // this.$set(this.options, 4, { categories: this.categories1 });
         this.options = options;
 
-        console.log(options["xaxis"]["categories"]);
+        // console.log(options["xaxis"]["categories"]);
       });
 
     axios
@@ -433,7 +433,7 @@ export default {
         }
         for (let k in res.data["dates"]) {
           let a = res.data["dates"][k];
-          console.log(a);
+          // console.log(a);
           options["xaxis"]["categories"].push(a.slice(0, 10));
           //   this.categories1.push(parseInt(a));
         }
@@ -441,7 +441,7 @@ export default {
         this.options2 = options;
 
         this.isShow = false;
-        console.log(options["xaxis"]["categories"]);
+        // console.log(options["xaxis"]["categories"]);
       });
   },
 };

@@ -122,7 +122,7 @@ export default {
       axios
         .post("http://127.0.0.1:5000/forgetpassword", postData)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.data["response"]) {
             let message_obj = {
               message: "Kurtarma bağlantısı email adresinize gönderildi.",

@@ -59,8 +59,8 @@ export default {
           isAdd: true,
         };
 
-        console.log("Berkay");
-        console.log(this.item.quantity);
+        // console.log("Berkay");
+        // console.log(this.item.quantity);
         this.updateCart(order);
       }
     },
@@ -159,6 +159,10 @@ div.card {
   color: #fff;
   background-color: #091239;
   border-color: #091239;
+}
+.btn-success:hover{
+  background-color: #EFB631;
+  border-color: #EFB631;
 }
 </style>
 

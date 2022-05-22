@@ -554,14 +554,14 @@ export default {
   methods: {
     handleScroll(event) {
       var navHeight = window.innerHeight - 920;
-      console.log("navHeight : " + navHeight);
-      console.log("windowHeight : " + window.innerHeight);
+      // console.log("navHeight : " + navHeight);
+      // console.log("windowHeight : " + window.innerHeight);
 
       if (window.scrollY > navHeight) {
         this.footerStick = true;
       } else {
         this.footerStick = false;
-        console.log(event);
+        event;
       }
     },
   },

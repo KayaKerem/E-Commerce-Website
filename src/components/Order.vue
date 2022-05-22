@@ -153,7 +153,7 @@ export default {
 
       this.queryCode = parseInt(this.queryCode);
       //post querycode
-      console.log(this.queryCode);
+      // console.log(this.queryCode);
       axios
         .post("http://127.0.0.1:5000/checkOrderNumber", {
           order_id: this.queryCode,
@@ -164,7 +164,7 @@ export default {
             this.$router.push("/orderdetails");
           } else if (res.data["orderNum"] == 0) {
             // this.$router.push("/order");
-            console.log(res);
+            // console.log(res);
 
             this.addMessage({
               messageClass: "warning",
@@ -172,8 +172,8 @@ export default {
             });
             this.isPageLoading = false;
           } else {
-            console.log(typeof this.queryCode);
-            console.log(res);
+            // console.log(typeof this.queryCode);
+            // console.log(res);
             this.$router.push("/sorry");
           }
         });
@@ -185,8 +185,8 @@ export default {
   },
   mounted() {
     const user_id = parseInt(localStorage.getItem("user_id"));
-    console.log("Order user_id");
-    console.log(user_id);
+    // console.log("Order user_id");
+    // console.log(user_id);
     if (Number.isNaN(user_id)) {
       this.$router.push("/login");
     }

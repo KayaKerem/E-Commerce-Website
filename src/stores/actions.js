@@ -89,8 +89,8 @@ export function listenToProductList({ commit }) {
 	let a = res.data["data"];
 	return a
   });
-  console.log("AAAAAAAAAA")
-  console.log(products)
+
+
 
   
   return commit('UPDATE_PRODUCT_LIST', products);

@@ -265,7 +265,7 @@ export default {
         messageClass: "danger",
         autoClose: true,
       };
-      console.log(message_obj);
+      // console.log(message_obj);
       this.addMessage(message_obj);
       localStorage.removeItem("user_id");
       localStorage.removeItem("user_name");

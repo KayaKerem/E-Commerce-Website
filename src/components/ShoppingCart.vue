@@ -198,7 +198,7 @@ export default {
         axios
           .post("http://127.0.0.1:5000/buyProduct", buyInfo, { headers })
           .then((res) => {
-            console.log(res);
+            // console.log(res);
             
             if(res.data["order_id"] ==0){
               let name_info = res.data["error_info"]["names"];

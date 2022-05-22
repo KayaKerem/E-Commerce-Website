@@ -151,8 +151,8 @@ export default {
     };
   },
   created() {
-    console.log("CHE");
-    console.log(localStorage.getItem("user_id"));
+   
+    // console.log(localStorage.getItem("user_id"));
   },
   methods: {
     ...mapActions(["addMessage", "clearMessage"]),
@@ -169,20 +169,20 @@ export default {
           // localStorage.removeItem("user_id");
         })
         .then(() => {
-          console.log("Check");
-          console.log(this.check);
+          // console.log("Check");
+          // console.log(this.check);
           if (this.check == 0) {
-            console.log("geçersiz");
+            // console.log("geçersiz");
             let message_obj = {
               message:
                 "Kullanıcı adı veya şifre yanlış. Lütfen Tekrar Deneyiniz",
               messageClass: "danger",
               autoClose: true,
             };
-            console.log(message_obj);
+            // console.log(message_obj);
             this.addMessage(message_obj);
           } else if (this.check != null) {
-            console.log("geçerli");
+            // console.log("geçerli");
             this.isLogged = true;
             localStorage.setItem("user_id", this.check["id"]);
             localStorage.setItem(
@@ -200,7 +200,7 @@ export default {
             // });
             window.location.href = "/";
           } else {
-            console.log("arada");
+            // console.log("arada");
             let message_obj = {
               message: data.res,
               messageClass: "danger",

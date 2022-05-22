@@ -28,7 +28,7 @@ export default {
     ...mapActions(["getShoppingCart", "listenToProductList"]),
   },
   mounted() {
-    console.log(this.listenToProductList());
+    // console.log(this.listenToProductList());
   },
   created() {
     let uid = this.$store.getters.currentUser.uid;
