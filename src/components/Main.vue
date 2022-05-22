@@ -43,9 +43,7 @@
               </div>
               <h4><a>Çevre Dostu</a></h4>
               <p>
-                Üretimde,ağaçlarımızı kesmek yerine endüstriyel yetiştirdiğimiz
-                ağaçları kullanıyoruz ve kullandığımızın iki katı kadar yeni
-                fidanı doğaya kazandırıyoruz.
+                Üretimde, ormanlarımızı kesmek yerine endüstriyel yetiştirdiğimiz ağaçları kullanıyoruz ve kullandığımızın iki katı kadar yeni fidanı doğaya kazandırıyoruz.
               </p>
             </div>
           </div>
@@ -212,10 +210,8 @@
               <!-- <font-awesome-icon icon="fa-solid fa-recycle" class="bi" /> -->
               <h4><a href="#">Geri Dönüşüm</a></h4>
               <p>
-                Sıfır atık politikasını benimsediğimiz şirketimizde kullanılmış
-                kağıtları getirdiğinizde uyguladığımız indirimler sayesinde
-                doğamızı hep beraber koruyoruz.
-              </p>
+Sıfır atık politikasını benimsediğimiz şirketimizde
+kullanılmış kağıtları getirdiğinizde indirimlerimiz sayesinde doğamızı hep beraber koruyoruz.              </p>
             </div>
           </div>
           <div class="col-md-6 mt-4 mt-lg-0">
@@ -235,9 +231,7 @@
               </svg>
               <h4><a href="#">Müşteri Arayüzü</a></h4>
               <p>
-                Size özel hazırladığımız kullanıcı arayüzümüz ile
-                planlamalarınızı daha kolay yapabileceksiniz.
-              </p>
+Size özel hazırladığımız kullanıcı arayüzümüz ile planlamalarınızı daha emin adımlarla daha kolay yapabileceksiniz.              </p>
             </div>
           </div>
           <div class="col-md-6 mt-4 mt-lg-0">
@@ -257,12 +251,12 @@
               </svg>
               <h4><a href="#">Hızlı Teslim</a></h4>
               <p>
-                Siparişinizi en geç 3 iş günü içinde kargoya vererek beklemeden
-                güvenle alışveriş imkanı sunuyoruz.
+Sizler için özenle hazırladığımız siparişlerinizi en geç 3 iş günü içinde
+kargoya vererek beklemeden güvenle alışveriş imkanı sunuyoruz.
               </p>
             </div>
           </div>
-          <div class="col-md-6 mt-4">
+          <div class="col-md-6 mt-4" style="margin-top:0.3rem!important;">
             <div class="icon-box">
               <!-- icon1 -->
               <svg
@@ -279,9 +273,7 @@
               </svg>
               <h4><a href="#">Kolay Takip</a></h4>
               <p>
-                Siparişinizi yedi yirmi dört takip edebileceğiniz sipariş takip
-                sistemimizle artık online alışveriş daha kolay.
-              </p>
+Siparişinizi yedi yirmi dört takip edebileceğiniz, nerede kaldı derdine son verecek sipariş takip sistemimizle artık online alışveriş daha kolay.              </p>
             </div>
           </div>
         </div>
@@ -395,11 +387,10 @@ Süreç boyunca birçok şey öğrendim. Öğrendiklerimin en önemlisi ise iş 
 
               <div class="carousel-item">
                 <div class="testimonial-item">
-                  <div class="testimonial-item">
+                  
                     <p>
                       <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                   Bu projede en çok keyif aldığım kısmı sorsalar, sistemdeki bir problemi analiz etmek derdim.
-
                       <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                     </p>
                     <img
@@ -409,13 +400,13 @@ Süreç boyunca birçok şey öğrendim. Öğrendiklerimin en önemlisi ise iş 
                     />
                     <h3>Sena Eser</h3>
                     <h4>Sistem Analisti</h4>
-                  </div>
+                  
                 </div>
               </div>
 
               <div class="carousel-item">
                 <div class="testimonial-item">
-                  <div class="testimonial-item">
+                 
                     <p>
                       <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                       "Sistemi nasıl daha verimli hale getirebiliriz? Bu özelliği de eklesek daha iyi olmaz mı? " gibi sorular sorduğumda hemen çözüm üreten bir ekiple çalışmak süperdi.
@@ -428,7 +419,7 @@ Süreç boyunca birçok şey öğrendim. Öğrendiklerimin en önemlisi ise iş 
                     />
                     <h3>İrem Avcı</h3>
                     <h4>İş Geliştirici &amp; Test Uzmanı</h4>
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -560,6 +551,13 @@ export default {
 .carousel {
   width: 100%;
   height: 100%;
+}
+.carousel-control-next-icon {
+  
+  background-color:#EFB631!important ;
+}
+.carousel-control-prev-icon{
+  background-color:#EFB631!important ;
 }
 .body {
   font-family: "Open Sans", sans-serif;

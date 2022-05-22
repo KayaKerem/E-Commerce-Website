@@ -31,7 +31,7 @@
       </div>
     </div>
 
-    <div class="row" v-if="!isProductLoading">
+    <div class="row" v-if="!isProductLoading" id="products">
       <app-product-item
         v-for="prod in products1"
         :item="prod"
@@ -164,13 +164,15 @@ export default {
   background-color: black !important;
 }
 h5 {
-  font-family: "Bangers" !important;
+ font-family: "Raleway", sans-serif;
 }
 .list-group-item .card-body[data-v-ae4ae6fc] {
   height: 100%;
 }
 #urunler {
+  font-family: "Raleway", sans-serif!important;
   color: #efb631;
   font-size: 25px;
 }
+
 </style>

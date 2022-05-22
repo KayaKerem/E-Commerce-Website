@@ -13,7 +13,7 @@
       </div>
       <div class="card-body">
         <router-link :to="'/product/' + item.id" tag="h5" class="card-title"
-          ><a>{{ item.title }}</a></router-link
+          ><a id="item-title">{{ item.title }}</a></router-link
         >
         <h6
           v-if="item.quantity < 1000 && item.quantity > 0"
@@ -78,6 +78,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#item-title{
+  font-family: "Open Sans", sans-serif!important;
+}
 div.card {
   height: 100%;
 }
