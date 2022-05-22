@@ -156,8 +156,7 @@ def buyProduct():
     user_id = data["id"]
     product_id =  data["product_id"]
     amount = data["amount"]
-    res = db.buyProduct(user_id, product_id, amount)
-    return {"order_id":res}
+    return db.buyProduct(user_id, product_id, amount)
 
 @app.route("/checkOrderNumber",methods=["POST"])
 def checkOrderNum():
