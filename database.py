@@ -1,3 +1,4 @@
+from distutils.log import error
 import sqlite3
 from webbrowser import get
 import random
@@ -180,7 +181,10 @@ def buyProduct(userId,productId,amount):#ürün satın alır order tablosuna ekl
     conn =sqlite3.connect('Dunder.db')
     cursor = conn.cursor()
     listOfPrices = []
-
+    data = {}
+    error_info = {}
+    names = []
+    quantities = []
     try:
         listProduct = []
         # print("Hata ürünleri listelemede")
@@ -191,15 +195,35 @@ def buyProduct(userId,productId,amount):#ürün satın alır order tablosuna ekl
     except:
         return 0
     # print(listProduct)
-
+    try:
+        k = 0
+        for i in listProduct:
+            if i[2] < amount[k]:
+               names.append(i[1])
+               quantities.append(i[2])
+            k += 1
+        error_info.update({"names":names,"quantities":quantities})
+        data.update({"order_id":0,"error_info":error_info})
+        conn.commit()
+        
+        if len(names) != 0:
+            return data
+    except:
+        print("BURADAN")
+        return 0
     try:
         # print("Error in updateQuantity Funciton")
         k = 0
         for i in listProduct:
-
-            updateQuantity(i[2]-amount[k],productId[k])
-            k += 1 
+            
+            if i[2]>=amount[k]:
+                updateQuantity(i[2]-amount[k],productId[k])
+                k += 1
+            else:
+                conn.commit()
+                 
     except:
+        print("BURADAN")    
         return 0
     try:
         for i in listProduct:
@@ -208,12 +232,10 @@ def buyProduct(userId,productId,amount):#ürün satın alır order tablosuna ekl
         # print(listOfPrices)          
         # print("Error in addOrder Function")
         orderNumber = addOrder(userId,productId,amount,listOfPrices)
+        conn.commit()
+        conn.close()    
     except:
         return 0
-    conn.commit()
-    conn.close()
-
-
     return orderNumber
 
 def getTradeOfUser(user_id):#Kullanıcının aldığı  ürünlerin toplam sayısını dict olarak {ürün:toplam alınan miktar} şeklinde döndürür
