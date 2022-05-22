@@ -17,3 +17,9 @@ yarn serve
 ```
 
 
+##Docker
+
+docker build -t vuejs-image .
+```
+docker run -it -p 8080:80 --rm --name vuejs-container vuejs-image
+``` 
