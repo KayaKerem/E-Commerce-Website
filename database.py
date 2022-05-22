@@ -236,7 +236,8 @@ def buyProduct(userId,productId,amount):#ürün satın alır order tablosuna ekl
         conn.close()    
     except:
         return 0
-    return orderNumber
+
+    return {"order_id":orderNumber,"error_info":{"names":[],"quantities":[]}}
 
 def getTradeOfUser(user_id):#Kullanıcının aldığı  ürünlerin toplam sayısını dict olarak {ürün:toplam alınan miktar} şeklinde döndürür
     conn = sqlite3.connect('Dunder.db')
