@@ -1,4 +1,5 @@
-from urllib import request
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
 from flask import Flask, request
 from initialize_database import initialize
 from flask_cors import CORS
@@ -62,7 +63,7 @@ def getUserID():
 @app.route("/showtable/pastorders", methods = ["GET", "POST"])
 def pastorders():
     id = getUserID()
-    temp  = db.totalPackageOfBought(id)#tarih, ürünıd, paket sayısı
+    temp  = db.totalPackageOfBought(id)#tarih, urunid, paket sayisi
     products = db.getNamesOfProducts() #{{"id":value, "name":value}}
     categories = []
     for i in temp:
@@ -89,7 +90,7 @@ def pastorders():
 @app.route("/showtable/pastorders_money", methods = ["GET", "POST"])                  
 def pastordersMoney():
     id = getUserID()
-    temp = db.totalSpentOfMoney(id)#tarih, ürünıd, paket sayısı
+    temp = db.totalSpentOfMoney(id)#tarih, urunid, paket sayisi
     products = db.getNamesOfProducts() #{{"id":value, "name":value}}
     categories = []
     for i in temp:
@@ -116,7 +117,7 @@ def pastordersMoney():
 @app.route("/showtable/packageoftotalbought",methods = ["GET", "POST"])
 def packageOfTotalBought():
     id = getUserID()
-    temp = db.getPastOrders(id)#ürünıd, miktar
+    temp = db.getPastOrders(id)#urunid, miktar
     pck = db.getNamesOfProducts()
     labels = []
     series = []
@@ -136,7 +137,7 @@ def packageOfTotalBought():
 def spentmoneyformonths():
     id = getUserID()
     temp = db.spentOfMoneyForMonths(id) #ay, harcanan para
-    months = [["01","Ocak"],["02","Şubat"],["03","Mart"],["04","Nisan"],["05","Mayıs"],["06","Haziran"],["07","Temmuz"],["08","Ağustos"],["09","Eylül"],["10","Ekim"],["11","Kasım"],["12","Aralık"]]
+    months = [["01","Ocak"],["02","Subat"],["03","Mart"],["04","Nisan"],["05","Mayis"],["06","Haziran"],["07","Temmuz"],["08","Agustos"],["09","Eylul"],["10","Ekim"],["11","Kasim"],["12","Aralik"]]
     series = []
     labels = []
     for i in months:

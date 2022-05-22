@@ -1,6 +1,8 @@
-from distutils.log import error
+#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
+
 import sqlite3
-from webbrowser import get
+
 import random
 def initializeOrder():
     firstOrderItems = [1002,1002,1001,1001,1004]
